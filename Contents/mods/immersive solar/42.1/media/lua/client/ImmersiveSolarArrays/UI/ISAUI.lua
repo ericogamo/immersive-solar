@@ -140,9 +140,7 @@ function UI.OnFillWorldObjectContextMenu(player, context, worldobjects, test)
         local luaPb = ISA.PBSystem_Client and ISA.PBSystem_Client:getLuaObjectOnSquare(square)
         if luaPb then
             luaPb:updateFromIsoObject()
-            local character = getSpecificPlayer(player)
-            local elecLevel = character:getPerkLevel(Perks.Electricity)
-            local area = ISA.WorldUtil.getValidBackupArea(elecLevel)
+            local area = ISA.WorldUtil.getValidBackupArea(SandboxVars.ISA.BackupGeneratorRange)
             local generators = ISA.WorldUtil.getGeneratorsInArea(square, area.radius, area.levels, area.distance)
 
             if #generators > 0 then

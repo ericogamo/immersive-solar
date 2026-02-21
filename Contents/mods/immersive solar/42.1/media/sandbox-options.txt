@@ -51,3 +51,7 @@ option ISA.enableExpandedRecipes {
     page = ISA, translation = ISA_enableExpandedRecipes,
     type = boolean, default = false,
 }
+option ISA.BackupGeneratorRange {
+    page = ISA, translation = ISA_BackupGeneratorRange,
+    type = integer, min = 1, max = 20, default = 10,
+}

@@ -45,5 +45,5 @@ Sandbox_DE = {
     Sandbox_ISA_ConnectPanelMin = "Panel-Zeit verbinden",
     Sandbox_ISA_ConnectPanelMin_tooltip = "Basisanzahl der Spielminuten, die zum Anschließen eines Panels benötigt werden",
     Sandbox_ISA_enableExpandedRecipes = "Erweiterte Rezepte",
-    Sandbox_ISA_enableExpandedRecipes_tooltip = "Ermöglicht die Herstellung von Solarmodulen und Wechselrichtern",
-}
+    Sandbox_ISA_enableExpandedRecipes_tooltip = "Ermöglicht die Herstellung von Solarmodulen und Wechselrichtern",    Sandbox_ISA_BackupGeneratorRange = "Backup-Generator Reichweite",
+    Sandbox_ISA_BackupGeneratorRange_tooltip = "Maximale Tile-Entfernung zum Verbinden eines Backup-Generators mit einer Batteriebank.",}
