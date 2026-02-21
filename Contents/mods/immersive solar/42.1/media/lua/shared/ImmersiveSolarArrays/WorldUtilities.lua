@@ -161,4 +161,36 @@ function WorldUtil.replaceIsoObjectWithGenerator(isoObject)
     return gen
 end
 
+---Find all real generators (not PowerBanks) in an area around a square
+---@param square IsoGridSquare
+---@param radius number
+---@param zLevels number
+---@param distance number
+---@return table<number, IsoGenerator>
+function WorldUtil.getGeneratorsInArea(square, radius, zLevels, distance)
+    local all = {}
+    local x = square:getX()
+    local y = square:getY()
+    local z = square:getZ()
+    for ix = x - radius, x + radius do
+        for iy = y - radius, y + radius do
+            for iz = z - zLevels, z + zLevels do
+                if ix >= 0 and iy >= 0 and iz >= 0 then
+                    local dist = IsoUtils.DistanceToSquared(x, y, z, ix, iy, iz)
+                    if dist <= distance then
+                        local isquare = getSquare(ix, iy, iz)
+                        if isquare then
+                            local generator = isquare:getGenerator()
+                            if generator and generator:isConnected() and WorldUtil.ISATypes[generator:getTextureName()] ~= "PowerBank" then
+                                table.insert(all, generator)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return all
+end
+
 ISA.WorldUtil = WorldUtil

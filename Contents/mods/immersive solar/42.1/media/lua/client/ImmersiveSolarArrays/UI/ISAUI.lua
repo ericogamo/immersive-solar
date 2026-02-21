@@ -136,23 +136,29 @@ function UI.OnFillWorldObjectContextMenu(player, context, worldobjects, test)
         if test then return ISWorldObjectContextMenu.setTest() end
         ISASubMenu:addOption(getText("ContextMenu_ISA_ConnectPanels"), player, onConnectPanelCursor, square, powerbank)
 
-        local character = getSpecificPlayer(player)
-        local elecLevel = character:getPerkLevel(Perks.Electricity)
-        local area = ISA.WorldUtil.getValidBackupArea(elecLevel)
-        local generators = ISA.WorldUtil.getGeneratorsInArea(square, area.radius, area.levels, area.distance)
+        -- Backup Generator context menu
+        local luaPb = ISA.PBSystem_Client and ISA.PBSystem_Client:getLuaObjectOnSquare(square)
+        if luaPb then
+            luaPb:updateFromIsoObject()
+            local character = getSpecificPlayer(player)
+            local elecLevel = character:getPerkLevel(Perks.Electricity)
+            local area = ISA.WorldUtil.getValidBackupArea(elecLevel)
+            local generators = ISA.WorldUtil.getGeneratorsInArea(square, area.radius, area.levels, area.distance)
 
-        if #generators > 0 then
-            for _, generator in ipairs(generators) do
-                local isConnected = pb and pb.conGenerator and
-                                   pb.conGenerator.x == generator:getX() and
-                                   pb.conGenerator.y == generator:getY() and
-                                   pb.conGenerator.z == generator:getZ()
-                
-                local text = isConnected and (getText("ContextMenu_ISA_Disconnect_Backup") or "Disconnect Backup") or 
-                                            (getText("ContextMenu_ISA_Connect_Backup") or "Connect Backup")
-                
-                local func = isConnected and UI.onDisconnectBackup or UI.onConnectBackup
-                ISASubMenu:addOption(text, player, func, generator, powerbank:getModData())
+            if #generators > 0 then
+                for _, generator in ipairs(generators) do
+                    if test then return ISWorldObjectContextMenu.setTest() end
+                    local isConnected = luaPb.conGenerator and
+                                       luaPb.conGenerator.x == generator:getX() and
+                                       luaPb.conGenerator.y == generator:getY() and
+                                       luaPb.conGenerator.z == generator:getZ()
+
+                    local text = isConnected and getText("ContextMenu_ISA_Disconnect_Backup") or
+                                                getText("ContextMenu_ISA_Connect_Backup")
+
+                    local func = isConnected and UI.onDisconnectBackup or UI.onConnectBackup
+                    ISASubMenu:addOption(text, player, func, generator, luaPb)
+                end
             end
         end
     end
