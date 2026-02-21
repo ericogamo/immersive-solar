@@ -1,3 +1,8 @@
+# AI and System Files
+.antigravity*
+.gemini/
+*.log
+
 # Project Zomboid / OS Files
 Thumbs.db
 Desktop.ini
