@@ -1,6 +1,0 @@
-version=1
-id=3670551703
-title=Immersive Solar Arrays [B42 MP]
-description=Updates ISA for Build 42, including a new feature to manually connect Backup Generators to your Battery Banks! Say goodbye to automatic scanner bugs.
-tags=Build 42;Multiplayer;WIP
-visibility=public
