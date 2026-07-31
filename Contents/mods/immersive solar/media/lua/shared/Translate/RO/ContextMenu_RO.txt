@@ -9,4 +9,7 @@ ContextMenu_RO = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Panoul solar nu este conectat la această bancă de baterii",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Panoul solar trebuie să fie afară",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "Nu există nicio bancă de baterii în apropierea acestui panou solar",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

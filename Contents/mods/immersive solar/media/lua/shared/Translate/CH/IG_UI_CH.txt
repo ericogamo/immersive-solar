@@ -1,7 +1,6 @@
-IGUI_CH = {
+IG_UI_CH = {
     IGUI_ContainerTitle_BatteryBank = "蓄電池庫",
     IGUI_ContainerTitle_SolarBox = "太陽能箱",
-
     IGUI_ISAWindowsStatus_Title = "蓄電池狀態",
     IGUI_ISAWindowsSumaryTab_InfoText = " <CENTRE> <SIZE:medium> 蓄電池面板 <LINE> <LINE> <LEFT> 簡介 <LINE> <SIZE:small> 顯示蓄電池庫的視覺簡介, 太陽能板和電池狀態. <LINE> <SIZE:medium> 詳細訊息 <LINE> <SIZE:small> 顯示關於蓄電池庫及狀態的技術訊息. <LINE> <SIZE:medium> 除錯 <LINE> <SIZE:small> 添加對於蓄電池庫進行故障排除的按鈕. ",
     IGUI_ISAWindowsSumaryTab_TabTitle = "簡介",
@@ -41,6 +40,9 @@ IGUI_CH = {
     IGUI_ISAWindow_Debug_ShowBackup = "顯示備用區的細節",
     IGUI_ISAWindow_Debug_HideBackup = "隱藏備用區的細節",
     IGUI_ISA_Update = "更新",
-
     IGUI_ISAContainerNotBattery = "這裡似乎是存放東西的好地方,放入 %1",
+    IGUI_ContainerTitle_Batterybank = "蓄電池庫",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

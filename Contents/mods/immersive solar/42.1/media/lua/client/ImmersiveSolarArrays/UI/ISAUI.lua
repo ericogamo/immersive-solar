@@ -8,6 +8,9 @@ local UI = {}
 local rgbDefault, rgbGood, rgbBad = { r = 1, g = 1, b = 1, rich = " <RGB:1,1,1> " }, {}, {}
 UI.rgbDefault, UI.rgbGood, UI.rgbBad = rgbDefault, rgbGood, rgbBad
 
+local fgBar = {r=1,g=1,b=1,a=1}
+local fgText = {r=1,g=1,b=1,a=1}
+
 function UI.updateColours()
     local core = getCore()
     local good = core:getGoodHighlitedColor()
@@ -246,8 +249,14 @@ function UI.ISInventoryPane_drawItemDetails_patch(drawItemDetails)
             local hdrHgt = self.headerHgt
             local top = hdrHgt + y * self.itemHgt + yoff
             rgbBad.ColorInfo:interp(rgbGood.ColorInfo, item:getCondition()/100, NewColorInfo)
-            local fgBar = {r=NewColorInfo:getR(),g=NewColorInfo:getG(),b=NewColorInfo:getB(),a=1}
-            local fgText = red and {r=0.0, g=0.0, b=0.5, a=0.7} or {r=0.6, g=0.8, b=0.5, a=0.6}
+            fgBar.r = NewColorInfo:getR()
+            fgBar.g = NewColorInfo:getG()
+            fgBar.b = NewColorInfo:getB()
+            if red then
+                fgText.r = 0.0; fgText.g = 0.0; fgText.b = 0.5; fgText.a = 0.7
+            else
+                fgText.r = 0.6; fgText.g = 0.8; fgText.b = 0.5; fgText.a = 0.6
+            end
             self:drawTextAndProgressBar(getText("Tooltip_weapon_Condition") .. ":", item:getCondition()/100, xoff, top, fgText, fgBar)
         end
     end

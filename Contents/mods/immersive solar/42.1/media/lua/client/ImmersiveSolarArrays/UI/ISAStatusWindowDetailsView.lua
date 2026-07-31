@@ -18,8 +18,6 @@ function ISAWindowDetails:createChildren()
     self.devButton = ISButton:new(self.width-width-10, y, width, getTextManager():getFontHeight(UIFont.Medium), getText("IGUI_ISA_Update"), self, self.updateDevices)
     self:addChild(self.devButton)
 
-    --self:setScrollChildren(true)
-    --self:addScrollBars()
 end
 
 function ISAWindowDetails:setVisible(visible)
@@ -105,13 +103,17 @@ function ISAWindowDetails:render()
         self:drawLineB(validArea,"IGUI_ISAWindow_Details_ValidAreaPlayer",textY)
         textY = textY + fontHeightSm
         self:drawText(getText("IGUI_ISAWindow_Details_GenInRange"), textX, textY, 1, 1, 1, 1, UIFont.Small)
-        self:drawTextRight(tostring(pb.luaSystem.getGeneratorsInAreaInfo(pb,area)), textXr, textY, 1, 1, 1, 1, UIFont.Small)
+        local currentTick = getTimestampMs()
+        if not self._cachedGenInfo or (currentTick - (self._cachedGenInfoTick or 0)) > 2000 then
+            self._cachedGenInfo = pb.luaSystem.getGeneratorsInAreaInfo(pb, area)
+            self._cachedGenInfoTick = currentTick
+        end
+        self:drawTextRight(tostring(self._cachedGenInfo), textXr, textY, 1, 1, 1, 1, UIFont.Small)
         textY = textY + fontHeightSm
         self:drawText(self:getDebugLineForPlayerSquareBackup(), textX, textY, 1, 1, 1, 1, UIFont.Small)
         textY = textY + fontHeightSm
     end
 
-    --self:setScrollHeight(textY+10)
     self:setHeightAndParentHeight(textY+10)
 end
 

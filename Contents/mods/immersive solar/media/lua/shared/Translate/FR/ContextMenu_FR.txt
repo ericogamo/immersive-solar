@@ -9,4 +9,7 @@ ContextMenu_FR = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Le panneau photovoltaïque n'est pas connecté à cette batterie d'accumulateurs",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Le panneau photovoltaïque doit être à l'extérieur",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "Aucune batterie d'accumulateurs ne se trouve à proximité de ce panneau photovoltaïque",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

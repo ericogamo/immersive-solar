@@ -1,7 +1,6 @@
-IGUI_ID = {
+IG_UI_ID = {
     IGUI_ContainerTitle_BatteryBank = "Bank Baterai",
     IGUI_ContainerTitle_SolarBox = "Kotak Surya",
-
     IGUI_ISAWindowsStatus_Title = "Status Bank Baterai",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> Panel Bank Baterai <LINE> <LINE> <LEFT> Tab Ringkasan <LINE> <SIZE:small> Menampilkan ringkasan visual dari Bank Baterai, Panel Surya dan Status Baterai. <LINE> <SIZE:medium> Tab Detail <LINE> <SIZE:small> Menampilkan informasi teknis tentang Bank Baterai dan statusnya. <LINE> <SIZE:medium> Tab Debug <LINE> <SIZE:small> Menambahkan tombol untuk memecahkan masalah Bank Baterai.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Ringkasan",
@@ -41,6 +40,9 @@ IGUI_ID = {
     IGUI_ISAWindow_Debug_ShowBackup = "Tampilkan Detail Area Cadangan",
     IGUI_ISAWindow_Debug_HideBackup = "Sembunyikan Detail Area Cadangan",
     IGUI_ISA_Update = "Memperbarui",
-
     IGUI_ISAContainerNotBattery = "Sepertinya ini tempat yang bagus untuk menyimpan %1 saya",
+    IGUI_ContainerTitle_Batterybank = "Bank Baterai",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

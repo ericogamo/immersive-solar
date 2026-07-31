@@ -1,7 +1,6 @@
-IGUI_TR = {
+IG_UI_TR = {
     IGUI_ContainerTitle_BatteryBank = "Şarj Bankası",
     IGUI_ContainerTitle_SolarBox = "Güneş Kutusu",
-
     IGUI_ISAWindowsStatus_Title = "Pil Bankası Durumu",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> Akü Bankası Paneli <LINE> <LINE> <LEFT> Özet Sekmesi <LINE> <SIZE:small> Pil Bankası, Güneş Panelleri ve Pil Durumunun görsel bir özetini görüntüler. <LINE> <SIZE:medium> Ayrıntılar Sekmesi <LINE> <SIZE:small> Pil Bankası ve durumu hakkındaki teknik bilgileri görüntüler. <LINE> <SIZE:medium> Hata Ayıklama Sekmesi <LINE> <SIZE:small> Pil Bankasında sorun gidermeye yönelik düğmeler ekler.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Özet",
@@ -41,6 +40,9 @@ IGUI_TR = {
     IGUI_ISAWindow_Debug_ShowBackup = "Yedekleme Alanı Ayrıntılarını Göster",
     IGUI_ISAWindow_Debug_HideBackup = "Yedekleme Alanı Ayrıntılarını Gizle",
     IGUI_ISA_Update = "Güncelleme",
-
     IGUI_ISAContainerNotBattery = "Burası %1'imi saklamak için iyi bir yer gibi görünüyor",
+    IGUI_ContainerTitle_Batterybank = "Şarj Bankası",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

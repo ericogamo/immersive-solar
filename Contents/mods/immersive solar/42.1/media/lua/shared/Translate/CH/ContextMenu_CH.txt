@@ -9,4 +9,7 @@ ContextMenu_CH = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "太陽能板未連接蓄電池庫",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "太陽能板必須在戶外",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "太陽能板附近沒有蓄電池庫",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

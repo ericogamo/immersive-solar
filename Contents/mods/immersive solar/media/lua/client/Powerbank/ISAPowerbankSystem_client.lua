@@ -22,6 +22,7 @@ function PbSystem:initSystem()
         --end
     end
     Events.EveryDays.Add(PbSystem.resetAcceptItemFunction.addItems) --added after server function with sendObjectChange("containers") so SP need only one check
+    Events.OnTick.Add(PbSystem.mutePowerbanks)
 end
 
 function PbSystem:newLuaObject(globalObject)
@@ -276,6 +277,25 @@ function PbSystem.updateBanksForClient()
         end
     end
 end
+
+function PbSystem.mutePowerbanks()
+    if not PbSystem.instance then return end
+    for i=1,PbSystem.instance:getLuaObjectCount() do
+        local pb = PbSystem.instance:getLuaObjectByIndex(i)
+        local isopb = pb:getIsoObject()
+        if isopb then
+            local gen = isopb:getSquare():getGenerator()
+            if gen ~= nil then
+                local emitter = gen:getEmitter()
+                if emitter ~= nil then
+                    emitter:setVolumeAll(0.0)
+                end
+            end
+        end
+    end
+end
+
+Events.OnTick.Add(PbSystem.mutePowerbanks)
 
 CGlobalObjectSystem.RegisterSystemClass(PbSystem)
 

@@ -5,118 +5,6 @@ local ISAWindowsSumaryTab = ISPanelJoypad:derive("ISAWindowsSumaryTab")
 
 function ISAWindowsSumaryTab:initialise()
 	ISPanelJoypad.initialise(self)
-
-	-- House
-	self.imageHouse = ISImage:new(321, 185, 254, 185, self.textureHouse)
-	self.imageHouse.scaledWidth = 254
-	self.imageHouse.scaledHeight = 185
-	self.imageHouse:initialise()
-	self.imageHouse.parent = self
-    self:addChild(self.imageHouse)
-
-	-- Cables
-	self.imageCables = ISImage:new(52, 358, 403, 24, self.textureCables)
-	self.imageCables.scaledWidth = 403
-	self.imageCables.scaledHeight = 24
-	self.imageCables:initialise()
-	self.imageCables.parent = self
-    self:addChild(self.imageCables)
-
-	-- Battery
-	self.imageBattery = ISImage:new(16, 302, 76, 69, self.textureBattery)
-	self.imageBattery.scaledWidth = 76
-	self.imageBattery.scaledHeight = 69
-	self.imageBattery:initialise()
-	self.imageBattery.parent = self
-	--self.imageBattery:setMouseOverText("Test")
-    self:addChild(self.imageBattery)
-
-	self.imageBatteryCross = ISImage:new(17, 305, 72, 72, self.textureCross)
-	self.imageBatteryCross.scaledWidth = 72
-	self.imageBatteryCross.scaledHeight = 72
-	self.imageBatteryCross:initialise()
-	self.imageBatteryCross.parent = self
-    self:addChild(self.imageBatteryCross)
-
-	-- Sun and radiation
-	self.imageSun = ISImage:new(0, 0, 128, 128, self.textureSun)
-	self.imageSun.scaledWidth = 128
-	self.imageSun.scaledHeight = 128
-	self.imageSun:initialise()
-	self.imageSun.parent = self
-    self:addChild(self.imageSun)
-
---[[
-	self.imageSolarRadiation1 = ISImage:new(81, 122, 93, 78, self.textureSolarRadiation)
-	self.imageSolarRadiation1.scaledWidth = 93
-	self.imageSolarRadiation1.scaledHeight = 78
-	self.imageSolarRadiation1:initialise()
-	self.imageSolarRadiation1.parent = self
-    self:addChild(self.imageSolarRadiation1)
-
-	self.imageSolarRadiation2 = ISImage:new(98, 107, 93, 78, self.textureSolarRadiation)
-	self.imageSolarRadiation2.scaledWidth = 93
-	self.imageSolarRadiation2.scaledHeight = 78
-	self.imageSolarRadiation2:initialise()
-	self.imageSolarRadiation2.parent = self
-    self:addChild(self.imageSolarRadiation2)
-
-	self.imageSolarRadiation3 = ISImage:new(116, 91, 93, 78, self.textureSolarRadiation)
-	self.imageSolarRadiation3.scaledWidth = 93
-	self.imageSolarRadiation3.scaledHeight = 78
-	self.imageSolarRadiation3:initialise()
-	self.imageSolarRadiation3.parent = self
-    self:addChild(self.imageSolarRadiation3)
-
-	self.imageSolarRadiationCross = ISImage:new(118, 116, 72, 72, self.textureCross)
-	self.imageSolarRadiationCross.scaledWidth = 72
-	self.imageSolarRadiationCross.scaledHeight = 72
-	self.imageSolarRadiationCross:initialise()
-	self.imageSolarRadiationCross.parent = self
-    self:addChild(self.imageSolarRadiationCross)
-	]]
-
-	-- Moon
-	self.imageMoon = ISImage:new(0, 0, 128, 128, self.textureMoon)
-	self.imageMoon.scaledWidth = 128
-	self.imageMoon.scaledHeight = 128
-	self.imageMoon:initialise()
-	self.imageMoon.parent = self
-    self:addChild(self.imageMoon)
-
-	-- Solar Panel (two modes)
-	self.imageSolarPanel = ISImage:new(123, 267, 155, 103, self.textureSolarPanel)
-	self.imageSolarPanel.scaledWidth = 155
-	self.imageSolarPanel.scaledHeight = 103
-	self.imageSolarPanel:initialise()
-	self.imageSolarPanel.parent = self
-    self:addChild(self.imageSolarPanel)
-	self.imageSolarPanel:setVisible(false)
-
-	self.imageSolarPanelNoEnergy = ISImage:new(123, 267, 155, 103, self.textureSolarPanelNoEnergy)
-	self.imageSolarPanelNoEnergy.scaledWidth = 155
-	self.imageSolarPanelNoEnergy.scaledHeight = 103
-	self.imageSolarPanelNoEnergy:initialise()
-	self.imageSolarPanelNoEnergy.parent = self
-    self:addChild(self.imageSolarPanelNoEnergy)
-
-	self.imageSolarPanelCross = ISImage:new(166, 268, 72, 72, self.textureCross)
-	self.imageSolarPanelCross.scaledWidth = 72
-	self.imageSolarPanelCross.scaledHeight = 72
-	self.imageSolarPanelCross:initialise()
-	self.imageSolarPanelCross.parent = self
-    self:addChild(self.imageSolarPanelCross)
-
-	-- Fix the daytime/nightime icon
-	if isa.isDayTime() then
-		self.imageSun:setVisible(true)
-		self.imageMoon:setVisible(false)
-		self.night = false
-	else
-		self.imageSun:setVisible(false)
-		self.imageMoon:setVisible(true)
-		self.night = true
-	end
 end
 
 function ISAWindowsSumaryTab:createChildren()
@@ -125,152 +13,234 @@ function ISAWindowsSumaryTab:createChildren()
 end
 
 function ISAWindowsSumaryTab:setVisible(visible)
-    self.javaObject:setVisible(visible)
+	self.javaObject:setVisible(visible)
 	if visible then
 		self:setWidthAndParentWidth(580)
-		self:setHeightAndParentHeight(390)
+		self:setHeightAndParentHeight(445)
 		self.currentFrame = 0
 	end
+end
+
+function ISAWindowsSumaryTab:drawCardBox(x, y, w, h, title, icon)
+	-- Background box (sleek dark card)
+	self:drawRect(x, y, w, h, 0.75, 0.08, 0.09, 0.11)
+	-- Border
+	self:drawRectBorder(x, y, w, h, 1, 0.22, 0.25, 0.30)
+	-- Header divider line
+	self:drawRect(x, y + 28, w, 1, 1, 0.16, 0.18, 0.22)
+	-- Icon
+	if icon then
+		self:drawTextureScaled(icon, x + 10, y + 5, 18, 18, 1, 1, 1, 1)
+	end
+	-- Title
+	self:drawText(title, x + (icon and 34 or 12), y + 6, 0.95, 0.97, 1.0, 1, UIFont.Medium)
+end
+
+function ISAWindowsSumaryTab:drawStatusBadge(rightX, y, badgeText, r, g, b)
+	if not badgeText then return end
+	local bw = getTextManager():MeasureStringX(UIFont.Small, badgeText) + 14
+	local bx = rightX - bw
+	self:drawRect(bx, y, bw, 18, 0.85, r * 0.25, g * 0.25, b * 0.25)
+	self:drawRectBorder(bx, y, bw, 18, 1, r, g, b)
+	self:drawTextCentre(badgeText, bx + bw / 2, y + 2, r, g, b, 1, UIFont.Small)
 end
 
 function ISAWindowsSumaryTab:render()
 	local pb = self.parent.parent.luaPB
 	if not (pb and pb:getIsoObject()) then return self.parent.parent:close() end
 
-	-- Update every ~1 sec
+	-- Update cached values every ~1 sec
 	if self.currentFrame == 0 then
 		pb:updateFromIsoObject()
-		self.maxCapacity = pb.maxcapacity
-		self.charge = pb.charge
-		self.drain = pb.drain
-		self.batteryLevel = pb.charge / pb.maxcapacity
-		self.panelsMaxInput = pb.luaSystem:getMaxSolarOutput(pb.npanels)
-		self.panelsInput = pb.luaSystem:getModifiedSolarOutput(pb.npanels)
+		self.maxCapacity = pb.maxcapacity or 0
+		self.charge = pb.charge or 0
+		self.drain = pb.drain or 0
+		self.batteryLevel = self.maxCapacity > 0 and (self.charge / self.maxCapacity) or 0
+		self.panelsMaxInput = pb.luaSystem:getMaxSolarOutput(pb.npanels) or 0
+		self.panelsInput = pb.luaSystem:getModifiedSolarOutput(pb.npanels) or 0
 		self.difference = self.panelsInput - (pb:shouldDrain() and pb.drain or 0)
-
-		if isa.isDayTime() then
-			if (self.night == true) then
-				self.imageSun:setVisible(true)
-				self.imageMoon:setVisible(false)
-				self.night = false
-			end
-		else
-			if (self.night == false) then
-				self.imageSun:setVisible(false)
-				self.imageMoon:setVisible(true)
-				self.night = true
-			end
-		end
-
-		if (pb.batteries > 0) then
-			if (self.thereAreBatteries == false) then
-				self.imageBatteryCross:setVisible(false)
-				self.thereAreBatteries = true
-			end
-		else
-			if (self.thereAreBatteries == true) then
-				self.imageBatteryCross:setVisible(true)
-				self.thereAreBatteries = false
-			end
-		end
-
-		if (pb.npanels > 0) then
-			if (self.thereArePanels == false) then
-				self.imageSolarPanelCross:setVisible(false)
-				self.thereArePanels = true
-			end
-		else
-			if (self.thereArePanels == false) then
-				self.imageSolarPanelCross:setVisible(true)
-				self.thereArePanels = false
-			end
-		end
-
-		if self.difference > 0 then
-			if (self.batteryCharging == false) then
-				self.imageSolarPanel:setVisible(true)
-				self.imageSolarPanelNoEnergy:setVisible(false)
-				self.batteryCharging = true
-			end
-		else
-			if (self.batteryCharging == true) then
-				self.imageSolarPanel:setVisible(false)
-				self.imageSolarPanelNoEnergy:setVisible(true)
-				self.batteryCharging = false
-			end
-		end
+		self.night = not isa.isDayTime()
 
 		self.currentFrame = self.fps - 1
 	else
 		self.currentFrame = self.currentFrame - 1
 	end
 
-	-- Summary box
-	local line = getTextManager():getFontHeight(UIFont.Small)
-	local rectX, rectY, rectW, rectH = self.sumBox.x, 20, self.sumBox.width, 25 + line * 6
-	local text_x = self.sumBox.textX
-	local text_x2 = text_x + self.sumBox.pad1
-	local text_y = 30
-	self:drawRect(rectX, rectY, rectW, rectH, 0.5, 0.16, 0.16, 0.16)
-	self:drawRectBorder(rectX, rectY, rectW, rectH, 1, 1, 1, 1)
+	local w = self.width
+	local cardW = w - 24
 
-	-- Summary text
-	self:drawTextRight(getText("IGUI_ISAWindowsSumaryTab_PanelsStatus") .. ":", text_x, text_y + line * 0, 0, 1, 0, 1, UIFont.Small)
-	self:drawTextRight(getText("IGUI_ISAWindowsSumaryTab_BatteryLevel") .. ":", text_x, text_y + line *1, 0, 1, 0, 1, UIFont.Small)
+	-- ========================================================
+	-- CARD 1: BATTERIESPEICHER & NETZ-STATUS
+	-- ========================================================
+	local c1X, c1Y, c1H = 12, 12, 138
+	self:drawCardBox(c1X, c1Y, cardW, c1H, 
+		getText("IGUI_ISAWindowsSumaryTab_BatteryStatus") or "BATTERIESPEICHER & NETZ-STATUS", 
+		self.textureBattery)
 
-	-- Solar panels status
-	if (self.drain > self.panelsMaxInput) then
-		self:drawText(getText("IGUI_ISAWindowsSumaryTab_NoEnoughPanels"), text_x2, text_y + line * 0, 0, 1, 0, 1, UIFont.Small)
-	else
-		if (self.drain > self.panelsInput) then
-			self:drawText(getText("IGUI_ISAWindowsSumaryTab_NoEnoughSun"), text_x2, text_y + line * 0, 0, 1, 0, 1, UIFont.Small)
+	-- Status Badge (Top Right of Card 1)
+	local badgeText = "STABIL"
+	local bR, bG, bB = 0.5, 0.5, 0.5
+	if self.maxCapacity <= 0 then
+		badgeText = getText("IGUI_ISAWindowsSumaryTab_NoBatteries") or "KEINE BATTERIEN"
+		bR, bG, bB = 0.9, 0.25, 0.25
+	elseif self.difference > 0 then
+		if self.maxCapacity == self.charge then
+			badgeText = getText("IGUI_ISAWindowsSumaryTab_FullyCharged") or "VOLL GELADEN"
+			bR, bG, bB = 0.15, 0.75, 0.35
 		else
-			self:drawText(getText("IGUI_ISAWindowsSumaryTab_Working"), text_x2, text_y + line * 0, 0, 1, 0, 1, UIFont.Small)
+			badgeText = "LÄDT AUF (+ " .. math.floor(self.difference) .. " W)"
+			bR, bG, bB = 0.15, 0.85, 0.35
+		end
+	elseif self.difference < 0 then
+		if self.charge == 0 then
+			badgeText = getText("IGUI_ISAWindowsSumaryTab_FullyDischarged") or "LEER (0 %)"
+			bR, bG, bB = 0.95, 0.25, 0.25
+		else
+			badgeText = "ENTLADUNG (- " .. math.floor(math.abs(self.difference)) .. " W)"
+			bR, bG, bB = 0.95, 0.65, 0.15
+		end
+	else
+		badgeText = getText("IGUI_ISAWindowsSumaryTab_NotCharging") or "STANDBY"
+		bR, bG, bB = 0.6, 0.6, 0.6
+	end
+	self:drawStatusBadge(c1X + cardW - 10, c1Y + 5, badgeText, bR, bG, bB)
+
+	-- Progress Bar (x, y, w, h)
+	local barX, barY, barW, barH = c1X + 14, c1Y + 36, cardW - 28, 22
+	self:drawRect(barX, barY, barW, barH, 1, 0.05, 0.06, 0.08)
+	local fillW = math.max(2, math.min(barW, barW * self.batteryLevel))
+	local barR, barG, barB = 0.13, 0.77, 0.36
+	if self.batteryLevel <= 0.25 then
+		barR, barG, barB = 0.93, 0.26, 0.26
+	elseif self.batteryLevel <= 0.60 then
+		barR, barG, barB = 0.92, 0.70, 0.05
+	end
+	if self.maxCapacity > 0 then
+		self:drawRect(barX, barY, fillW, barH, 0.9, barR, barG, barB)
+	end
+	self:drawRectBorder(barX, barY, barW, barH, 1, 0.30, 0.35, 0.42)
+	local pctStr = string.format("%d %%   (%d / %d Ah)", math.floor(self.batteryLevel * 100), math.floor(self.charge), math.floor(self.maxCapacity))
+	self:drawTextCentre(pctStr, barX + barW / 2, barY + 3, 1, 1, 1, 1, UIFont.Small)
+
+	-- 2-Column Stats for Card 1
+	local leftColX = c1X + 16
+	local rightColX = c1X + math.floor(cardW / 2) + 10
+	local statY1 = c1Y + 68
+	local statY2 = c1Y + 95
+
+	self:drawText("Gesamtkapazität:  " .. math.floor(self.maxCapacity) .. " Ah (" .. pb.batteries .. " Batterien)", leftColX, statY1, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText("Aktuell gespeichert:  " .. math.floor(self.charge) .. " Ah", rightColX, statY1, 0.8, 0.85, 0.9, 1, UIFont.Small)
+
+	local netText = "+ 0 W (Ausgeglichen)"
+	local netR, netG, netB = 0.7, 0.7, 0.7
+	if self.difference > 0 then
+		netText = "+ " .. math.floor(self.difference) .. " W (Laden)"
+		netR, netG, netB = 0.2, 0.85, 0.35
+	elseif self.difference < 0 then
+		netText = "- " .. math.floor(math.abs(self.difference)) .. " W (Entladung)"
+		netR, netG, netB = 0.95, 0.65, 0.15
+	end
+	self:drawText("Netz-Strombilanz:  " .. netText, leftColX, statY2, netR, netG, netB, 1, UIFont.Small)
+
+	-- Time estimation
+	local timeEstStr = "Akku voll geladen"
+	local timeR, timeG, timeB = 0.2, 0.85, 0.35
+	if self.maxCapacity <= 0 then
+		timeEstStr = "Keine Speicherbank aktiv"
+		timeR, timeG, timeB = 0.6, 0.6, 0.6
+	elseif self.difference > 0 and self.charge < self.maxCapacity then
+		local ctime = (self.maxCapacity - self.charge) / self.difference
+		local h = math.floor(ctime)
+		local m = math.floor((ctime - h) * 60)
+		timeEstStr = string.format("~%dh %02dm bis Voll", h, m)
+	elseif self.difference < 0 and self.charge > 0 then
+		local dtime = math.abs(self.charge / self.difference)
+		local h = math.floor(dtime)
+		local m = math.floor((dtime - h) * 60)
+		timeEstStr = string.format("~%dh %02dm bis Leer", h, m)
+		timeR, timeG, timeB = 0.95, 0.35, 0.35
+	elseif self.charge == 0 then
+		timeEstStr = "0% — Vollständig entladen"
+		timeR, timeG, timeB = 0.95, 0.25, 0.25
+	end
+	self:drawText("Dauer-Schätzung:  " .. timeEstStr, rightColX, statY2, timeR, timeG, timeB, 1, UIFont.Small)
+
+	-- ========================================================
+	-- CARD 2: SOLARGENERATOR & WETTERFAKTOR
+	-- ========================================================
+	local c2X, c2Y, c2H = 12, 160, 126
+	self:drawCardBox(c2X, c2Y, cardW, c2H, 
+		getText("IGUI_ISAWindowsSumaryTab_PanelsStatus") or "SOLARGENERATOR & WETTERFAKTOR", 
+		self.textureSolarPanel)
+
+	-- Efficiency Badge on right
+	local effPct = self.panelsMaxInput > 0 and math.floor((self.panelsInput / self.panelsMaxInput) * 100) or 0
+	self:drawStatusBadge(c2X + cardW - 10, c2Y + 5, "EFFIZIENZ: " .. effPct .. "%", 0.15, 0.75, 0.85)
+
+	local c2Y1 = c2Y + 38
+	local c2Y2 = c2Y + 63
+	local c2Y3 = c2Y + 88
+
+	self:drawText("Aktueller Solar-Ertrag:  + " .. math.floor(self.panelsInput) .. " W", leftColX, c2Y1, 0.2, 0.85, 0.35, 1, UIFont.Small)
+	self:drawText("Verbundene Solarpanels:  " .. pb.npanels .. " Panels aktiv", rightColX, c2Y1, 0.8, 0.85, 0.9, 1, UIFont.Small)
+
+	self:drawText("Max. Ertrag bei Sonne:  " .. math.floor(self.panelsMaxInput) .. " W", leftColX, c2Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText("Verbrauch der Basis:  - " .. math.floor(pb.drain) .. " W", rightColX, c2Y2, 0.95, 0.45, 0.35, 1, UIFont.Small)
+
+	-- Weather & Sun / Moon icon
+	local sunIcon = self.night and self.textureMoon or self.textureSun
+	if sunIcon then
+		self:drawTextureScaled(sunIcon, leftColX, c2Y3 - 2, 18, 18, 1, 1, 1, 1)
+	end
+	local weatherText = self.night and "Nacht / Keine Sonne" or (effPct > 70 and "Klarer Himmel (" .. effPct .. "%)" or (effPct > 30 and "Bewölkt (" .. effPct .. "%)" or "Dichte Wolken / Dämmerung"))
+	self:drawText("Umgebung / Tageszeit:  " .. weatherText, leftColX + 24, c2Y3, 0.85, 0.9, 0.95, 1, UIFont.Small)
+
+	local statusText = "Funktioniert ok"
+	local stR, stG, stB = 0.2, 0.85, 0.35
+	if pb.npanels <= 0 then
+		statusText = "Keine Solarpanels angeschlossen"
+		stR, stG, stB = 0.9, 0.25, 0.25
+	elseif self.drain > self.panelsMaxInput then
+		statusText = "Nicht genügend Panels für Verbrauch"
+		stR, stG, stB = 0.95, 0.65, 0.15
+	elseif self.drain > self.panelsInput then
+		statusText = "Nicht genug Sonnenlicht"
+		stR, stG, stB = 0.95, 0.65, 0.15
+	end
+	self:drawText("Modul-Status:  " .. statusText, rightColX, c2Y3, stR, stG, stB, 1, UIFont.Small)
+
+	-- ========================================================
+	-- CARD 3: NOTSTROM-SYSTEM & SOLAR-FAILSAFE
+	-- ========================================================
+	local c3X, c3Y, c3H = 12, 296, 110
+	self:drawCardBox(c3X, c3Y, cardW, c3H, 
+		"NOTSTROM-SYSTEM & SOLAR-FAILSAFE", 
+		self.textureCables)
+
+	self:drawStatusBadge(c3X + cardW - 10, c3Y + 5, "AUTOMATIK-SCHUTZ", 0.90, 0.65, 0.15)
+
+	local hasFailsafe = false
+	if pb.conGenerator then
+		local genSq = getSquare(pb.conGenerator.x, pb.conGenerator.y, pb.conGenerator.z)
+		if genSq and isa.WorldUtil.findOnSquare(genSq, "solarmod_tileset_01_15") then
+			hasFailsafe = true
 		end
 	end
 
-	if (self.maxCapacity > 0) then
-		self:drawText(string.format("%d%%", self.batteryLevel * 100), text_x2, text_y + line * 1, 0, 1, 0, 1, UIFont.Small)
+	local c3Y1 = c3Y + 38
+	local c3Y2 = c3Y + 68
 
-		if (self.difference > 0) then
-			if self.maxCapacity == self.charge then
-				self:drawTextRight(getText("IGUI_ISAWindowsSumaryTab_BatteryStatus") .. ":", text_x, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-				self:drawText(getText("IGUI_ISAWindowsSumaryTab_FullyCharged"), text_x2, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-			else
-				local ctime = ((self.maxCapacity - self.charge) / self.difference)
-				local days = math.floor(ctime / 24)
-				local hours = math.floor(ctime % 24)
-				local minutes = math.floor((ctime - math.floor(ctime)) * 60)
-				self:drawTextRight(getText("IGUI_ISAWindowsSumaryTab_ChargedIn"), text_x, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-				self:drawText(days > 0 and (days .. " " .. getText("IGUI_Gametime_days")) or hours > 0 and (hours .. " " .. getText("IGUI_Gametime_hours")) or (minutes .. " " .. getText("IGUI_Gametime_minutes")), text_x2, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-			end
-		elseif (self.difference < 0) then
-			if (self.charge == 0) then
-				self:drawTextRight(getText("IGUI_ISAWindowsSumaryTab_BatteryStatus") .. ":", text_x, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-				self:drawText(getText("IGUI_ISAWindowsSumaryTab_FullyDischarged"), text_x2, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-			else
-				local dtime = math.abs(self.charge / self.difference)
-				local days = math.floor(dtime / 24)
-				local hours = math.floor(dtime % 24)
-				local minutes = math.floor((dtime - math.floor(dtime)) * 60)
-				self:drawTextRight(getText("IGUI_ISAWindowsSumaryTab_DischargedIn"), text_x, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-				self:drawText(days > 0 and (days .. " " .. getText("IGUI_Gametime_days")) or hours > 0 and (hours .. " " .. getText("IGUI_Gametime_hours")) or (minutes .. " " .. getText("IGUI_Gametime_minutes")), text_x2, text_y + line * 2, 0, 1, 0, 1, UIFont.Small)
-			end
-		else
-			self:drawText(getText("IGUI_ISAWindowsSumaryTab_NotCharging"), text_x2, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-		end
-		if self.charge > 0 and self.drain > 0 then
-			local dtime = self.charge / self.drain
-			local days = math.floor(dtime / 24)
-			local hours = math.floor(dtime % 24)
-			local minutes = math.floor((dtime - math.floor(dtime)) * 60)
-			self:drawTextRight(getText("IGUI_ISAWindowsSumaryTab_BatteryRemaining"), text_x, text_y + line *3, 0, 1, 0, 1, UIFont.Small)
-			self:drawText(string.format("%d %s\n%d %s\n%d %s",days,getText("IGUI_Gametime_days"),hours,getText("IGUI_Gametime_hours"),minutes,getText("IGUI_Gametime_minutes")), text_x2, text_y + line *3, 0, 1, 0, 1, UIFont.Small)
-		end
-	else
-		self:drawText(getText("IGUI_ISAWindowsSumaryTab_NoBatteries"), text_x2, text_y + line *1, 0, 1, 0, 1, UIFont.Small)
-		self:drawText(getText("IGUI_ISAWindowsSumaryTab_NotCharging"), text_x2, text_y + line *2, 0, 1, 0, 1, UIFont.Small)
-	end
+	local genText = pb.conGenerator and "Ja (Verbunden / Bereit)" or "Keiner angeschlossen"
+	local genR, genG, genB = pb.conGenerator and 0.2 or 0.6, pb.conGenerator and 0.85 or 0.6, pb.conGenerator and 0.35 or 0.6
+	self:drawText("Backup-Generator:  " .. genText, leftColX, c3Y1, genR, genG, genB, 1, UIFont.Small)
+
+	local failsafeText = hasFailsafe and "Schutz aktiv (Auto-Kopplung)" or (pb.conGenerator and "Inaktiv / Kein Failsafe" or "Inaktiv")
+	local fsR, fsG, fsB = hasFailsafe and 0.2 or 0.6, hasFailsafe and 0.85 or 0.6, hasFailsafe and 0.35 or 0.6
+	self:drawText("Solar-Failsafe Zustand:  " .. failsafeText, rightColX, c3Y1, fsR, fsG, fsB, 1, UIFont.Small)
+
+	local locText = pb.conGenerator and string.format("(%d, %d, %d)", pb.conGenerator.x, pb.conGenerator.y, pb.conGenerator.z) or "—"
+	self:drawText("Standort / Koordinaten:  " .. locText, leftColX, c3Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText("Notstrom-Automatik:  " .. (pb.conGenerator and "Bereit bei Akku-Leerstand" or "—"), rightColX, c3Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
 end
 
 function ISAWindowsSumaryTab:new(x, y, width, height)
@@ -288,79 +258,22 @@ function ISAWindowsSumaryTab:new(x, y, width, height)
 	o.textureSun = getTexture("media/ui/isa_sun.png")
 	o.textureMoon = getTexture("media/ui/isa_moon.png")
 
-	local maxMeasured = o.measureTexts()
-	local maxLR = maxMeasured.left + maxMeasured.right
-	o.sumBox = {}
-	if maxLR > 580 then -- resize?
-		o.sumBox.x = 0
-		o.sumBox.width = 580
-		o.sumBox.pad1 = 1
-		o.sumBox.textX = maxMeasured.left
-	elseif maxLR > 570 then
-		o.sumBox.x = 0
-		o.sumBox.width = 580
-		o.sumBox.pad1 = 580 - maxLR
-		o.sumBox.textX = maxMeasured.left
-	elseif maxLR > 530 then
-		o.sumBox.x = 0
-		o.sumBox.width = 580
-		o.sumBox.pad1 = 10
-		o.sumBox.textX = maxMeasured.left + math.floor((570-maxLR) / 2)
-	elseif maxLR > 490 then
-		o.sumBox.x = math.floor((570 - maxLR) / 2)
-		o.sumBox.width = maxLR + 50
-		o.sumBox.pad1 = 10
-		o.sumBox.textX = o.sumBox.x + 20 + maxMeasured.left
-	else
-		o.sumBox.x = 510 - maxLR
-		o.sumBox.width = maxLR + 50
-		o.sumBox.pad1 = 10
-		o.sumBox.textX = o.sumBox.x + 20 + maxMeasured.left
-	end
-
-	-- Used variables
 	o.currentFrame = 0
-	o.thereAreBatteries = false
-	o.thereArePanels = false
+	o.maxCapacity = 0
+	o.charge = 0
+	o.drain = 0
+	o.batteryLevel = 0
 	o.panelsMaxInput = 0
 	o.panelsInput = 0
-	o.batteryLevel = 0
-	o.batteryCharging = false
 	o.difference = 0
 	o.night = false
 
 	o.fps = getCore():getOptionUIRenderFPS()
-   return o
+	return o
 end
 
 function ISAWindowsSumaryTab.measureTexts()
-	local textTable = {
-		left = {
-			"IGUI_ISAWindowsSumaryTab_PanelsStatus",
-			"IGUI_ISAWindowsSumaryTab_BatteryLevel",
-			"IGUI_ISAWindowsSumaryTab_BatteryStatus",
-			"IGUI_ISAWindowsSumaryTab_ChargedIn",
-			"IGUI_ISAWindowsSumaryTab_DischargedIn",
-			"IGUI_ISAWindowsSumaryTab_BatteryRemaining",
-		},
-		right = {
-			"IGUI_ISAWindowsSumaryTab_NoEnoughPanels",
-			"IGUI_ISAWindowsSumaryTab_NoEnoughSun",
-			"IGUI_ISAWindowsSumaryTab_FullyCharged",
-			"IGUI_ISAWindowsSumaryTab_FullyDischarged",
-			"IGUI_ISAWindowsSumaryTab_NotCharging",
-			"IGUI_ISAWindowsSumaryTab_NoBatteries",
-		}
-	}
-
-	local max = { left = 0, right = 0}
-	for type,texts in pairs(textTable) do
-		for _,text in ipairs(texts) do
-			local width = getTextManager():MeasureStringX(UIFont.Small, getText(text))
-			max[type] = math.max(max[type], width)
-		end
-	end
-
+	local max = { left = 150, right = 150 }
 	return max
 end
 

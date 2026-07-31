@@ -12,20 +12,6 @@ end
 Events.OnClientCommand.Add(function(module, command, player, args)
     if module ~= "ISA" then return end
 
-    if command == "ActivatePowerBank" then
-        local character = player
-        local powerbank = args.powerbank
-        local activate = args.activate
-        ISTimedActionQueue.add(ISA_ActivatePowerBank:new(character, powerbank, activate))
-    end
-
-    if command == "ConnectPanel" then
-        local character = player
-        local panel = args.panel
-        local powerbank = args.powerbank
-        ISTimedActionQueue.add(ISA_ConnectPanel:new(character, panel, powerbank))
-    end
-    
     if command == "PlugBackupGenerator" then
         local pb = ISA.PBSystem_Server:getLuaObjectAt(args.pbX, args.pbY, args.pbZ)
         if pb then

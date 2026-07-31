@@ -9,4 +9,7 @@ ContextMenu_RU = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Солнечная панель не подключена к этой Аккумуляторной Батареи",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Солнечная панель должна быть снаружи",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "Рядом с этой солнечной панелью нет Аккумуляторной Батареи",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

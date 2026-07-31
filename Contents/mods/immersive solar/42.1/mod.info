@@ -1,4 +1,4 @@
-id=ISA
+id=ISA_42
 modversion=25.0.2
 name=Immersive Solar Arrays [BETA]
 description=Immersive Solar Arrays (ISA) adds new items and lets you harvest solar power for the needs of your base!
@@ -9,3 +9,4 @@ versionMin=42.13
 icon=media/textures/Item_SolarPanel.png
 author=RadX5, Poltergeist, ericogamo
 url=https://github.com/radx5Blue/ImmersiveSolarArrays
+require=\TargetSquareOnLoad

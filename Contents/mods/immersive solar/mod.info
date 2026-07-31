@@ -7,3 +7,4 @@ tiledef=solarmodtiledefs 575
 versionMin=41.78
 
 authors=RadX5,Poltergeist
+require=\TargetSquareOnLoad

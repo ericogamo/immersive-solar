@@ -6,6 +6,7 @@ module Base
         {
             LuaWindowClass = ISEntityWindow,
             DisplayName    = Solar Fail Safe,
+            Icon           = Item_CarBatteryCharger,
         }
     }
 
@@ -40,7 +41,7 @@ module Base
         {
             timedAction   = MakingElectrical,
             time          = 120,
-            category      = Solar,
+            category      = Electrical,
             SkillRequired = Electricity:3,
             xpAward       = Electricity:75,
 
@@ -49,7 +50,7 @@ module Base
                 item 1 tags[Screwdriver] mode:keep flags[MayDegradeLight],
                 item 2 [Base.ElectricWire],
                 item 1 [Base.Remote],
-                item 4 [ISA.WiredCarBattery] flags[Destroy],
+                item 4 [ISA.WiredCarBattery],
             }
         }
     }

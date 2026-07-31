@@ -13,14 +13,12 @@ end
 function PBSystem:initSystem()
     ISA.PBSystem_Client = self
     if isClient() then
-        --if SandboxVars.ISA.ChargeFreq == 1 then
-           Events.EveryTenMinutes.Add(PBSystem.updateBanksForClient)
-        --else
-        --    Events.EveryHours.Add(PbSystem.updateBanksForClient)
-        --end
+        Events.EveryTenMinutes.Add(PBSystem.updateBanksForClient)
     end
     --added after server function with sendObjectChange("containers") so SP need only one tick
     Events.EveryDays.Add(PBSystem.resetAcceptItemFunction.addItems)
+    
+    Events.OnTick.Add(PBSystem.mutePowerbanks)
 end
 
 function PBSystem:newLuaObject(globalObject)
@@ -46,7 +44,6 @@ do
                 local isoPb = PBSystem.instance:getIsoObjectOnSquare(o.data[i])
                 if isoPb then
                     isoPb:getContainer():setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
-                    gen:getCell():addToProcessIsoObjectRemove(gen)
                 end
                 table.remove(o.data,i)
             end
@@ -185,12 +182,60 @@ function PBSystem.updateBanksForClient()
         if isopb then
             pb:fromModData(isopb:getModData())
             local delta = pb.maxcapacity > 0 and pb.charge / pb.maxcapacity or 0
+            if pb.updateSprite then
+                pb:updateSprite(delta)
+            end
             local items = isopb:getContainer():getItems()
             for v=0,items:size()-1 do
                 local item = items:get(v)
                 --FIXME all items should be valid batteries and drainable here already
                 if item:getModData().ISA_maxCapacity then
                     item:setCurrentUsesFloat(delta)
+                end
+            end
+        end
+    end
+end
+
+local muteTickCount = 0
+local MUTE_THROTTLE = 120
+
+function PBSystem.mutePowerbanks()
+    muteTickCount = muteTickCount + 1
+    if muteTickCount < MUTE_THROTTLE then return end
+    muteTickCount = 0
+    if not PBSystem.instance then return end
+    for i=1,PBSystem.instance:getLuaObjectCount() do
+        local pb = PBSystem.instance:getLuaObjectByIndex(i)
+        local isopb = pb:getIsoObject()
+        if isopb then
+            local square = isopb:getSquare()
+            local gen = square and square:getGenerator()
+            if not gen and instanceof(isopb, "IsoGenerator") then
+                gen = isopb
+            end
+            if not gen and square then
+                for j=0,square:getSpecialObjects():size()-1 do
+                    local obj = square:getSpecialObjects():get(j)
+                    if instanceof(obj, "IsoGenerator") then
+                        gen = obj
+                        break
+                    end
+                end
+            end
+            if gen ~= nil then
+                if gen.getEmitter and gen:getEmitter() ~= nil then
+                    local emitter = gen:getEmitter()
+                    emitter:setVolumeAll(0.0)
+                    if emitter:isPlaying("GeneratorLoop") then
+                        emitter:stopSoundByName("GeneratorLoop")
+                    end
+                    if emitter:isPlaying("OldGeneratorLoop") then
+                        emitter:stopSoundByName("OldGeneratorLoop")
+                    end
+                elseif gen.stopSound then
+                    gen:stopSound("GeneratorLoop")
+                    gen:stopSound("OldGeneratorLoop")
                 end
             end
         end

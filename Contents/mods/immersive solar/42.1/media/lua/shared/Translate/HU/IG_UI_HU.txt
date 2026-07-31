@@ -1,7 +1,6 @@
-IGUI_HU = {
+IG_UI_HU = {
     IGUI_ContainerTitle_BatteryBank = "Akkumulátorbank",
     IGUI_ContainerTitle_SolarBox = "Solar Box",
-
     IGUI_ISAWindowsStatus_Title = "Akkumulátorbank állapota",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> Akkumulátorpanel <LINE> <LINE> <LEFT> Összefoglaló lap <LINE> <SIZE:small> Vizuális összefoglalót jelenít meg a Akkumulátorbank, napelemek és az akkumulátor állapota. <LINE> <SIZE:medium> Részletek lap <LINE> <SIZE:small> Technikai információkat jelenít meg az akkumulátorbankról és annak állapotáról. <LINE> <SIZE:medium> Hibakereső lap <LINE> <SIZE:small> Gombokat ad hozzá az akkumulátorbank hibaelhárításához.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Összegzés",
@@ -41,6 +40,9 @@ IGUI_HU = {
     IGUI_ISAWindow_Debug_ShowBackup = "A biztonsági mentési terület részleteinek megjelenítése",
     IGUI_ISAWindow_Debug_HideBackup = "A biztonsági mentési terület részleteinek elrejtése",
     IGUI_ISA_Update = "Frissítés",
-
     IGUI_ISAContainerNotBattery = "Ez jó helynek tűnik a %1 tárolására",
+    IGUI_ContainerTitle_Batterybank = "Akkumulátorbank",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

@@ -1,5 +1,5 @@
 Moveables_AR = {
-    Battery_Bank = "Banco de baterías",
+    Battery_Bank = "Banco de bateras",
     Solar_Roof_Tile = "Panel solar plano",
     Wall_Mounted_Solar_Panel = "Panel solar montado en la pared",
     Floor_Mounted_Solar_Panel = "Panel solar montado en el piso",

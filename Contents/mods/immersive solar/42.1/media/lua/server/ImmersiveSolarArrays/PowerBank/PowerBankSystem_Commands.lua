@@ -1,7 +1,7 @@
 if isClient() then return end
 
 ---@class PowerbankSystem_Server
-local PBSystem = require "ImmersiveSolarArrays/Powerbank/PowerBankSystem_Server"
+local PBSystem = require "ImmersiveSolarArrays/PowerBank/PowerBankSystem_Server"
 
 local Commands = {}
 
@@ -14,6 +14,7 @@ local function getPowerBank(args)
 end
 
 function Commands.disconnectPanel(player,args)
+    if not args or not args.pb or not args.panel then return end
     local pb = getPowerBank(args.pb)
     if pb == nil then return end
     for i,panel in ipairs(pb.panels) do
@@ -27,6 +28,7 @@ function Commands.disconnectPanel(player,args)
 end
 
 function Commands.connectPanel(player,args)
+    if not args or not args.pb or not args.panel then return end
     local pb = getPowerBank(args.pb)
     if pb == nil then return end
 
@@ -66,6 +68,7 @@ function Commands.moveBattery(player,args)
 end
 
 function Commands.plugGenerator(player,args)
+    if not args or not args.gen or not args.pbList then return end
     local square = getSquare(args.gen.x,args.gen.y,args.gen.z)
     local generator = square and square:getGenerator()
     for _,i in ipairs(args.pbList) do
@@ -86,6 +89,7 @@ function Commands.plugGenerator(player,args)
 end
 
 function Commands.activateGenerator(player,args)
+    if not args or not args.pb then return end
     local pb = getPowerBank(args.pb)
     if pb and pb.conGenerator then
         pb.conGenerator.ison = args.activate

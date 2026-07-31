@@ -6,7 +6,7 @@ if isClient() then return end
 
 require "Map/SGlobalObjectSystem"
 local ISA = require "ImmersiveSolarArrays/Utilities"
-local Powerbank = require "ImmersiveSolarArrays/PowerBank/PowerBankObject_server"
+local Powerbank = require "ImmersiveSolarArrays/PowerBank/PowerBankObject_Server"
 
 ---@class PowerbankSystem_Server : PowerbankSystem, SGlobalObjectSystem
 ---@field instance PowerbankSystem_Server

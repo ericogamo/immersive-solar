@@ -1,7 +1,6 @@
-IGUI_IT = {
+IG_UI_IT = {
     IGUI_ContainerTitle_BatteryBank = "Banco batterie",
     IGUI_ContainerTitle_SolarBox = "Caldaia solare",
-
     IGUI_ISAWindowsStatus_Title = "Stato del banco batterie",
     IGUI_ISAWindowsSumaryTab_InfoText = " <CENTRE> <SIZE:medium> Pannello Banco batterie <LINE> <LINE> <LEFT> Riepilogo <LINE> <SIZE:small> Visualizza un riepilogo visivo dello stato del banco batterie, dei pannelli solari e della batteria. <LINE> <SIZE:medium> Dettagli <LINE> <SIZE:small> Visualizza informazioni tecniche sul Banco batterie ed il suo stato. <LINE> <SIZE:medium> Debug <LINE> <SIZE:small> Aggiunge pulsanti per la risoluzione dei problemi del Banco batterie.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Riepilogo",
@@ -41,6 +40,9 @@ IGUI_IT = {
     IGUI_ISAWindow_Debug_ShowBackup = "Mostra i dettagli dell'area di backup",
     IGUI_ISAWindow_Debug_HideBackup = "Nascondi i dettagli dell'area di backup",
     IGUI_ISA_Update = "Aggiorna",
-
     IGUI_ISAContainerNotBattery = "Sembra un buon posto per sistemare %1",
+    IGUI_ContainerTitle_Batterybank = "Banco batterie",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

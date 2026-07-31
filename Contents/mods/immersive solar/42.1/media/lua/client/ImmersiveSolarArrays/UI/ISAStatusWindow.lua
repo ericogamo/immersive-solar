@@ -50,7 +50,13 @@ function ISAStatusWindow.OnOpenPanel(player,square)
 	instance.player = player
 	instance.playerObj = getSpecificPlayer(player)
 	instance.square = square
-	instance.luaPB = ISA.PBSystem_Client:getLuaObjectAt(square:getX(),square:getY(),square:getZ())
+    
+    local pbSystem = require("ImmersiveSolarArrays/Powerbank/PowerBankSystem_Client")
+    if pbSystem and pbSystem.instance then
+	    instance.luaPB = pbSystem.instance:getLuaObjectAt(square:getX(),square:getY(),square:getZ())
+    else
+        instance.luaPB = ISA.PBSystem_Client and ISA.PBSystem_Client:getLuaObjectAt(square:getX(),square:getY(),square:getZ())
+    end
 
 	instance:addToUIManager()
 end

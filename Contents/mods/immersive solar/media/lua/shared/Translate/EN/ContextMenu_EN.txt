@@ -9,4 +9,7 @@ ContextMenu_EN = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Solar Panel is not connected to this Battery Bank",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Solar Panel needs to be outside",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "No nearby Battery Bank for this Solar Panel.",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

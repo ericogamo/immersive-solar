@@ -1,7 +1,6 @@
-IGUI_DE = {
+IG_UI_DE = {
     IGUI_ContainerTitle_BatteryBank = "Batteriebank",
     IGUI_ContainerTitle_SolarBox = "Solarbox",
-
     IGUI_ISAWindowsStatus_Title = "Status der Batteriebank",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> Batteriebank-Panel <LINE> <LINE> <LEFT> Registerkarte „Zusammenfassung“ <LINE> <SIZE:small> Zeigt eine visuelle Zusammenfassung der an Batteriebank, Solarmodule und Batteriestatus. <LINE> <SIZE:medium> Registerkarte „Details“ <LINE> <SIZE:small> Zeigt technische Informationen zur Batteriebank und deren Status an. <LINE> <SIZE:medium> Debug-Registerkarte <LINE> <SIZE:small> Fügt Schaltflächen zur Fehlerbehebung bei der Batteriebank hinzu.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Zusammenfassung",
@@ -41,6 +40,9 @@ IGUI_DE = {
     IGUI_ISAWindow_Debug_ShowBackup = "Details zum Sicherungsbereich anzeigen",
     IGUI_ISAWindow_Debug_HideBackup = "Details zum Backup-Bereich ausblenden",
     IGUI_ISA_Update = "Aktualisieren",
-
     IGUI_ISAContainerNotBattery = "Dies scheint ein guter Ort zum Speichern meines %1 zu sein",
+    IGUI_ContainerTitle_Batterybank = "Batteriebank",
+    IGUI_ContainerTitle_batterybank = "Batteriebank",
+    IGUI_ContainerTitle_Solarbox = "Solarbox",
+    IGUI_ContainerTitle_solarbox = "Solarbox",
 }

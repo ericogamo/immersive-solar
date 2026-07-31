@@ -1,7 +1,6 @@
-IGUI_UA = {
+IG_UI_UA = {
     IGUI_ContainerTitle_BatteryBank = "Банк батареї",
     IGUI_ContainerTitle_SolarBox = "Сонячна коробка",
-
     IGUI_ISAWindowsStatus_Title = "Стан акумулятора",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> Панель батарейного блоку <LINE> <LINE> <LEFT> Вкладка «Підсумок» <LINE> <SIZE:small> Відображає візуальний підсумок батарейного блоку, сонячних батарей і стану батареї. <LINE> <SIZE:medium> Вкладка подробиць <LINE> <SIZE:small> Відображає технічну інформацію про акумуляторну батарею та її стан. <LINE> <SIZE:medium> Вкладка Debug <LINE> <SIZE:small> Додає кнопки для усунення несправностей банку акумуляторів.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Резюме",
@@ -41,6 +40,9 @@ IGUI_UA = {
     IGUI_ISAWindow_Debug_ShowBackup = "Показати деталі області резервного копіювання",
     IGUI_ISAWindow_Debug_HideBackup = "Приховати деталі області резервного копіювання",
     IGUI_ISA_Update = "оновлення",
-
     IGUI_ISAContainerNotBattery = "Здається, це гарне місце для зберігання мого %1",
+    IGUI_ContainerTitle_Batterybank = "Банк батареї",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --app-bg: #0d0f12;
+  --app-panel: #14171d;
+  --app-border: #222731;
+  --app-accent: #10b981;
+  
+  /* Authentic PZ Build 42 UI Colors */
+  --pz-win-bg: #191c20;
+  --pz-win-border: #383e48;
+  --pz-titlebar-bg: #23272d;
+  --pz-titlebar-text: #e2e8f0;
+  --pz-box-bg: #111418;
+  --pz-box-border: #2b313a;
+  --pz-text-main: #f1f5f9;
+  --pz-text-sub: #94a3b8;
+  --pz-text-dim: #64748b;
+  
+  /* PZ Progress & Status Colors */
+  --pz-green: #22c55e;
+  --pz-green-dark: #15803d;
+  --pz-yellow: #eab308;
+  --pz-orange: #f97316;
+  --pz-red: #ef4444;
+  --pz-cyan: #06b6d4;
+  
+  --font-ui: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--pz-text-main);
+  font-family: var(--font-ui);
+  min-height: 100vh;
+  line-height: 1.4;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--app-bg); }
+::-webkit-scrollbar-thumb { background: #2b313a; border-radius: 4px; }
+
+/* App Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #111418;
+  border-bottom: 1px solid var(--app-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--pz-win-border);
+}
+
+.brand-title h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.brand-title span {
+  font-size: 0.75rem;
+  color: var(--app-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Option Switcher Buttons in Header */
+.option-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-opt {
+  background: #1b2028;
+  color: var(--pz-text-sub);
+  border: 1px solid var(--pz-win-border);
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-opt:hover {
+  background: #232a35;
+  color: #fff;
+}
+
+.btn-opt.active {
+  background: #10b981;
+  color: #000;
+  border-color: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+/* Main Studio Layout */
+.studio-layout {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 1150px) {
+  .studio-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Realistic Project Zomboid B42 Window Frame */
+.pz-window {
+  background: var(--pz-win-bg);
+  border: 1px solid var(--pz-win-border);
+  border-radius: 4px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.75),
+    0 0 0 1px #0e1014 inset;
+  overflow: hidden;
+}
+
+.pz-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--pz-titlebar-bg);
+  border-bottom: 1px solid var(--pz-win-border);
+  padding: 0.65rem 1rem;
+  user-select: none;
+}
+
+.pz-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pz-titlebar-text);
+}
+
+.pz-win-controls {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.pz-win-btn {
+  width: 20px;
+  height: 20px;
+  background: #2b313a;
+  border: 1px solid #474f5d;
+  color: #ccc;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.pz-win-btn:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+
+/* PZ Tabs Bar */
+.pz-tab-bar {
+  display: flex;
+  background: #14161a;
+  border-bottom: 1px solid var(--pz-win-border);
+  padding: 0 1rem;
+}
+
+.pz-tab {
+  padding: 0.65rem 1.15rem;
+  background: transparent;
+  border: none;
+  color: var(--pz-text-sub);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.pz-tab.active {
+  color: #fff;
+  border-bottom-color: var(--app-accent);
+}
+
+/* Option View Containers */
+.opt-view {
+  display: none;
+  padding: 1.5rem;
+}
+
+.opt-view.active {
+  display: block;
+}
+
+/* ========================================================
+   OPTION 1: PZ B42 Tactical Box Dashboard (Empfohlen)
+   100% implementierbar mit self:drawRect & drawRectBorder
+======================================================== */
+
+.pz-banner-info {
+  background: #151d28;
+  border: 1px solid #1e3a5f;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+  color: #93c5fd;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pz-box-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* A standard PZ box panel drawn by self:drawRect & self:drawRectBorder */
+.pz-box {
+  background: var(--pz-box-bg);
+  border: 1px solid var(--pz-box-border);
+  border-radius: 3px;
+  padding: 1.15rem;
+}
+
+.pz-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #22272e;
+}
+
+.pz-box-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pz-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid #333;
+}
+
+.pz-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
+.pill-green { background: #14532d; color: #4ade80; border: 1px solid #16a34a; }
+.pill-amber { background: #713f12; color: #fde047; border: 1px solid #ca8a04; }
+.pill-red   { background: #7f1d1d; color: #fca5a5; border: 1px solid #dc2626; }
+
+/* Authentic PZ Progress Bar */
+.pz-progress-wrap {
+  margin: 0.75rem 0 1rem 0;
+}
+
+.pz-progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.pz-progress-title {
+  font-size: 0.8rem;
+  color: var(--pz-text-sub);
+  font-weight: 600;
+}
+
+.pz-progress-val {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.pz-bar-outer {
+  height: 22px;
+  background: #080a0c;
+  border: 1px solid #383e48;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pz-bar-inner {
+  height: 100%;
+  width: 78%;
+  background: var(--pz-green);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.pz-bar-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 2px #000, 0 0 4px #000;
+  pointer-events: none;
+}
+
+/* 2-Column Stats in PZ Box */
+.pz-stats-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem 1.5rem;
+}
+
+@media (max-width: 650px) {
+  .pz-stats-cols { grid-template-columns: 1fr; }
+}
+
+.pz-stat-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  border-bottom: 1px dotted #252a32;
+  padding-bottom: 0.35rem;
+}
+
+.pz-stat-label { color: var(--pz-text-sub); }
+.pz-stat-val { font-family: var(--font-mono); font-weight: 600; color: #fff; }
+.pz-stat-val.green { color: #4ade80; }
+.pz-stat-val.amber { color: #facc15; }
+.pz-stat-val.red   { color: #f87171; }
+
+/* ========================================================
+   OPTION 2: Sanftes Vanilla-Upgrade
+   Eine übersichtliche Liste mit Trennlinien & Icon-Headern
+======================================================== */
+
+.pz-list-view {
+  background: #121418;
+  border: 1px solid #292e37;
+  padding: 1.25rem;
+}
+
+.pz-list-section {
+  margin-bottom: 1.5rem;
+}
+
+.pz-list-section:last-child {
+  margin-bottom: 0;
+}
+
+.pz-list-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #2c323b;
+}
+
+.pz-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pz-list-table td {
+  padding: 0.45rem 0;
+  font-size: 0.83rem;
+  border-bottom: 1px solid #1a1e24;
+}
+
+.pz-list-table td:first-child { color: var(--pz-text-sub); width: 60%; }
+.pz-list-table td:last-child { font-family: var(--font-mono); font-weight: 600; text-align: right; }
+
+/* ========================================================
+   OPTION 3: Alter Status (Aktueller Zustand im Mod)
+======================================================== */
+
+.pz-old-view {
+  background: #0d0e11;
+  border: 1px solid #22252b;
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.pz-old-view p {
+  margin-bottom: 0.6rem;
+}
+
+.old-bar-frame {
+  width: 100%;
+  height: 20px;
+  background: #222;
+  border: 1px solid #555;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.old-bar-fill {
+  height: 100%;
+  background: #15803d;
+}
+
+/* ========================================================
+   RIGHT SIDEBAR: Simulator & Lua Implementation Guide
+======================================================== */
+.sidebar-panel {
+  background: #14171d;
+  border: 1px solid var(--app-border);
+  border-radius: 6px;
+  padding: 1.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-desc {
+  font-size: 0.8rem;
+  color: var(--pz-text-sub);
+  margin-bottom: 1.15rem;
+}
+
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.slider-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.slider-label { color: var(--pz-text-sub); font-weight: 500; }
+.slider-value { font-family: var(--font-mono); font-weight: 600; color: #4ade80; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #222731;
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #10b981;
+  cursor: pointer;
+}
+
+/* Feasibility Badge List */
+.feasibility-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.feas-item {
+  background: #111418;
+  border: 1px solid #252a33;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.feas-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  margin-bottom: 0.35rem;
+}
+
+.tag-lua-ok { background: #14532d; color: #4ade80; border: 1px solid #16a34a; }
+.tag-lua-no { background: #7f1d1d; color: #fca5a5; border: 1px solid #dc2626; }

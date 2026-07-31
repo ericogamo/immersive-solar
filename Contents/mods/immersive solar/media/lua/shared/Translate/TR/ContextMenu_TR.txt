@@ -9,4 +9,7 @@ ContextMenu_TR = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Güneş Paneli bu Pil Bankasına bağlı değil",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Güneş Panelinin dışarıda olması gerekiyor",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "Bu Güneş Panelinin yakınında Pil Bankası yok",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

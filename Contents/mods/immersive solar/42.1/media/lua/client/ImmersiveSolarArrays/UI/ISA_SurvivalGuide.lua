@@ -37,14 +37,13 @@ function ISTutorialPanel:setPage(pageNum)
 
     setPage(self,pageNum)
 
-    page = SurvivalGuideEntries.list:get(pageNum-1)
+    local page = SurvivalGuideEntries.list:get(pageNum-1)
     local lSize = page.urls ~= nil and #page.urls or 0
     for i = 1, lSize do
         local button = panel.urlButtons[i] or Guide.addButton(panel,i)
         button.title = page.urls[i][1]
         button.url = page.urls[i][2]
         button:setVisible(true)
-        zxtest = button
     end
     for i = lSize + 1, panel.urlButtonsVisible do
         panel.urlButtons[i]:setVisible(false)
@@ -70,15 +69,4 @@ SurvivalGuideEntries.list:add{
         {"buy me a coffee", "https://github.com/radx5Blue/ImmersiveSolarArrays/wiki"},
     }
 }
-
---[[
-local doShow
-
----if doShow show guide
----read magazine
-
-Events.OnPlayerDeath.Add(function (player)
-    getFileWriter("ImmersiveSolarArrays.txt",true,false):close()
-    doShow = true
-end)
---]]
+

@@ -5,9 +5,6 @@ if isClient() then
 
     ---update isoObjects when chunk loads
     local function LoadPowerbank(isoObject)
-        -- local gen = isoObject:getSquare():getGenerator()
-        -- if gen ~= nil then gen:getCell():addToProcessIsoObjectRemove(gen) end
-        isoObject:getCell():addToProcessIsoObjectRemove(isoObject)
         isoObject:getContainer():setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
     end
     MapObjects.OnLoadWithSprite("solarmod_tileset_01_0", LoadPowerbank, 6)

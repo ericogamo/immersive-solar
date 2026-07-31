@@ -9,4 +9,7 @@ ContextMenu_DA = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Solpanel er ikke tilsluttet denne batteribank",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Solpanelet skal stå udenfor",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "Ingen batteribank i nærheden til dette solpanel.",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

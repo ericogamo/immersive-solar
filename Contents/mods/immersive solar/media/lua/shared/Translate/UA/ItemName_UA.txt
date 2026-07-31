@@ -1,12 +1,9 @@
 ItemName_UA = {
-    -- Magazines
-    ItemName_ISA.ISAMag1 = "Нові досягнення: енергія від Сонця",
-
-    -- Items
-    ItemName_ISA.SolarPanel = "Сонячна панель (частина)",
-    ItemName_ISA.ISAInverter = "Інвертор",
-    ItemName_ISA.DeepCycleBattery = "Акумулятор глибокого циклу ємністю 200 Аг",
-    ItemName_ISA.SuperBattery = "Акумулятор глибокого циклу 400 Аг",
-    ItemName_ISA.WiredCarBattery = "Провідний автомобільний акумулятор",
-    ItemName_ISA.DIYBattery = "Зробіть самостійне цикл акумулятор",
+    ItemName_ISA.ISAMag1 = "New Advancements: Energy From The Sun",
+    ItemName_ISA.SolarPanel = "Solar Panel (part)",
+    ItemName_ISA.ISAInverter = "Inverter",
+    ItemName_ISA.DeepCycleBattery = "200Ah Deep Cycle Battery",
+    ItemName_ISA.SuperBattery = "400Ah Deep Cycle Battery",
+    ItemName_ISA.WiredCarBattery = "Wired Car Battery",
+    ItemName_ISA.DIYBattery = "DIY Deep Cycle Battery",
 }

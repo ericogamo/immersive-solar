@@ -19,12 +19,6 @@ function ISA_ActivatePowerBank:new(character, powerbank, activate, x, y, z)
     o.y = y
     o.z = z
 
-    if isClient() then
-        sendClientCommand(o.character, "ISA", "DebugPrint", { text = "INIT" })
-    else
-        print("[ISA Server] INIT")
-    end
-
     return o
 end
 
@@ -40,29 +34,22 @@ function ISA_ActivatePowerBank:getDuration()
 end
 
 function ISA_ActivatePowerBank:complete()
-
     if isClient() then
-        sendClientCommand(self.character, "ISA", "DebugPrint", { text = "COMPLETE" })
-    else
-        print("[ISA Server] COMPLETE")
+        sendClientCommand(self.character, "ISA", "activatePowerbank", {
+            pb = { x = self.x, y = self.y, z = self.z },
+            activate = self.activate
+        })
+        return true
     end
 
-    print("[########] TEST:", self.test)
-
     local pb = ISA.PBSystem_Server:getLuaObjectAt(self.x, self.y, self.z)
+    if not pb then return end
+
     if self.activate then
         local level = self.character:getPerkLevel(Perks.Electricity)
         if level < 3 and ZombRand(6-2*level) ~= 0 then
-            -- self.isoPb:getSquare():playSound("GeneratorFailedToStart")
             self.activate = false
         end
-    end
-    if self.activate and pb.charge > 0 then
-        -- self.isoPb:getSquare():playSound("GeneratorStarting")
-    elseif self.activate then
-        -- self.isoPb:getSquare():playSound("GeneratorFailedToStart")
-    else
-        -- self.isoPb:getSquare():playSound("GeneratorStopping")
     end
 
     pb.on = self.activate

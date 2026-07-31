@@ -58,7 +58,6 @@ function RandomWorldSpawns.placePowerBank(square, spriteName, index)
     object:setCondition(100)
     object:setFuel(100)
     object:setConnected(true)
-    object:getCell():addToProcessIsoObjectRemove(object)
     triggerEvent("OnObjectAdded", object)
 
     return object
@@ -73,7 +72,7 @@ function RandomWorldSpawns.fillContainer(isoObject, sprite)
     end
     if fillType == "SolarBox" then
         local panelnumber = ZombRand(3, 5) * sandbox.LRMSolarPanels
-        local batterynumber = ZombRand(1, 2) * sandbox.LRMBatteries
+        local batterynumber = ZombRand(1, 3) * sandbox.LRMBatteries
         panelnumber = panelnumber < 8 and panelnumber or 7
         batterynumber = batterynumber < 4 and batterynumber or 3
         container:AddItems("ISA.SolarPanel",panelnumber)
@@ -93,19 +92,6 @@ function RandomWorldSpawns.fillContainer(isoObject, sprite)
     end
     container:setExplored(true)
 end
-
----TODO balance loot
--- function RandomWorldSpawns.fillContainer(isoObject, sprite)
---     local container = isoObject:getContainer()
---     if not container then return end
---     ItemPickerJava.fillContainer(container,getPlayer())
---     ItemPickerJava.updateOverlaySprite(isoObject)
---     container:setExplored(true)
-
---     if getDebug() and getPlayer() then
---         getPlayer():Say(string.format("isa: filled container x:%.1f, y:%.1f",getPlayer():getX()-isoObject:getX(),getPlayer():getY()-isoObject:getY()))
---     end
--- end
 
 function RandomWorldSpawns.doRolls(targetSquare)
     local spawnChance = sandbox.solarPanelWorldSpawns
@@ -132,10 +118,11 @@ function RandomWorldSpawns.doRolls(targetSquare)
 end
 
 function RandomWorldSpawns.OnSeeNewRoom(room)
+    if not room or not room:getName() then return end
     local roomChance, square
     -- random powerbank
     if sandbox.BatteryBankSpawn > 1 then
-        roomchance = RandomWorldSpawns.spawnBatteryBankRooms[room:getName()]
+        roomChance = RandomWorldSpawns.spawnBatteryBankRooms[room:getName()]
         if roomChance and ZombRand(roomChance * RandomWorldSpawns.spawnBatteryBankChance[sandbox.BatteryBankSpawn]) == 0 then
             square = room:getRandomFreeSquare()
             if square then

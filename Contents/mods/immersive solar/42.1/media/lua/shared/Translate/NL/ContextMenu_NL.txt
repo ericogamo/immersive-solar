@@ -9,4 +9,7 @@ ContextMenu_NL = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Zonnepaneel is niet aangesloten op deze batterijbank",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Zonnepaneel moet buiten staan",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "Er bevindt zich geen batterijbank in de buurt van dit zonnepaneel",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

@@ -1,2 +1,2 @@
 -- remove generator early in OnPreFillWorldObjectContextMenu
-require "UI/ISAUI"
+require "ImmersiveSolarArrays/UI/ISAUI"

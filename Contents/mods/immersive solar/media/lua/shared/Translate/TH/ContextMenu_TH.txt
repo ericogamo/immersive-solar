@@ -9,4 +9,7 @@ ContextMenu_TH = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "แผงโซลาร์เซลล์ไม่ได้เชื่อมต่อกับฐานประจุนี้",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "แผงโซลาร์เซลล์ควรอยู่ภายนอกอาคาร",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "ไม่พบฐานเก็บประจุไฟที่อยู่ใกล้กับแผงโซลาร์เซลล์",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

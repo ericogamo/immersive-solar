@@ -1,7 +1,6 @@
-IGUI_RO = {
+IG_UI_RO = {
     IGUI_ContainerTitle_BatteryBank = "Banca de baterii",
     IGUI_ContainerTitle_SolarBox = "Cutia solară",
-
     IGUI_ISAWindowsStatus_Title = "Stare baterie",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:mediu> Panoul bateriei <LINE> <LINE> <LEFT> Fila Rezumat <LINE> <SIZE:small> Afișează un rezumat vizual al bateriilor, al panourilor solare și al stării bateriilor. <LINE> <SIZE:medium> Fila Detalii <LINE> <SIZE:small> Afișează informații tehnice despre Banca de baterii și starea acesteia. <LINE> <SIZE:medium> Fila Depanare <LINE> <SIZE:small> Adaugă butoane pentru depanarea bateriei.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "rezumat",
@@ -41,6 +40,9 @@ IGUI_RO = {
     IGUI_ISAWindow_Debug_ShowBackup = "Afișați detaliile zonei de rezervă",
     IGUI_ISAWindow_Debug_HideBackup = "Ascundeți detaliile zonei de rezervă",
     IGUI_ISA_Update = "Actualizați",
-
     IGUI_ISAContainerNotBattery = "Acesta pare a fi un loc bun pentru a-mi stoca %1",
+    IGUI_ContainerTitle_Batterybank = "Banca de baterii",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

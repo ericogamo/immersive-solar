@@ -87,7 +87,21 @@ end
 function ISA_ConnectPanel:complete()
     local data = self.panel:getModData()
     data.connectDelta = 100
+
+    if isClient() then
+        sendClientCommand(self.character, "ISA", "connectPanel", {
+            pb = { x = self.pbX, y = self.pbY, z = self.pbZ },
+            panel = { x = self.x, y = self.y, z = self.z }
+        })
+        self.panel:transmitModData()
+        return true
+    end
+
     local pb = ISA.PBSystem_Server:getLuaObjectAt(self.pbX, self.pbY, self.pbZ)
+    if not pb then
+        self.panel:transmitModData()
+        return
+    end
     local panel, status = pb:getPanelStatusOnSquare(self.panel:getSquare())
     if status == "not connected" then
         data.pbLinked = { x = pb.x , y = pb.y, z = pb.z }

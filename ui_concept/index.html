@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISA 42 — Echte Project Zomboid B42 UI-Optionen</title>
+  <meta name="description" content="Interaktiver Vergleich realer Project Zomboid Build 42 Lua-UI Optionen für das Statusfenster der Immersive Solar Arrays (ISA_42).">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <img src="assets/solar_icon.jpg" alt="ISA Logo" class="brand-icon">
+      <div class="brand-title">
+        <h1>ISA 42 — ECHTER PZ BUILD 42 UI VERGLEICH</h1>
+        <span>100% kompatibel mit ISPanel & ISXuiSkin in Lua</span>
+      </div>
+    </div>
+    
+    <div class="option-switcher">
+      <button class="btn-opt active" id="btn-opt-1">
+        <span>⚡ Option 1: B42 Tactical Box (Empfohlen)</span>
+      </button>
+      <button class="btn-opt" id="btn-opt-2">
+        <span>🛠️ Option 2: Sanftes Vanilla-Upgrade</span>
+      </button>
+      <button class="btn-opt" id="btn-opt-3">
+        <span>📜 Option 3: Bisheriger Status (Alter Mod)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Studio Layout -->
+  <main class="studio-layout">
+
+    <!-- LEFT: Simulated Authentic PZ Build 42 Window -->
+    <section class="pz-window" id="pz-sim-frame">
+      
+      <!-- Authentic PZ Titlebar -->
+      <div class="pz-titlebar">
+        <div class="pz-title">
+          <img src="assets/battery_icon.jpg" alt="PZ Icon" style="width:18px; height:18px; border-radius:2px;">
+          <span>Status der Batteriebank (Project Zomboid Build 42)</span>
+        </div>
+        <div class="pz-win-controls">
+          <div class="pz-win-btn" title="Minimieren">_</div>
+          <div class="pz-win-btn" title="Schließen">X</div>
+        </div>
+      </div>
+
+      <!-- Authentic PZ Tab Bar -->
+      <nav class="pz-tab-bar">
+        <button class="pz-tab active">Übersicht</button>
+        <button class="pz-tab">Angeschlossene Geräte</button>
+        <button class="pz-tab">Debug</button>
+      </nav>
+
+      <!-- ========================================================
+           OPTION 1: PZ B42 Tactical Box Dashboard
+           Realistisches B42-Layout mit self:drawRect & drawRectBorder
+      ======================================================== -->
+      <div class="opt-view active" id="view-opt-1">
+        
+        <div class="pz-banner-info">
+          <span>ℹ️ <strong>Lua-Umsetzung Option 1:</strong> Nutzt 3 strukturierte Box-Panels per <code>self:drawRect()</code>, ein eckiges <code>drawProgressBar()</code> mit dynamischem Farbwechsel und echte PZ-Icons via <code>drawTextureScaled()</code>.</span>
+        </div>
+
+        <div class="pz-box-grid">
+          
+          <!-- Box 1: Batteriebank -->
+          <article class="pz-box">
+            <div class="pz-box-header">
+              <div class="pz-box-title">
+                <img src="assets/battery_icon.jpg" alt="Battery Icon" class="pz-icon">
+                <span>Batteriespeicher & Status</span>
+              </div>
+              <span class="pz-status-pill pill-green" id="opt1-pill-status">LÄDT AUF (+650 W)</span>
+            </div>
+
+            <div class="pz-progress-wrap">
+              <div class="pz-progress-top">
+                <span class="pz-progress-title">SPEICHERSTAND</span>
+                <span class="pz-progress-val" id="opt1-text-percent">78 % — 3.120 / 4.000 Ah</span>
+              </div>
+              <div class="pz-bar-outer">
+                <div class="pz-bar-inner" id="opt1-bar-fill"></div>
+                <div class="pz-bar-label" id="opt1-bar-label">78 % (3.120 Ah)</div>
+              </div>
+            </div>
+
+            <div class="pz-stats-cols">
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Gesamtkapazität:</span>
+                <span class="pz-stat-val" id="opt1-max-cap">4.000 Ah (10 Batterien)</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Aktuell geladen:</span>
+                <span class="pz-stat-val" id="opt1-cur-cap">3.120 Ah</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Aktueller Netto-Fluss:</span>
+                <span class="pz-stat-val green" id="opt1-net-flow">+ 650 W (Laden)</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Geschätzte Dauer:</span>
+                <span class="pz-stat-val green" id="opt1-time-est">~4h 15m bis Voll</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Box 2: Solargenerator -->
+          <article class="pz-box">
+            <div class="pz-box-header">
+              <div class="pz-box-title">
+                <img src="assets/solar_icon.jpg" alt="Solar Icon" class="pz-icon">
+                <span>Solargenerator & Wetterfaktor</span>
+              </div>
+              <span class="pz-status-pill pill-green" id="opt1-solar-pill">EFFIZIENZ: 85%</span>
+            </div>
+
+            <div class="pz-stats-cols">
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Aktueller Solar-Ertrag:</span>
+                <span class="pz-stat-val green" id="opt1-solar-watts">+ 1.850 W</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Verbundene Panels:</span>
+                <span class="pz-stat-val">12 (Dach- & Wandpanels)</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Wetter- / Sonnenfaktor:</span>
+                <span class="pz-stat-val" id="opt1-weather-desc">Klarer Himmel (85%)</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Verbrauch der Basis:</span>
+                <span class="pz-stat-val red" id="opt1-base-load">- 1.200 W</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Box 3: Notstrom-Generator -->
+          <article class="pz-box">
+            <div class="pz-box-header">
+              <div class="pz-box-title">
+                <span>🛢️ Notstrom-System & Solar-Failsafe</span>
+              </div>
+              <span class="pz-status-pill pill-amber">BEREITSCHAFT</span>
+            </div>
+
+            <div class="pz-stats-cols">
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Auto-Start Schwelle:</span>
+                <span class="pz-stat-val" id="opt1-gen-thresh">20 % Batterie-Ladezustand</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Verbundener Generator:</span>
+                <span class="pz-stat-val">1x Benzingenerator (10m)</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Solar-Failsafe Zustand:</span>
+                <span class="pz-stat-val green">Schutz aktiv (Auto-Kopplung)</span>
+              </div>
+              <div class="pz-stat-item">
+                <span class="pz-stat-label">Generator-Verbrauch:</span>
+                <span class="pz-stat-val">0.0 L/h (Im Standby)</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ========================================================
+           OPTION 2: Sanftes Vanilla-Upgrade
+           Klassisches Listenlayout, aber modern und gut lesbar
+      ======================================================== -->
+      <div class="opt-view" id="view-opt-2">
+        <div class="pz-list-view">
+          
+          <div class="pz-list-section">
+            <div class="pz-list-heading">
+              <img src="assets/battery_icon.jpg" alt="Icon" class="pz-icon" style="width:20px; height:20px;">
+              <span>1. BATTERIESPEICHER</span>
+            </div>
+            
+            <div class="pz-progress-wrap" style="margin-bottom:0.75rem;">
+              <div class="pz-bar-outer">
+                <div class="pz-bar-inner" id="opt2-bar-fill"></div>
+                <div class="pz-bar-label" id="opt2-bar-label">78 % (3.120 / 4.000 Ah)</div>
+              </div>
+            </div>
+
+            <table class="pz-list-table">
+              <tr>
+                <td>Ladezustand & Batteriekapazität:</td>
+                <td id="opt2-text-cap">78% (3.120 / 4.000 Ah)</td>
+              </tr>
+              <tr>
+                <td>Status der Batteriebank:</td>
+                <td id="opt2-status-text" style="color:#4ade80;">LÄDT AUF (+650 W Netto)</td>
+              </tr>
+              <tr>
+                <td>Geschätzte Lade- / Entladedauer:</td>
+                <td id="opt2-time-est">~4h 15m bis 100% Voll</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="pz-list-section">
+            <div class="pz-list-heading">
+              <img src="assets/solar_icon.jpg" alt="Icon" class="pz-icon" style="width:20px; height:20px;">
+              <span>2. SOLARENERGIE & BASIS-VERBRAUCH</span>
+            </div>
+            <table class="pz-list-table">
+              <tr>
+                <td>Verbundene Solarpanels:</td>
+                <td>12 Panels (Dach & Wand)</td>
+              </tr>
+              <tr>
+                <td>Aktueller Solar-Ertrag (Wetter: <span id="opt2-weather">85%</span>):</td>
+                <td style="color:#4ade80;" id="opt2-solar-watts">+1.850 W</td>
+              </tr>
+              <tr>
+                <td>Verbrauch angeschlossener Geräte:</td>
+                <td style="color:#f87171;" id="opt2-base-load">-1.200 W</td>
+              </tr>
+              <tr>
+                <td>Aktuelle Netto-Strombilanz:</td>
+                <td style="color:#4ade80;" id="opt2-net-flow">+650 W</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="pz-list-section">
+            <div class="pz-list-heading">
+              <span>3. NOTSTROM-SYSTEM</span>
+            </div>
+            <table class="pz-list-table">
+              <tr>
+                <td>Backup-Generator Automatik-Schwelle:</td>
+                <td id="opt2-gen-thresh">20 %</td>
+              </tr>
+              <tr>
+                <td>Generator-Status:</td>
+                <td style="color:#facc15;">Verbunden / Standby (0.0 L/h)</td>
+              </tr>
+              <tr>
+                <td>Solar-Failsafe Schutz:</td>
+                <td style="color:#4ade80;">Aktiviert</td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================================
+           OPTION 3: Bisheriger Status (Wie es jetzt im Mod aussieht)
+      ======================================================== -->
+      <div class="opt-view" id="view-opt-3">
+        <div class="pz-old-view">
+          <p>*** IMMERSIVE SOLAR ARRAYS STATUS ***</p>
+          <p>--------------------------------------------------</p>
+          <p>Batterie Ladezustand : <span id="opt3-text-percent">78 %</span></p>
+          <p>Gesamtkapazitaet     : <span id="opt3-max-cap">4000</span> Ah</p>
+          <p>Aktueller Ertrag     : <span id="opt3-solar-watts">1850</span> W</p>
+          <p>Aktueller Verbrauch  : <span id="opt3-base-load">1200</span> W</p>
+          <p>Panels verbunden     : 12</p>
+          <p>Backup Generator     : Verbunden (Schwelle: <span id="opt3-gen-thresh">20</span>%)</p>
+          <p>--------------------------------------------------</p>
+          <div class="old-bar-frame">
+            <div class="old-bar-fill" id="opt3-bar-fill" style="width: 78%;"></div>
+          </div>
+          <p id="opt3-bar-text">[|||||||||||||||.....] 78% (Laden: +650 W)</p>
+          <p style="margin-top:1rem; color:#777;">* Unformatierter Text ohne Kacheln, ohne PZ-Icons, ohne visuelle Hervorhebung und ohne präzise Ladezeitberechnungen.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT SIDEBAR: Live Simulator & Lua API Proof -->
+    <aside class="sidebar-layout">
+      
+      <!-- Live Simulator Panel -->
+      <div class="sidebar-panel">
+        <div class="sidebar-title">
+          <span>🎛️ Live-Simulator für UI-Vergleich</span>
+        </div>
+        <p class="sidebar-desc">Bewege die Regler, um zu sehen, wie Option 1, Option 2 und Option 3 auf unterschiedliche Situationen im Spiel reagieren!</p>
+
+        <div class="slider-group">
+          <div class="slider-item">
+            <div class="slider-header">
+              <span class="slider-label">☀️ Sonnenstrahlung / Wetter</span>
+              <span class="slider-value" id="val-solar-rad">85 %</span>
+            </div>
+            <input type="range" id="slider-solar-rad" min="0" max="100" value="85">
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-header">
+              <span class="slider-label">🔋 Batterien (Kapazität in Ah)</span>
+              <span class="slider-value" id="val-batt-cap">4.000 Ah</span>
+            </div>
+            <input type="range" id="slider-batt-cap" min="400" max="10000" step="400" value="4000">
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-header">
+              <span class="slider-label">🏠 Basis-Verbrauch (Watt)</span>
+              <span class="slider-value" id="val-base-load">1.200 W</span>
+            </div>
+            <input type="range" id="slider-base-load" min="100" max="3500" step="50" value="1200">
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-header">
+              <span class="slider-label">🛢️ Backup-Gen Schwelle</span>
+              <span class="slider-value" id="val-gen-thresh">20 %</span>
+            </div>
+            <input type="range" id="slider-gen-thresh" min="5" max="80" step="5" value="20">
+          </div>
+        </div>
+      </div>
+
+      <!-- Lua API Feasibility Explanation -->
+      <div class="sidebar-panel">
+        <div class="sidebar-title">
+          <span>🛠️ Warum Option 1 in PZ-Lua 100% klappt</span>
+        </div>
+        <p class="sidebar-desc">Hier ist der Beweis, dass <strong>Option 1</strong> exakt so mit den nativen B42-Funktionen gerendert wird:</p>
+
+        <div class="feasibility-list">
+          <div class="feas-item">
+            <span class="feas-tag tag-lua-ok">PZ LUA API</span>
+            <p><strong>Box-Kacheln:</strong> Wir nutzen <code>self:drawRect(x, y, w, h, a, r, g, b)</code> und <code>self:drawRectBorder()</code> in <code>render()</code>.</p>
+          </div>
+
+          <div class="feas-item">
+            <span class="feas-tag tag-lua-ok">PZ LUA API</span>
+            <p><strong>Item-Icons:</strong> Mit <code>self:drawTextureScaled(getTexture("Item_CarBattery"), x, y, 24, 24, 1, 1, 1, 1)</code> wird das Symbol sauber gezeichnet.</p>
+          </div>
+
+          <div class="feas-item">
+            <span class="feas-tag tag-lua-ok">PZ LUA API</span>
+            <p><strong>Farbiger Ladebalken:</strong> Unser neuer Balken nutzt <code>self:drawProgressBar(x, y, w, 22, percent, color)</code> mit grüner, gelber oder roter Farbe je nach Ladezustand.</p>
+          </div>
+
+          <div class="feas-item">
+            <span class="feas-tag tag-lua-ok">PZ LUA API</span>
+            <p><strong>Zusätzliche Ah- & Zeitwerte:</strong> Werden per normalem <code>self:drawText(text, x, y, r, g, b, a, font)</code> an festen Spalten-Koordinaten platziert.</p>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

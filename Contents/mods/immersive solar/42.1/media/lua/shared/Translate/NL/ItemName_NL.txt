@@ -1,12 +1,9 @@
 ItemName_NL = {
-    -- Magazines
-    ItemName_ISA.ISAMag1 = "Nieuwe ontwikkelingen: energie van de zon",
-
-    -- Items
-    ItemName_ISA.SolarPanel = "Zonnepaneel (onderdeel)",
-    ItemName_ISA.ISAInverter = "Omvormer",
-    ItemName_ISA.DeepCycleBattery = "200Ah deep-cycle-accu",
-    ItemName_ISA.SuperBattery = "400 Ah deep-cycle-accu",
-    ItemName_ISA.WiredCarBattery = "Bedrade auto-accu",
-    ItemName_ISA.DIYBattery = "DIY Deep Cycle-batterij",
+    ItemName_ISA.ISAMag1 = "New Advancements: Energy From The Sun",
+    ItemName_ISA.SolarPanel = "Solar Panel (part)",
+    ItemName_ISA.ISAInverter = "Inverter",
+    ItemName_ISA.DeepCycleBattery = "200Ah Deep Cycle Battery",
+    ItemName_ISA.SuperBattery = "400Ah Deep Cycle Battery",
+    ItemName_ISA.WiredCarBattery = "Wired Car Battery",
+    ItemName_ISA.DIYBattery = "DIY Deep Cycle Battery",
 }

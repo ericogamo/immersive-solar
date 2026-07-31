@@ -1,7 +1,6 @@
-IGUI_PL = {
+IG_UI_PL = {
     IGUI_ContainerTitle_BatteryBank = "Bank energii",
     IGUI_ContainerTitle_SolarBox = "Opakowanie paneli słonecznych",
-
     IGUI_ISAWindowsStatus_Title = "Stan banku energii",
     IGUI_ISAWindowsSumaryTab_InfoText = " <CENTRE> <SIZE:medium> Panel banku energii <LINE> <LINE> <LEFT> Zakładka podsumowania <LINE> <SIZE:small> Wyświetla wizualne podsumowanie banku energii, paneli słonecznych i stanu akumulatorów. <LINE> <SIZE:medium> Zakładka Szczegóły <LINE> <SIZE:small> Wyświetla informacje techniczne o banku energii i jego stanie. <LINE> <SIZE:medium> Zakładka Debugowanie <LINE> <SIZE:small> Dodaje przyciski służące do rozwiązywania problemów z bankiem energii.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Podgląd",
@@ -41,6 +40,9 @@ IGUI_PL = {
     IGUI_ISAWindow_Debug_ShowBackup = "Pokaż szczegóły obszaru generatora awaryjnego",
     IGUI_ISAWindow_Debug_HideBackup = "Ukryj szczegóły obszaru generatora awaryjnego",
     IGUI_ISA_Update = "Odśwież",
-
     IGUI_ISAContainerNotBattery = "To wydaje się być dobrym miejscem do przechowywania mojego %1",
+    IGUI_ContainerTitle_Batterybank = "Bank energii",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

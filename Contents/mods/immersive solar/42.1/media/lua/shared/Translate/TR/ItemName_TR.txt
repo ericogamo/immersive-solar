@@ -1,12 +1,9 @@
 ItemName_TR = {
-    -- Magazines
-    ItemName_ISA.ISAMag1 = "Yeni Gelişmeler: Güneşten Gelen Enerji",
-
-    -- Items
-    ItemName_ISA.SolarPanel = "Güneş Paneli (parça)",
-    ItemName_ISA.ISAInverter = "Çevirici",
-    ItemName_ISA.DeepCycleBattery = "200Ah Derin Çevrim Aküsü",
-    ItemName_ISA.SuperBattery = "400Ah Derin Çevrim Aküsü",
-    ItemName_ISA.WiredCarBattery = "Kablolu Araç Aküsü",
-    ItemName_ISA.DIYBattery = "DIY Derin Döngü Pil",
+    ItemName_ISA.ISAMag1 = "New Advancements: Energy From The Sun",
+    ItemName_ISA.SolarPanel = "Solar Panel (part)",
+    ItemName_ISA.ISAInverter = "Inverter",
+    ItemName_ISA.DeepCycleBattery = "200Ah Deep Cycle Battery",
+    ItemName_ISA.SuperBattery = "400Ah Deep Cycle Battery",
+    ItemName_ISA.WiredCarBattery = "Wired Car Battery",
+    ItemName_ISA.DIYBattery = "DIY Deep Cycle Battery",
 }

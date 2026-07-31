@@ -23,8 +23,6 @@ ISInventoryTransferAction.perform = function(self)
         return result
     end
 
-    -- sendClientCommand(character, "ISA", "DebugPrint", { text = tostring(src) })
-    -- sendClientCommand(character, "ISA", "DebugPrint", { text = tostring(dst) })
 
     sendClientCommand(character, "ISA", "TransferAction", {
         transferItem = item,

@@ -9,4 +9,7 @@ ContextMenu_FI = {
     ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false = "Aurinkopaneelia ei ole yhdistetty tähän akkupankkiin",
     ContextMenu_ISA_Connect_Panel_toolTip_isOutside = "Aurinkopaneelin pitää olla ulkona",
     ContextMenu_ISA_Connect_Panel_NoPowerbank = "Akkupankkia ei ole lähellä tätä aurinkopaneelia",
+    ContextMenu_ISA_Backup_Generator = "Backup Generator",
+    ContextMenu_ISA_Connect_Backup = "Connect to Battery Bank",
+    ContextMenu_ISA_Disconnect_Backup = "Disconnect from Battery Bank",
 }

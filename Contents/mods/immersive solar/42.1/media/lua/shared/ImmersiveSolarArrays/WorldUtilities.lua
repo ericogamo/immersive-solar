@@ -22,6 +22,10 @@ WorldUtil.ISATypes = {
 ---@param isoObject IsoObject
 ---@return ISAType
 function WorldUtil.getType(isoObject)
+    if not isoObject then return nil end
+    if instanceof(isoObject, "IsoGenerator") and isoObject:getModData().generatorFullType == "ISA.PowerBank_test" then
+        return "PowerBank"
+    end
     return WorldUtil.ISATypes[isoObject:getTextureName()]
 end
 
@@ -29,6 +33,10 @@ end
 ---@param modType ISAType
 ---@return boolean
 function WorldUtil.objectIsType(isoObject, modType)
+    if not isoObject then return false end
+    if instanceof(isoObject, "IsoGenerator") and isoObject:getModData().generatorFullType == "ISA.PowerBank_test" then
+        return modType == "PowerBank"
+    end
     return WorldUtil.ISATypes[isoObject:getTextureName()] == modType
 end
 
@@ -119,7 +127,6 @@ function WorldUtil.placePowerBank(square, spriteName, index, fullSpawn)
         generator:setCondition(100)
         generator:setFuel(100)
         generator:setConnected(true)
-        generator:getCell():addToProcessIsoObjectRemove(generator)
         triggerEvent("OnObjectAdded", generator)
     end
 
@@ -138,20 +145,24 @@ function WorldUtil.replaceIsoObjectWithGenerator(isoObject)
         return isoObject
     end
 
-    local item = instanceItem("Base.Generator")
+    local item = instanceItem("ISA.PowerBank_test")
     if not item then
-        print("[ISA] Failed to instance Base.Generator")
-        return nil
+        print("[ISA] Failed to instance ISA.PowerBank_test, trying Base.Generator")
+        item = instanceItem("Base.Generator")
     end
 
     local gen = IsoGenerator.new(item, square:getCell(), square)
 
     -- Preserve visuals
-    gen:setSprite(isoObject:getSprite())
+    if isoObject:getSprite() then
+        gen:setSprite(isoObject:getSprite())
+    else
+        gen:setSpriteByName("solarmod_tileset_01_0")
+    end
     gen:setSquare(square)
 
     -- Identify as PowerBank
-    gen:getModData().generatorFullType = "ISA.PowerBank"
+    gen:getModData().generatorFullType = "ISA.PowerBank_test"
 
     -- DO NOT add to square
     -- DO NOT remove isoObject

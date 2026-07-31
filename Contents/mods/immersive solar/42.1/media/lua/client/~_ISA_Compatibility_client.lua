@@ -1,5 +1,5 @@
 local ISA = require "ImmersiveSolarArrays/Utilities"
-require "UI/ISAUI"
+require "ImmersiveSolarArrays/UI/ISAUI"
 
 ISA.patchClassMetaMethod(zombie.inventory.types.DrainableComboItem.class,"DoTooltip",ISA.UI.DoTooltip_patch)
 

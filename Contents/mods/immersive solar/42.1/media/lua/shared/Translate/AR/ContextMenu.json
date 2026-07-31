@@ -1,0 +1,15 @@
+{
+    "ContextMenu_ISA_BatteryBank": "Banco de bateras",
+    "ContextMenu_ISA_BatteryBankStatus": "Abrir ventana de estado",
+    "ContextMenu_ISA_ConnectPanels": "Conectar paneles",
+    "ContextMenu_ISA_SolarPanel": "Panel solar",
+    "ContextMenu_ISA_Connect_Panel": "Conctese al banco de bateras",
+    "ContextMenu_ISA_Connect_Panel_toolTip": "Ubicacin del Banco de Bateras en relacin al Panel Solar (x:y)",
+    "ContextMenu_ISA_Connect_Panel_toolTip_isConnected": "El panel solar est conectado a este banco de bateras.",
+    "ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false": "El panel solar no est conectado a este banco de bateras",
+    "ContextMenu_ISA_Connect_Panel_toolTip_isOutside": "El panel solar debe estar afuera",
+    "ContextMenu_ISA_Connect_Panel_NoPowerbank": "No hay un banco de bateras cercano para este panel solar.",
+    "ContextMenu_ISA_Backup_Generator": "Backup Generator",
+    "ContextMenu_ISA_Connect_Backup": "Connect to Battery Bank",
+    "ContextMenu_ISA_Disconnect_Backup": "Disconnect from Battery Bank"
+}

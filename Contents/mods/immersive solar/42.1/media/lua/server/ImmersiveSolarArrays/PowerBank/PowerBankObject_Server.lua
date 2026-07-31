@@ -6,7 +6,7 @@ if isClient() then return end
 
 require "Map/SGlobalObject"
 local ISA = require "ImmersiveSolarArrays/Utilities"
-local solarscan = require "ImmersiveSolarArrays/Powerbank/SolarScan"
+local solarscan = require "ImmersiveSolarArrays/PowerBank/SolarScan"
 local sandbox = SandboxVars.ISA
 
 ---@class PowerBankObject_Server : SGlobalObject
@@ -247,102 +247,22 @@ function PowerBank:checkPanels()
     self.npanels = #self.panels
 end
 
----@param modChanrge number
+---@param modCharge number
 ---@return string?
-function PowerBank:getSpriteForOverlay(modChanrge)
-    if self.batteries <= 0 then return nil end
-    if modChanrge == nil then modChanrge = self.maxcapacity > 0 and self.charge / self.maxcapacity or 0 end
-    if modChanrge < 0.10 then
-        --show 0 charge
-        if self.batteries < 5 then
-            --show bottom shelf
-            return "solarmod_tileset_01_1"
-        elseif self.batteries < 9 then
-            --show two shelves
-            return "solarmod_tileset_01_2"
-        elseif self.batteries < 13 then
-            --show three shelves
-            return "solarmod_tileset_01_3"
-        elseif self.batteries < 17 then
-            --show four shelves
-            return "solarmod_tileset_01_4"
-        else
-            --show five shelves
-            return "solarmod_tileset_01_5"
-        end
-    elseif modChanrge < 0.35 then
-        --show 25 charge
-        if self.batteries < 5 then
-            --show bottom shelf
-            return "solarmod_tileset_01_16"
-        elseif self.batteries < 9 then
-            --show two shelves
-            return "solarmod_tileset_01_20"
-        elseif self.batteries < 13 then
-            --show three shelves
-            return "solarmod_tileset_01_24"
-        elseif self.batteries < 17 then
-            --show four shelves
-            return "solarmod_tileset_01_28"
-        else
-            --show five shelves
-            return "solarmod_tileset_01_32"
-        end
-    elseif modChanrge < 0.65 then
-        -- show 50 charge
-        if self.batteries < 5 then
-            --show bottom shelf
-            return "solarmod_tileset_01_17"
-        elseif self.batteries < 9 then
-            --show two shelves
-            return "solarmod_tileset_01_21"
-        elseif self.batteries < 13 then
-            --show three shelves
-            return "solarmod_tileset_01_25"
-        elseif self.batteries < 17 then
-            --show four shelves
-            return "solarmod_tileset_01_29"
-        else
-            --show five shelves
-            return "solarmod_tileset_01_33"
-        end
-    elseif modChanrge < 0.95 then
-        -- show 75 charge
-        if self.batteries < 5 then
-            --show bottom shelf
-            return "solarmod_tileset_01_18"
-        elseif self.batteries < 9 then
-            --show two shelves
-            return "solarmod_tileset_01_22"
-        elseif self.batteries < 13 then
-            --show three shelves
-            return "solarmod_tileset_01_26"
-        elseif self.batteries < 17 then
-            --show four shelves
-            return "solarmod_tileset_01_30"
-        else
-            --show five shelves
-            return "solarmod_tileset_01_34"
-        end
-    else
-        --show 100 charge
-        if self.batteries < 5 then
-            --show bottom shelf
-            return "solarmod_tileset_01_19"
-        elseif self.batteries < 9 then
-            --show two shelves
-            return "solarmod_tileset_01_23"
-        elseif self.batteries < 13 then
-            --show three shelves
-            return "solarmod_tileset_01_27"
-        elseif self.batteries < 17 then
-            --show four shelves
-            return "solarmod_tileset_01_31"
-        else
-            --show five shelves
-            return "solarmod_tileset_01_35"
-        end
-    end
+function PowerBank:getSpriteForOverlay(modCharge)
+    if not self.batteries or self.batteries <= 0 then return nil end
+    if modCharge == nil then modCharge = self.maxcapacity > 0 and self.charge / self.maxcapacity or 0 end
+    
+    local tier = math.min(math.max(math.floor((self.batteries - 1) / 4), 0), 4)
+    local bracket
+    if modCharge < 0.10 then bracket = 0
+    elseif modCharge < 0.35 then bracket = 1
+    elseif modCharge < 0.65 then bracket = 2
+    elseif modCharge < 0.95 then bracket = 3
+    else bracket = 4 end
+    
+    local spriteId = bracket == 0 and (1 + tier) or (16 + tier * 4 + bracket - 1)
+    return "solarmod_tileset_01_" .. spriteId
 end
 
 function PowerBank:updateSprite(modCharge)
@@ -400,24 +320,20 @@ function PowerBank:updateGenerator(dCharge)
     end
     local activate = self.on and self.charge + dCharge > 0
     local square = self:getSquare()
-    square:getGenerator():setActivated(activate)
+    local gen = square:getGenerator()
+    if gen then
+        gen:setActivated(activate)
+        gen:setFuel(100)
+        gen:setCondition(100)
+    end
     if square:getBuilding() ~= nil then square:getBuilding():setToxic(false) end
 end
 
 --if freezer timers, Powerbank generator condition / fuel are wrong check here
 function PowerBank:loadGenerator()
-    -- local square = self:getSquare()
-    -- self:fixIndex()
-    -- local gen = square:getGenerator()
-    -- gen:setSurroundingElectricity()
-    -- gen:getCell():addToProcessIsoObjectRemove(gen)
-    -- self:updateGenerator()
-    -- self:updateConGenerator()
-
     ---new load
     local generator = self:getIsoObject()
     generator:setSurroundingElectricity()
-    generator:getCell():addToProcessIsoObjectRemove(generator)
     self:updateGenerator()
     self:updateConGenerator()
 end

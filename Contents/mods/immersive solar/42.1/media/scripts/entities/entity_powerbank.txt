@@ -6,6 +6,7 @@ module Base
         {
             LuaWindowClass = ISEntityWindow,
             DisplayName    = Power Bank,
+            Icon           = Item_CarBattery,
         }
     }
 
@@ -40,7 +41,7 @@ module Base
         {
             timedAction   = MakingElectrical,
             time          = 900,
-            category      = Solar,
+            category      = Electrical,
             SkillRequired = Electricity:3,
             xpAward       = Electricity:75,
             ToolTip       = Tooltip_PowerBank,

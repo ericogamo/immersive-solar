@@ -1,7 +1,6 @@
-IGUI_JP = {
+IG_UI_JP = {
     IGUI_ContainerTitle_BatteryBank = "バッテリーバンク",
     IGUI_ContainerTitle_SolarBox = "ソーラーボックス",
-
     IGUI_ISAWindowsStatus_Title = "バッテリーバンクのステータス",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> バッテリー バンク パネル <LINE> <LINE> <LEFT> 概要タブ <LINE> <SIZE:small> バッテリー バンク パネルの視覚的な概要を表示します。バッテリーバンク、ソーラーパネル、バッテリーのステータス。 <LINE> <SIZE:medium> 詳細タブ <LINE> <SIZE:small> バッテリー バンクとそのステータスに関する技術情報が表示されます。 <LINE> <SIZE:medium> デバッグ タブ <LINE> <SIZE:small> バッテリー バンクのトラブルシューティング用のボタンを追加します。",
     IGUI_ISAWindowsSumaryTab_TabTitle = "まとめ",
@@ -41,6 +40,9 @@ IGUI_JP = {
     IGUI_ISAWindow_Debug_ShowBackup = "バックアップ領域の詳細を表示",
     IGUI_ISAWindow_Debug_HideBackup = "バックアップ領域の詳細を非表示にする",
     IGUI_ISA_Update = "アップデート",
-
     IGUI_ISAContainerNotBattery = "ここは私の %1 を保存するのに適した場所のようです",
+    IGUI_ContainerTitle_Batterybank = "バッテリーバンク",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

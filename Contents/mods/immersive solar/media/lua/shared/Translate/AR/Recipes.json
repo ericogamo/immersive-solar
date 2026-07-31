@@ -1,0 +1,11 @@
+{
+    "Recipe_Make_DIY_Battery": "hacer una batera de bricolaje",
+    "Recipe_WireCarBattery": "Batera de coche de alambre",
+    "Recipe_UnwireCarBattery": "Desconectar la batera del coche",
+    "Recipe_Make_Solar_Roof_Tile": "hacer un panel solar plano",
+    "Recipe_Reverse_Solar_Panel": "Dividir el panel solar en partes",
+    "Recipe_Create_Battery_Bank": "Crear banco de bateras",
+    "Recipe_Create_Solar_Failsafe": "Crear sistema de seguridad solar",
+    "Recipe_Make_Solar_Panel": "Hacer panel solar (parte)",
+    "Recipe_Make_Inverter": "Hacer inversor"
+}

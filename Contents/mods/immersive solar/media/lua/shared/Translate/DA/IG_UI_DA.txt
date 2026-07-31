@@ -1,7 +1,6 @@
-IGUI_DA = {
+IG_UI_DA = {
     IGUI_ContainerTitle_BatteryBank = "Batteribank",
     IGUI_ContainerTitle_SolarBox = "Solcelleboks",
-
     IGUI_ISAWindowsStatus_Title = "Batteribankstatus",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> Batteribankpanel <LINE> <LINE> <LEFT> Fanen Oversigt <LINE> <SIZE:small> Viser en visuel oversigt over Batteribank, solpaneler og batteristatus. <LINE> <SIZE:medium> Fanen Detaljer <LINE> <SIZE:small> Viser tekniske oplysninger om batteribanken og dens status. <LINE> <SIZE:medium> Debug Fane <LINE> <SIZE:small> Tilføjer knapper til fejlfinding af batteribanken.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Resumé",
@@ -41,6 +40,9 @@ IGUI_DA = {
     IGUI_ISAWindow_Debug_ShowBackup = "Vis detaljer om sikkerhedskopieringsområde",
     IGUI_ISAWindow_Debug_HideBackup = "Skjul oplysninger om sikkerhedskopieringsområde",
     IGUI_ISA_Update = "Opdatering",
-
     IGUI_ISAContainerNotBattery = "Dette virker som et godt sted at opbevare min %1",
+    IGUI_ContainerTitle_Batterybank = "Batteribank",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

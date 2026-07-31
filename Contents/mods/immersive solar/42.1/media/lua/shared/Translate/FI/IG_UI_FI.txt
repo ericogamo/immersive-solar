@@ -1,7 +1,6 @@
-IGUI_FI = {
+IG_UI_FI = {
     IGUI_ContainerTitle_BatteryBank = "Akkupankki",
     IGUI_ContainerTitle_SolarBox = "Solar Box",
-
     IGUI_ISAWindowsStatus_Title = "Akkupankin tila",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> Akkupankkipaneeli <LINE> <LINE> <LEFT> Yhteenveto-välilehti <LINE> <SIZE:small> Näyttää visuaalisen yhteenvedon Akkupankki, aurinkopaneelit ja akun tila. <LINE> <SIZE:medium> Tiedot-välilehti <LINE> <SIZE:small> Näyttää tekniset tiedot akkupankista ja sen tilasta. <LINE> <SIZE:medium> Vianetsintä-välilehti <LINE> <SIZE:small> Lisää painikkeita Battery Bankin vianetsintää varten.",
     IGUI_ISAWindowsSumaryTab_TabTitle = "Yhteenveto",
@@ -41,6 +40,9 @@ IGUI_FI = {
     IGUI_ISAWindow_Debug_ShowBackup = "Näytä varmuuskopioalueen tiedot",
     IGUI_ISAWindow_Debug_HideBackup = "Piilota varmuuskopioalueen tiedot",
     IGUI_ISA_Update = "Päivittää",
-
     IGUI_ISAContainerNotBattery = "Tämä näyttää hyvältä paikalta tallentaa %1",
+    IGUI_ContainerTitle_Batterybank = "Akkupankki",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

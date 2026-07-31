@@ -1,27 +1,19 @@
 Sandbox_ID = {
     Sandbox_ISA = "Susunan Surya yang Imersif",
-
     Sandbox_ISA_solarPanelEfficiency = "Efisiensi Panel Surya",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Efisiensi daya panel surya<br>12% realistis untuk tahun 1993<br>25% adalah tenaga surya modern<br>standarnya tidak realistis",
-
     Sandbox_ISA_batteryDegradeChance = "Tingkat Keparahan Penurunan Baterai",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Pengganda untuk penurunan rata-rata baterai.\nMenurunkannya akan meningkatkan masa pakai baterai secara drastis.",
-
     Sandbox_ISA_solarPanelWorldSpawns = "Panel Surya / Dunia Peti Muncul",
     Sandbox_ISA_solarPanelWorldSpawns_tooltip = "Seberapa besar kemungkinan panel surya dan peti yang telah ditempatkan sebelumnya akan muncul di lokasi pemijahan tertentu.<br>Membutuhkan API eksternal agar dapat berfungsi.",
-
     Sandbox_ISA_LRMSolarPanels = "Pengganda Kelangkaan Loot - Panel surya",
     Sandbox_ISA_LRMSolarPanels_tooltip = "Panel surya muncul dalam wadah acak dan pengganda peti yang telah ditempatkan sebelumnya",
-
     Sandbox_ISA_LRMBatteries = "Pengganda Kelangkaan Jarahan - Baterai",
     Sandbox_ISA_LRMBatteries_tooltip = "Baterai muncul dalam wadah acak dan pengganda peti yang telah ditempatkan sebelumnya",
-
     Sandbox_ISA_LRMMisc = "Pengganda Kelangkaan Jarahan - Lain-lain",
     Sandbox_ISA_LRMMisc_tooltip = "Majalah dan inverter muncul dalam wadah acak dan pengganda peti yang telah ditempatkan sebelumnya",
-
     Sandbox_ISA_DIYBatteryMultiplier = "Kapasitas Baterai DIY",
     Sandbox_ISA_DIYBatteryMultiplier_tooltip = "Pengganda untuk kapasitas baterai buatan DIY.",
-
     Sandbox_ISA_DrainCalc_option1 = "ISA",
     Sandbox_ISA_DrainCalc_option2 = "Pembangkit Reguler",
     Sandbox_ISA_DrainCalc = "Metode Perhitungan Tiriskan",
@@ -46,4 +38,6 @@ Sandbox_ID = {
     Sandbox_ISA_ConnectPanelMin_tooltip = "Jumlah menit dasar dalam game yang diperlukan untuk menghubungkan satu panel",
     Sandbox_ISA_enableExpandedRecipes = "Resep yang Diperluas",
     Sandbox_ISA_enableExpandedRecipes_tooltip = "Memungkinkan untuk membuat panel surya dan inverter",
+    Sandbox_ISA_BackupGeneratorRange = "Backup Generator Range",
+    Sandbox_ISA_BackupGeneratorRange_tooltip = "Maximum tile distance for connecting a backup generator to a Battery Bank.",
 }

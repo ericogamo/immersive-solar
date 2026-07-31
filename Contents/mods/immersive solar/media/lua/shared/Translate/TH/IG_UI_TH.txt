@@ -1,7 +1,6 @@
-IGUI_TH = {
+IG_UI_TH = {
     IGUI_ContainerTitle_BatteryBank = "ฐานเก็บประจุไฟ",
     IGUI_ContainerTitle_SolarBox = "กล่องบรรจุอุปกรณ์โซลาร์เซลล์",
-
     IGUI_ISAWindowsStatus_Title = "ข้อมูลของฐานเก็บประจุไฟ",
     IGUI_ISAWindowsSumaryTab_InfoText = " <CENTRE> <SIZE:medium> ฐานเก็บประจุไฟ <LINE> <LINE> <LEFT> แถบสรุป <LINE> <SIZE:small>แสดงภาพรวมของฐานเก็บประจุไฟ แผงโซลาร์เซลล์และสถานะของแบตเตอรี่<LINE> <SIZE:medium>แถบรายละเอียด<LINE> <SIZE:small> แสดงข้อมูลทางเทคนิคและสถานะของฐานเก็บประจุไฟ<LINE> <SIZE:medium> แถบดีบัก<LINE> <SIZE:small> เพิ่มปุ่มสำหรับแก้ไขปัญหาของฐานเก็บประจุไฟ",
     IGUI_ISAWindowsSumaryTab_TabTitle = "ภาพรวม",
@@ -41,6 +40,9 @@ IGUI_TH = {
     IGUI_ISAWindow_Debug_ShowBackup = "แสดงรายละเอียดพื้นที่ครอบคลุม",
     IGUI_ISAWindow_Debug_HideBackup = "ซ่อนรายละเอียดพื้นที่ครอบคลุม",
     IGUI_ISA_Update = "อัปเดต",
-
     IGUI_ISAContainerNotBattery = "แท่นวางนี้น่าจะไว้ใช้เก็บ %1 ได้...",
+    IGUI_ContainerTitle_Batterybank = "ฐานเก็บประจุไฟ",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

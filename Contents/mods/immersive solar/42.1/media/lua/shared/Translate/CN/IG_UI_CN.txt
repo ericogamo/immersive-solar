@@ -1,7 +1,6 @@
-IGUI_CN = {
+IG_UI_CN = {
     IGUI_ContainerTitle_BatteryBank = "电池组",
     IGUI_ContainerTitle_SolarBox = "太阳能箱",
-
     IGUI_ISAWindowsStatus_Title = "电池组状态",
     IGUI_ISAWindowsSumaryTab_InfoText = "<CENTRE> <SIZE:medium> 电池组面板 <LINE> <LINE> <LEFT> 摘要选项卡 <LINE> <SIZE:small> 显示电池组的直观摘要电池组、太阳能电池板和电池状态。 <LINE> <SIZE:medium> 详细信息选项卡 <LINE> <SIZE:small> 显示有关电池组及其状态的技术信息。 <LINE> <SIZE:medium> 调试选项卡 <LINE> <SIZE:small> 添加用于对电池组进行故障排除的按钮。",
     IGUI_ISAWindowsSumaryTab_TabTitle = "概括",
@@ -41,6 +40,9 @@ IGUI_CN = {
     IGUI_ISAWindow_Debug_ShowBackup = "显示备份区域详细信息",
     IGUI_ISAWindow_Debug_HideBackup = "隐藏备份区域详细信息",
     IGUI_ISA_Update = "更新",
-
     IGUI_ISAContainerNotBattery = "这似乎是存放我的 %1 的好地方",
+    IGUI_ContainerTitle_Batterybank = "电池组",
+    IGUI_ContainerTitle_batterybank = "Battery Bank",
+    IGUI_ContainerTitle_Solarbox = "Solar Box",
+    IGUI_ContainerTitle_solarbox = "Solar Box",
 }

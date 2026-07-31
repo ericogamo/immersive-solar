@@ -72,74 +72,91 @@ local bottom = math.max(0, square:getZ() - 3);
 local top = math.min(8, square:getZ() + 3);
 local powerconsumption = 0;
 local numberofpanels = 0;
+local processSquare = nil
+if backupgenerator ~= 0 then
+    if backupgenerator == 1 then
+        processSquare = function(mysquare)
+            if ISMoveableSpriteProps:findOnSquare(mysquare, "solarmod_tileset_01_15") then
+                if mysquare:getObjects():size() ~= nil then
+                    for objs = 1, mysquare:getObjects():size() do
+                    local myObject = mysquare:getObjects():get(objs-1);
+                        if (myObject ~= nil) then
+                            if instanceof(myObject, "IsoGenerator") then
+                                myObject:setActivated(true)  
+                                powerconsumption = 0
+                            end 
+                        end
+                    end
+                end
+            end
+        end
+    elseif backupgenerator == 2 then
+        processSquare = function(mysquare)
+            if ISMoveableSpriteProps:findOnSquare(mysquare, "solarmod_tileset_01_15") then
+                if mysquare:getObjects():size() ~= nil then
+                    for objs = 1, mysquare:getObjects():size() do
+                    local myObject = mysquare:getObjects():get(objs-1);
+                        if (myObject ~= nil) then
+                            if instanceof(myObject, "IsoGenerator") then
+                                myObject:setActivated(false)           
+                            end 
+                        end
+                    end
+                end
+            end
+        end
+    end
+else
+    if IsBank then
+        if InitialScan then
+            if LimitedScan then
+                processSquare = function(mysquare)
+                    powerconsumption = powerconsumption + ConsumptionScan(mysquare)
+                    if isa.WorldUtil.findTypeOnSquare(mysquare,"Panel") and mysquare:isOutside() then
+                        numberofpanels = numberofpanels + 2
+                    end
+                end
+            else
+                processSquare = function(mysquare)
+                    powerconsumption = powerconsumption + ConsumptionScan(mysquare)
+                    if isa.WorldUtil.findTypeOnSquare(mysquare,"Panel") and mysquare:isOutside() then
+                        numberofpanels = numberofpanels + 1
+                    end
+                end
+            end
+        else
+            if LimitedScan then
+                processSquare = function(mysquare)
+                    powerconsumption = powerconsumption + ConsumptionScan(mysquare)
+                    if isa.WorldUtil.findTypeOnSquare(mysquare,"Panel") and mysquare:isOutside() then
+                        numberofpanels = numberofpanels + 1
+                    end
+                end
+            else
+                processSquare = function(mysquare)
+                    powerconsumption = powerconsumption + ConsumptionScan(mysquare)
+                end
+            end
+        end
+    elseif LimitedScan then
+        processSquare = function(mysquare)
+            if isa.WorldUtil.findTypeOnSquare(mysquare,"Panel") and mysquare:isOutside() then
+                numberofpanels = numberofpanels + 1
+            end
+        end
+    else
+        processSquare = function(mysquare) end
+    end
+end
+
 for x = bottom, top do
 	for j = n, n2 do
 		for k = n3, n4 do
 			if IsoUtils.DistanceToSquared(j + 0.5, k + 0.5, square:getX() + 0.5, square:getY() + 0.5) <= 400.0 then
 			local mysquare = square:getCell():getGridSquare(j, k, x);
-				if mysquare ~= nil then			
-				if IsBank == true then
-					--scan coming from power bank
-					if InitialScan == true and backupgenerator == 0 then
-						powerconsumption = powerconsumption + ConsumptionScan(mysquare)
-						if isa.WorldUtil.findTypeOnSquare(mysquare,"Panel") and mysquare:isOutside() then
-							numberofpanels = numberofpanels + 1
-						end
-					end
-					if InitialScan == false and backupgenerator == 0 then
-						powerconsumption = powerconsumption + ConsumptionScan(mysquare)
-					end
-				end
-				
-				--if IsBank == false and backupgenerator == 0 then
-				--scan coming from solar panel
-				--		if ISMoveableSpriteProps:findOnSquare(mysquare, "solarmod_tileset_01_0") then
-				--			local scan = solarscan(mysquare, true, true, false, 0)
-				--			changePanelData(mysquare, scan)
-				--		end
-				--end
-				if LimitedScan == true and backupgenerator == 0 then
-					if isa.WorldUtil.findTypeOnSquare(mysquare,"Panel") and mysquare:isOutside() then
-						numberofpanels = numberofpanels + 1
-					end
-				end
-				if backupgenerator ~= 0 then
-					if ISMoveableSpriteProps:findOnSquare(mysquare, "solarmod_tileset_01_15") then
-						if backupgenerator == 1 then
-						--turn on generator in this square
-							if mysquare:getObjects():size() ~= nil then
-								for objs = 1, mysquare:getObjects():size() do
-								local myObject = mysquare:getObjects():get(objs-1);
-									if (myObject ~= nil) then
-										if instanceof(myObject, "IsoGenerator") then
-											myObject:setActivated(true)  
-											powerconsumption = 0
-										end 
-									end
-								end
-							end
-						--
-						end
-						if backupgenerator == 2 then
-						--turn off generator in this square
-							if mysquare:getObjects():size() ~= nil then
-								for objs = 1, mysquare:getObjects():size() do
-								local myObject = mysquare:getObjects():get(objs-1);
-									if (myObject ~= nil) then
-										if instanceof(myObject, "IsoGenerator") then
-											myObject:setActivated(false)           
-										end 
-									end
-								end
-							end
-						--
-						end
-					end
-				
-				end
-			end
-
-
+				if mysquare ~= nil and processSquare ~= nil then			
+                    processSquare(mysquare)
+                end
 			end
 		end
 	end	

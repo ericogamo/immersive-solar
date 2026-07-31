@@ -1,12 +1,9 @@
 ItemName_DE = {
-    -- Magazines
-    ItemName_ISA.ISAMag1 = "Neue Fortschritte: Energie aus der Sonne",
-
-    -- Items
-    ItemName_ISA.SolarPanel = "Solarpanel (Teil)",
-    ItemName_ISA.ISAInverter = "Wandler",
-    ItemName_ISA.DeepCycleBattery = "200-Ah-Deep-Cycle-Batterie",
-    ItemName_ISA.SuperBattery = "400-Ah-Deep-Cycle-Batterie",
-    ItemName_ISA.WiredCarBattery = "Kabelgebundene Autobatterie",
-    ItemName_ISA.DIYBattery = "DIY Deep-Cycle-Batterie",
+    ItemName_ISA.ISAMag1 = "New Advancements: Energy From The Sun",
+    ItemName_ISA.SolarPanel = "Solar Panel (part)",
+    ItemName_ISA.ISAInverter = "Inverter",
+    ItemName_ISA.DeepCycleBattery = "200Ah Deep Cycle Battery",
+    ItemName_ISA.SuperBattery = "400Ah Deep Cycle Battery",
+    ItemName_ISA.WiredCarBattery = "Wired Car Battery",
+    ItemName_ISA.DIYBattery = "DIY Deep Cycle Battery",
 }

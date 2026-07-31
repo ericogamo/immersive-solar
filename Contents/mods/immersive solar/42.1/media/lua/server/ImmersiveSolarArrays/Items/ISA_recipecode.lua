@@ -3,7 +3,6 @@
 --]]
 
 require "Items/AcceptItemFunction"
-require "recipecode"
 
 local ISA = require("ImmersiveSolarArrays/Utilities")
 local Sandbox = SandboxVars.ISA
