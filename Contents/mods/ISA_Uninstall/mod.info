@@ -1,5 +1,0 @@
-id=ISA_Uninstall
-name=ISA Safe Uninstaller
-description=Removes all ISA objects from your save.
-versionMin=42.13
-require=ISA_42
