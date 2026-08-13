@@ -19,6 +19,7 @@ function PBSystem:initSystem()
     Events.EveryDays.Add(PBSystem.resetAcceptItemFunction.addItems)
     
     Events.OnTick.Add(PBSystem.mutePowerbanks)
+    Events.OnTick.Add(PBSystem.preventToxicBuildings)
 end
 
 function PBSystem:newLuaObject(globalObject)
@@ -39,13 +40,26 @@ do
     function o.process()
         if not o.data then return o:stop() end
         for i = #o.data, 1 , -1 do
-            local gen = o.data[i]:getGenerator()
-            if gen then
-                local isoPb = PBSystem.instance:getIsoObjectOnSquare(o.data[i])
-                if isoPb then
-                    isoPb:getContainer():setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+            local sq = o.data[i]
+            local success, err = pcall(function()
+                local gen = sq and sq:getGenerator()
+                if gen then
+                    local isoPb = PBSystem.instance:getIsoObjectOnSquare(sq)
+                    if isoPb then
+                        local container = isoPb:getContainer()
+                        if not container and isoPb.createContainersFromSpriteProperties then
+                            isoPb:createContainersFromSpriteProperties()
+                            container = isoPb:getContainer()
+                        end
+                        if container and container.setAcceptItemFunction then
+                            container:setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+                        end
+                    end
+                    table.remove(o.data, i)
                 end
-                table.remove(o.data,i)
+            end)
+            if not success then
+                table.remove(o.data, i)
             end
         end
         if #o.data == 0 or o.times <= 1 then o:stop() return end
@@ -74,28 +88,42 @@ do
 
         for i = #o.data, 1, -1 do
             local obj = o.data[i]
-            if obj:getObjectIndex() == -1 then
-                table.remove(o.data,i)
-            else
-                local container = obj:getContainer()
-                if container:getAcceptItemFunction() == nil then
-                    PBSystem.instance:noise("Container reset")
-
-                    container:setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
-                    triggerEvent("OnContainerUpdate",obj)
-                    table.remove(o.data,i)
-
-                    --shortcut for container changed, bugged transfer action
-                    local players = IsoPlayer.getPlayers()
-                    for i=0, players:size() -1 do
-                        local player = players:get(i)
-                        if player ~= nil and player:getZ() == obj:getZ() and IsoUtils.DistanceToSquared(player:getX(),player:getY(),obj:getX()+0.5,obj:getY()+0.5) <= 4 then
-                            --clear both java / lua
-                            ISTimedActionQueue.clear(player)
-                        end
+            local success, err = pcall(function()
+                if not obj or obj:getObjectIndex() == -1 then
+                    table.remove(o.data, i)
+                else
+                    local container = obj:getContainer()
+                    if not container and obj.createContainersFromSpriteProperties then
+                        obj:createContainersFromSpriteProperties()
+                        container = obj:getContainer()
                     end
+                    if not container then
+                        table.remove(o.data, i)
+                    elseif container.getAcceptItemFunction and container:getAcceptItemFunction() == nil then
+                        PBSystem.instance:noise("Container reset")
 
+                        if container.setAcceptItemFunction then
+                            container:setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+                        end
+                        triggerEvent("OnContainerUpdate", obj)
+                        table.remove(o.data, i)
+
+                        --shortcut for container changed, bugged transfer action
+                        local players = IsoPlayer.getPlayers()
+                        for p = 0, players:size() - 1 do
+                            local player = players:get(p)
+                            if player ~= nil and player:getZ() == obj:getZ() and IsoUtils.DistanceToSquared(player:getX(), player:getY(), obj:getX() + 0.5, obj:getY() + 0.5) <= 4 then
+                                --clear both java / lua
+                                ISTimedActionQueue.clear(player)
+                            end
+                        end
+                    else
+                        table.remove(o.data, i)
+                    end
                 end
+            end)
+            if not success then
+                table.remove(o.data, i)
             end
         end
 
@@ -185,25 +213,26 @@ function PBSystem.updateBanksForClient()
             if pb.updateSprite then
                 pb:updateSprite(delta)
             end
-            local items = isopb:getContainer():getItems()
-            for v=0,items:size()-1 do
-                local item = items:get(v)
-                --FIXME all items should be valid batteries and drainable here already
-                if item:getModData().ISA_maxCapacity then
-                    item:setCurrentUsesFloat(delta)
+            local container = isopb:getContainer()
+            if not container and isopb.createContainersFromSpriteProperties then
+                isopb:createContainersFromSpriteProperties()
+                container = isopb:getContainer()
+            end
+            if container and container.getItems then
+                local items = container:getItems()
+                for v=0,items:size()-1 do
+                    local item = items:get(v)
+                    --FIXME all items should be valid batteries and drainable here already
+                    if item:getModData().ISA_maxCapacity then
+                        item:setCurrentUsesFloat(delta)
+                    end
                 end
             end
         end
     end
 end
 
-local muteTickCount = 0
-local MUTE_THROTTLE = 120
-
 function PBSystem.mutePowerbanks()
-    muteTickCount = muteTickCount + 1
-    if muteTickCount < MUTE_THROTTLE then return end
-    muteTickCount = 0
     if not PBSystem.instance then return end
     for i=1,PBSystem.instance:getLuaObjectCount() do
         local pb = PBSystem.instance:getLuaObjectByIndex(i)
@@ -224,6 +253,10 @@ function PBSystem.mutePowerbanks()
                 end
             end
             if gen ~= nil then
+                -- Remove from client engine processing to prevent sound/toxic re-triggering
+                if gen:getCell() then
+                    gen:getCell():addToProcessIsoObjectRemove(gen)
+                end
                 if gen.getEmitter and gen:getEmitter() ~= nil then
                     local emitter = gen:getEmitter()
                     emitter:setVolumeAll(0.0)
@@ -236,6 +269,26 @@ function PBSystem.mutePowerbanks()
                 elseif gen.stopSound then
                     gen:stopSound("GeneratorLoop")
                     gen:stopSound("OldGeneratorLoop")
+                end
+            end
+        end
+    end
+end
+
+function PBSystem.preventToxicBuildings()
+    local self = PBSystem.instance
+    if not self then return end
+    for i = 1, self:getLuaObjectCount() do
+        local pb = self:getLuaObjectByIndex(i)
+        if pb and pb.on then
+            local isopb = pb:getIsoObject()
+            if isopb then
+                local square = isopb:getSquare()
+                if square then
+                    local building = square:getBuilding()
+                    if building and building:isToxic() then
+                        building:setToxic(false)
+                    end
                 end
             end
         end

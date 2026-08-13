@@ -70,37 +70,37 @@ function ISAWindowsSumaryTab:render()
 	local cardW = w - 24
 
 	-- ========================================================
-	-- CARD 1: BATTERIESPEICHER & NETZ-STATUS
+	-- CARD 1: BATTERY STORAGE & GRID STATUS
 	-- ========================================================
 	local c1X, c1Y, c1H = 12, 12, 138
-	self:drawCardBox(c1X, c1Y, cardW, c1H, 
-		getText("IGUI_ISAWindowsSumaryTab_BatteryStatus") or "BATTERIESPEICHER & NETZ-STATUS", 
+	self:drawCardBox(c1X, c1Y, cardW, c1H,
+		getText("IGUI_ISAWindowsSumaryTab_BatteryStatus"),
 		self.textureBattery)
 
 	-- Status Badge (Top Right of Card 1)
-	local badgeText = "STABIL"
+	local badgeText = getText("IGUI_ISASummary_Stable")
 	local bR, bG, bB = 0.5, 0.5, 0.5
 	if self.maxCapacity <= 0 then
-		badgeText = getText("IGUI_ISAWindowsSumaryTab_NoBatteries") or "KEINE BATTERIEN"
+		badgeText = getText("IGUI_ISAWindowsSumaryTab_NoBatteries")
 		bR, bG, bB = 0.9, 0.25, 0.25
 	elseif self.difference > 0 then
 		if self.maxCapacity == self.charge then
-			badgeText = getText("IGUI_ISAWindowsSumaryTab_FullyCharged") or "VOLL GELADEN"
+			badgeText = getText("IGUI_ISAWindowsSumaryTab_FullyCharged")
 			bR, bG, bB = 0.15, 0.75, 0.35
 		else
-			badgeText = "LÄDT AUF (+ " .. math.floor(self.difference) .. " W)"
+			badgeText = string.format(getText("IGUI_ISASummary_ChargingFmt"), math.floor(self.difference))
 			bR, bG, bB = 0.15, 0.85, 0.35
 		end
 	elseif self.difference < 0 then
 		if self.charge == 0 then
-			badgeText = getText("IGUI_ISAWindowsSumaryTab_FullyDischarged") or "LEER (0 %)"
+			badgeText = getText("IGUI_ISAWindowsSumaryTab_FullyDischarged")
 			bR, bG, bB = 0.95, 0.25, 0.25
 		else
-			badgeText = "ENTLADUNG (- " .. math.floor(math.abs(self.difference)) .. " W)"
+			badgeText = string.format(getText("IGUI_ISASummary_DischargingFmt"), math.floor(math.abs(self.difference)))
 			bR, bG, bB = 0.95, 0.65, 0.15
 		end
 	else
-		badgeText = getText("IGUI_ISAWindowsSumaryTab_NotCharging") or "STANDBY"
+		badgeText = getText("IGUI_ISAWindowsSumaryTab_NotCharging")
 		bR, bG, bB = 0.6, 0.6, 0.6
 	end
 	self:drawStatusBadge(c1X + cardW - 10, c1Y + 5, badgeText, bR, bG, bB)
@@ -128,96 +128,96 @@ function ISAWindowsSumaryTab:render()
 	local statY1 = c1Y + 68
 	local statY2 = c1Y + 95
 
-	self:drawText("Gesamtkapazität:  " .. math.floor(self.maxCapacity) .. " Ah (" .. pb.batteries .. " Batterien)", leftColX, statY1, 0.8, 0.85, 0.9, 1, UIFont.Small)
-	self:drawText("Aktuell gespeichert:  " .. math.floor(self.charge) .. " Ah", rightColX, statY1, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText(string.format(getText("IGUI_ISASummary_TotalCapacityFmt"), math.floor(self.maxCapacity), pb.batteries), leftColX, statY1, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText(string.format(getText("IGUI_ISASummary_CurrentStoredFmt"), math.floor(self.charge)), rightColX, statY1, 0.8, 0.85, 0.9, 1, UIFont.Small)
 
-	local netText = "+ 0 W (Ausgeglichen)"
+	local netText = getText("IGUI_ISASummary_NetBalanced")
 	local netR, netG, netB = 0.7, 0.7, 0.7
 	if self.difference > 0 then
-		netText = "+ " .. math.floor(self.difference) .. " W (Laden)"
+		netText = string.format(getText("IGUI_ISASummary_NetChargingFmt"), math.floor(self.difference))
 		netR, netG, netB = 0.2, 0.85, 0.35
 	elseif self.difference < 0 then
-		netText = "- " .. math.floor(math.abs(self.difference)) .. " W (Entladung)"
+		netText = string.format(getText("IGUI_ISASummary_NetDischargingFmt"), math.floor(math.abs(self.difference)))
 		netR, netG, netB = 0.95, 0.65, 0.15
 	end
-	self:drawText("Netz-Strombilanz:  " .. netText, leftColX, statY2, netR, netG, netB, 1, UIFont.Small)
+	self:drawText(getText("IGUI_ISASummary_NetPowerBalance") .. "  " .. netText, leftColX, statY2, netR, netG, netB, 1, UIFont.Small)
 
 	-- Time estimation
-	local timeEstStr = "Akku voll geladen"
+	local timeEstStr = getText("IGUI_ISASummary_BatteryFull")
 	local timeR, timeG, timeB = 0.2, 0.85, 0.35
 	if self.maxCapacity <= 0 then
-		timeEstStr = "Keine Speicherbank aktiv"
+		timeEstStr = getText("IGUI_ISASummary_NoBankActive")
 		timeR, timeG, timeB = 0.6, 0.6, 0.6
 	elseif self.difference > 0 and self.charge < self.maxCapacity then
 		local ctime = (self.maxCapacity - self.charge) / self.difference
 		local h = math.floor(ctime)
 		local m = math.floor((ctime - h) * 60)
-		timeEstStr = string.format("~%dh %02dm bis Voll", h, m)
+		timeEstStr = string.format(getText("IGUI_ISASummary_TimeToFullFmt"), h, m)
 	elseif self.difference < 0 and self.charge > 0 then
 		local dtime = math.abs(self.charge / self.difference)
 		local h = math.floor(dtime)
 		local m = math.floor((dtime - h) * 60)
-		timeEstStr = string.format("~%dh %02dm bis Leer", h, m)
+		timeEstStr = string.format(getText("IGUI_ISASummary_TimeToEmptyFmt"), h, m)
 		timeR, timeG, timeB = 0.95, 0.35, 0.35
 	elseif self.charge == 0 then
-		timeEstStr = "0% — Vollständig entladen"
+		timeEstStr = getText("IGUI_ISASummary_CompletelyDischarged")
 		timeR, timeG, timeB = 0.95, 0.25, 0.25
 	end
-	self:drawText("Dauer-Schätzung:  " .. timeEstStr, rightColX, statY2, timeR, timeG, timeB, 1, UIFont.Small)
+	self:drawText(getText("IGUI_ISASummary_TimeEstimate") .. "  " .. timeEstStr, rightColX, statY2, timeR, timeG, timeB, 1, UIFont.Small)
 
 	-- ========================================================
-	-- CARD 2: SOLARGENERATOR & WETTERFAKTOR
+	-- CARD 2: SOLAR GENERATION & WEATHER
 	-- ========================================================
 	local c2X, c2Y, c2H = 12, 160, 126
-	self:drawCardBox(c2X, c2Y, cardW, c2H, 
-		getText("IGUI_ISAWindowsSumaryTab_PanelsStatus") or "SOLARGENERATOR & WETTERFAKTOR", 
+	self:drawCardBox(c2X, c2Y, cardW, c2H,
+		getText("IGUI_ISAWindowsSumaryTab_PanelsStatus"),
 		self.textureSolarPanel)
 
 	-- Efficiency Badge on right
 	local effPct = self.panelsMaxInput > 0 and math.floor((self.panelsInput / self.panelsMaxInput) * 100) or 0
-	self:drawStatusBadge(c2X + cardW - 10, c2Y + 5, "EFFIZIENZ: " .. effPct .. "%", 0.15, 0.75, 0.85)
+	self:drawStatusBadge(c2X + cardW - 10, c2Y + 5, string.format(getText("IGUI_ISASummary_EfficiencyFmt"), effPct), 0.15, 0.75, 0.85)
 
 	local c2Y1 = c2Y + 38
 	local c2Y2 = c2Y + 63
 	local c2Y3 = c2Y + 88
 
-	self:drawText("Aktueller Solar-Ertrag:  + " .. math.floor(self.panelsInput) .. " W", leftColX, c2Y1, 0.2, 0.85, 0.35, 1, UIFont.Small)
-	self:drawText("Verbundene Solarpanels:  " .. pb.npanels .. " Panels aktiv", rightColX, c2Y1, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText(string.format(getText("IGUI_ISASummary_CurrentSolarFmt"), math.floor(self.panelsInput)), leftColX, c2Y1, 0.2, 0.85, 0.35, 1, UIFont.Small)
+	self:drawText(string.format(getText("IGUI_ISASummary_ConnectedPanelsFmt"), pb.npanels), rightColX, c2Y1, 0.8, 0.85, 0.9, 1, UIFont.Small)
 
-	self:drawText("Max. Ertrag bei Sonne:  " .. math.floor(self.panelsMaxInput) .. " W", leftColX, c2Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
-	self:drawText("Verbrauch der Basis:  - " .. math.floor(pb.drain) .. " W", rightColX, c2Y2, 0.95, 0.45, 0.35, 1, UIFont.Small)
+	self:drawText(string.format(getText("IGUI_ISASummary_MaxSolarFmt"), math.floor(self.panelsMaxInput)), leftColX, c2Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText(string.format(getText("IGUI_ISASummary_BaseDrainFmt"), math.floor(pb.drain)), rightColX, c2Y2, 0.95, 0.45, 0.35, 1, UIFont.Small)
 
 	-- Weather & Sun / Moon icon
 	local sunIcon = self.night and self.textureMoon or self.textureSun
 	if sunIcon then
 		self:drawTextureScaled(sunIcon, leftColX, c2Y3 - 2, 18, 18, 1, 1, 1, 1)
 	end
-	local weatherText = self.night and "Nacht / Keine Sonne" or (effPct > 70 and "Klarer Himmel (" .. effPct .. "%)" or (effPct > 30 and "Bewölkt (" .. effPct .. "%)" or "Dichte Wolken / Dämmerung"))
-	self:drawText("Umgebung / Tageszeit:  " .. weatherText, leftColX + 24, c2Y3, 0.85, 0.9, 0.95, 1, UIFont.Small)
+	local weatherText = self.night and getText("IGUI_ISASummary_NightNoSun") or (effPct > 70 and string.format(getText("IGUI_ISASummary_ClearSkyFmt"), effPct) or (effPct > 30 and string.format(getText("IGUI_ISASummary_CloudyFmt"), effPct) or getText("IGUI_ISASummary_HeavyClouds")))
+	self:drawText(getText("IGUI_ISASummary_Environment") .. "  " .. weatherText, leftColX + 24, c2Y3, 0.85, 0.9, 0.95, 1, UIFont.Small)
 
-	local statusText = "Funktioniert ok"
+	local statusText = getText("IGUI_ISASummary_WorkingOK")
 	local stR, stG, stB = 0.2, 0.85, 0.35
 	if pb.npanels <= 0 then
-		statusText = "Keine Solarpanels angeschlossen"
+		statusText = getText("IGUI_ISASummary_NoPanelsConnected")
 		stR, stG, stB = 0.9, 0.25, 0.25
 	elseif self.drain > self.panelsMaxInput then
-		statusText = "Nicht genügend Panels für Verbrauch"
+		statusText = getText("IGUI_ISASummary_NotEnoughPanels")
 		stR, stG, stB = 0.95, 0.65, 0.15
 	elseif self.drain > self.panelsInput then
-		statusText = "Nicht genug Sonnenlicht"
+		statusText = getText("IGUI_ISASummary_NotEnoughSunlight")
 		stR, stG, stB = 0.95, 0.65, 0.15
 	end
-	self:drawText("Modul-Status:  " .. statusText, rightColX, c2Y3, stR, stG, stB, 1, UIFont.Small)
+	self:drawText(getText("IGUI_ISASummary_ModuleStatus") .. "  " .. statusText, rightColX, c2Y3, stR, stG, stB, 1, UIFont.Small)
 
 	-- ========================================================
-	-- CARD 3: NOTSTROM-SYSTEM & SOLAR-FAILSAFE
+	-- CARD 3: EMERGENCY POWER & SOLAR FAILSAFE
 	-- ========================================================
 	local c3X, c3Y, c3H = 12, 296, 110
-	self:drawCardBox(c3X, c3Y, cardW, c3H, 
-		"NOTSTROM-SYSTEM & SOLAR-FAILSAFE", 
+	self:drawCardBox(c3X, c3Y, cardW, c3H,
+		getText("IGUI_ISASummary_EmergencyTitle"),
 		self.textureCables)
 
-	self:drawStatusBadge(c3X + cardW - 10, c3Y + 5, "AUTOMATIK-SCHUTZ", 0.90, 0.65, 0.15)
+	self:drawStatusBadge(c3X + cardW - 10, c3Y + 5, getText("IGUI_ISASummary_AutoProtection"), 0.90, 0.65, 0.15)
 
 	local hasFailsafe = false
 	if pb.conGenerator then
@@ -230,17 +230,17 @@ function ISAWindowsSumaryTab:render()
 	local c3Y1 = c3Y + 38
 	local c3Y2 = c3Y + 68
 
-	local genText = pb.conGenerator and "Ja (Verbunden / Bereit)" or "Keiner angeschlossen"
+	local genText = pb.conGenerator and getText("IGUI_ISASummary_GenConnectedReady") or getText("IGUI_ISASummary_GenNoneConnected")
 	local genR, genG, genB = pb.conGenerator and 0.2 or 0.6, pb.conGenerator and 0.85 or 0.6, pb.conGenerator and 0.35 or 0.6
-	self:drawText("Backup-Generator:  " .. genText, leftColX, c3Y1, genR, genG, genB, 1, UIFont.Small)
+	self:drawText(getText("IGUI_ISASummary_BackupGenerator") .. "  " .. genText, leftColX, c3Y1, genR, genG, genB, 1, UIFont.Small)
 
-	local failsafeText = hasFailsafe and "Schutz aktiv (Auto-Kopplung)" or (pb.conGenerator and "Inaktiv / Kein Failsafe" or "Inaktiv")
+	local failsafeText = hasFailsafe and getText("IGUI_ISASummary_FailsafeActive") or (pb.conGenerator and getText("IGUI_ISASummary_FailsafeInactiveNoFS") or getText("IGUI_ISASummary_FailsafeInactive"))
 	local fsR, fsG, fsB = hasFailsafe and 0.2 or 0.6, hasFailsafe and 0.85 or 0.6, hasFailsafe and 0.35 or 0.6
-	self:drawText("Solar-Failsafe Zustand:  " .. failsafeText, rightColX, c3Y1, fsR, fsG, fsB, 1, UIFont.Small)
+	self:drawText(getText("IGUI_ISASummary_FailsafeState") .. "  " .. failsafeText, rightColX, c3Y1, fsR, fsG, fsB, 1, UIFont.Small)
 
 	local locText = pb.conGenerator and string.format("(%d, %d, %d)", pb.conGenerator.x, pb.conGenerator.y, pb.conGenerator.z) or "—"
-	self:drawText("Standort / Koordinaten:  " .. locText, leftColX, c3Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
-	self:drawText("Notstrom-Automatik:  " .. (pb.conGenerator and "Bereit bei Akku-Leerstand" or "—"), rightColX, c3Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText(getText("IGUI_ISASummary_LocationCoords") .. "  " .. locText, leftColX, c3Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
+	self:drawText(getText("IGUI_ISASummary_EmergencyAuto") .. "  " .. (pb.conGenerator and getText("IGUI_ISASummary_ReadyOnEmpty") or "—"), rightColX, c3Y2, 0.8, 0.85, 0.9, 1, UIFont.Small)
 end
 
 function ISAWindowsSumaryTab:new(x, y, width, height)

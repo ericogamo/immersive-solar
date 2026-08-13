@@ -26,7 +26,7 @@ function ISA_ConnectPanel:new(character, panel, luaPb, x, y, z, pbX, pbY, pbZ)
 end
 
 function ISA_ConnectPanel:isValid()
-    return self.panel:getObjectIndex() ~= -1
+    return self.panel and self.panel:getObjectIndex() ~= -1 or false
 end
 
 function ISA_ConnectPanel:getDuration()
@@ -34,7 +34,7 @@ function ISA_ConnectPanel:getDuration()
         return 1
     end
     --base time in minutes at level 3, ~1/3 at level 10
-    return SandboxVars.ISA.ConnectPanelMin * (1 - 0.095 * (self.character:getPerkLevel(Perks.Electricity) - 3)) * 2 * getGameTime():getMinutesPerDay()
+    return SandboxVars.ISA.ConnectPanelMin * (1 - 0.095 * (self.character:getPerkLevel(Perks.Electricity) - 3)) * 0.5 * getGameTime():getMinutesPerDay()
 end
 
 function ISA_ConnectPanel:start()
@@ -80,7 +80,7 @@ end
 
 function ISA_ConnectPanel:perform()
     self.character:stopOrTriggerSound(self.sound)
-
+    self:complete()
     ISBaseTimedAction.perform(self)
 end
 
@@ -100,7 +100,7 @@ function ISA_ConnectPanel:complete()
     local pb = ISA.PBSystem_Server:getLuaObjectAt(self.pbX, self.pbY, self.pbZ)
     if not pb then
         self.panel:transmitModData()
-        return
+        return false
     end
     local panel, status = pb:getPanelStatusOnSquare(self.panel:getSquare())
     if status == "not connected" then
@@ -110,6 +110,7 @@ function ISA_ConnectPanel:complete()
         pb:saveData(true)
     end
     self.panel:transmitModData()
+    return true
 end
 
 ISA.ConnectPanel = ISA_ConnectPanel

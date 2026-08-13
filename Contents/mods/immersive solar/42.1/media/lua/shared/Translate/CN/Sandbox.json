@@ -38,6 +38,6 @@
     "Sandbox_ISA_ConnectPanelMin_tooltip": "连接一个面板所需的游戏内基本分钟数",
     "Sandbox_ISA_enableExpandedRecipes": "扩展食谱",
     "Sandbox_ISA_enableExpandedRecipes_tooltip": "允许制作太阳能电池板和逆变器",
-    "Sandbox_ISA_BackupGeneratorRange": "Backup Generator Range",
-    "Sandbox_ISA_BackupGeneratorRange_tooltip": "Maximum tile distance for connecting a backup generator to a Battery Bank."
+    "Sandbox_ISA_BackupGeneratorRange": "备用发电机连接范围",
+    "Sandbox_ISA_BackupGeneratorRange_tooltip": "备用发电机连接至电池组时允许的最大格子距离。"
 }

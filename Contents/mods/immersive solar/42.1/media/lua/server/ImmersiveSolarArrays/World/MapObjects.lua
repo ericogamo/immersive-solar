@@ -5,7 +5,15 @@ if isClient() then
 
     ---update isoObjects when chunk loads
     local function LoadPowerbank(isoObject)
-        isoObject:getContainer():setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+        if not isoObject then return end
+        local container = isoObject:getContainer()
+        if not container and isoObject.createContainersFromSpriteProperties then
+            isoObject:createContainersFromSpriteProperties()
+            container = isoObject:getContainer()
+        end
+        if container and container.setAcceptItemFunction then
+            container:setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+        end
     end
     MapObjects.OnLoadWithSprite("solarmod_tileset_01_0", LoadPowerbank, 6)
 
@@ -13,8 +21,16 @@ else
 
     ---update isoObjects when chunk loads
     local function LoadPowerbank(isoObject)
+        if not isoObject then return end
         ISA.PBSystem_Server:loadIsoObject(isoObject)
-        isoObject:getContainer():setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+        local container = isoObject:getContainer()
+        if not container and isoObject.createContainersFromSpriteProperties then
+            isoObject:createContainersFromSpriteProperties()
+            container = isoObject:getContainer()
+        end
+        if container and container.setAcceptItemFunction then
+            container:setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+        end
     end
     MapObjects.OnLoadWithSprite("solarmod_tileset_01_0", LoadPowerbank, 6)
 

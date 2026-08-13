@@ -75,7 +75,7 @@ function ISAConnectPanel:new(character, panel, luaPb)
     o.stopOnWalk = true
     o.stopOnRun = true
     o.stopOnAim = false
-    o.maxTime = SandboxVars.ISA.ConnectPanelMin * (1 - 0.095 * (character:getPerkLevel(Perks.Electricity) - 3)) * 2 * getGameTime():getMinutesPerDay() --base time in minutes at level 3, ~1/3 at level 10
+    o.maxTime = SandboxVars.ISA.ConnectPanelMin * (1 - 0.095 * (character:getPerkLevel(Perks.Electricity) - 3)) * 0.5 * getGameTime():getMinutesPerDay() --base time in minutes at level 3, ~1/3 at level 10
 
     if o.character:isTimedActionInstant() then o.maxTime = 1 end
     return o

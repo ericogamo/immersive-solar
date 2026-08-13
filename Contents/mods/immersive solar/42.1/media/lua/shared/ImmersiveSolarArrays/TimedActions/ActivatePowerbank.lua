@@ -23,7 +23,7 @@ function ISA_ActivatePowerBank:new(character, powerbank, activate, x, y, z)
 end
 
 function ISA_ActivatePowerBank:isValid()
-    return self.isoPb:getObjectIndex() ~= -1
+    return self.isoPb and self.isoPb:getObjectIndex() ~= -1 or false
 end
 
 function ISA_ActivatePowerBank:getDuration()
@@ -43,7 +43,7 @@ function ISA_ActivatePowerBank:complete()
     end
 
     local pb = ISA.PBSystem_Server:getLuaObjectAt(self.x, self.y, self.z)
-    if not pb then return end
+    if not pb then return false end
 
     if self.activate then
         local level = self.character:getPerkLevel(Perks.Electricity)
@@ -57,6 +57,7 @@ function ISA_ActivatePowerBank:complete()
     pb:updateDrain()
     pb:updateGenerator()
     pb:saveData(true)
+    return true
 end
 
 ISA.ActivatePowerbank = ISA_ActivatePowerBank

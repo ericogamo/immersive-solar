@@ -16,6 +16,7 @@
 [*] [b]Full Build 42 Compatibility:[/b] Fully adapted to the B42 engine, including complete JSON translation dictionary support for [b]27 languages[/b] (200+ localized files).
 [*] [b]Seamless Crafting & Build Menu Integration:[/b] All build recipes (Battery Bank, Solar Panels, Inverters, DIY Batteries, Failsafes) are cleanly integrated under the [b]Electrical[/b] category in the B42 Crafting / Build menu.
 [*] [b]Tactical Box Dashboard UI:[/b] Redesigned native Lua Status Window for your Battery Bank — clean, performant, and perfectly fitting the PZ aesthetic.
+[*] [b]Indoor Toxicity Protection:[/b] Battery Banks placed indoors will no longer emit lethal generator fumes ([i]"tötliche Dämpfe"[/i]) thanks to real-time B42 toxicity suppression.
 [*] [b]Performance & Sound Optimizations:[/b] Drastically reduced garbage collection thrashing, intelligent spatial scan caching, and nil-safe audio support for Build 42.
 [/list]
 

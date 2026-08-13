@@ -19,7 +19,7 @@ function ISA_ConnectBackup:new(character, generator, luaPb)
 end
 
 function ISA_ConnectBackup:isValid()
-    return self.generator:getObjectIndex() ~= -1
+    return self.generator and self.generator:getObjectIndex() ~= -1 or false
 end
 
 function ISA_ConnectBackup:getDuration()
@@ -27,7 +27,7 @@ function ISA_ConnectBackup:getDuration()
         return 1
     end
     --base time in minutes at level 3, ~1/3 at level 10
-    return SandboxVars.ISA.ConnectPanelMin * (1 - 0.095 * (self.character:getPerkLevel(Perks.Electricity) - 3)) * 2 * getGameTime():getMinutesPerDay()
+    return SandboxVars.ISA.ConnectPanelMin * (1 - 0.095 * (self.character:getPerkLevel(Perks.Electricity) - 3)) * 0.5 * getGameTime():getMinutesPerDay()
 end
 
 function ISA_ConnectBackup:start()
@@ -77,7 +77,7 @@ end
 
 function ISA_ConnectBackup:perform()
     self.character:stopOrTriggerSound(self.sound)
-
+    self:complete()
     ISBaseTimedAction.perform(self)
 end
 
@@ -106,6 +106,7 @@ function ISA_ConnectBackup:complete()
     end
     
     self.generator:transmitModData()
+    return true
 end
 
 ISA.ConnectBackup = ISA_ConnectBackup

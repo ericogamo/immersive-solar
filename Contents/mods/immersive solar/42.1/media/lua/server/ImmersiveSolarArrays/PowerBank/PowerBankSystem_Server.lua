@@ -35,6 +35,7 @@ function PBSystem:initSystem()
         Events.EveryHours.Add(PBSystem.updatePowerbanks)
     end
     Events.EveryDays.Add(PBSystem.EveryDays)
+    Events.OnTick.Add(PBSystem.preventToxicBuildings)
 end
 
 ---Create / Load a lua object from java object
@@ -278,6 +279,24 @@ function PBSystem.updatePowerbanks()
         pb:saveData(true)
 
         if self.wantNoise then self:noise(string.format("/charge: (%d) Battery at: %d %%, charge dif: %.1f, output: %.1f, drain: %.1f",i,modCharge*100,dCharge,pb.npanels*solaroutput,drain)) end
+    end
+end
+
+function PBSystem.preventToxicBuildings()
+    local self = PBSystem.instance
+    if not self or not self.system then return end
+    for i = 0, self.system:getObjectCount() - 1 do
+        ---@type PowerBankObject_Server
+        local pb = self.system:getObjectByIndex(i):getModData()
+        if pb and pb.on then
+            local square = pb:getSquare()
+            if square then
+                local building = square:getBuilding()
+                if building and building:isToxic() then
+                    building:setToxic(false)
+                end
+            end
+        end
     end
 end
 

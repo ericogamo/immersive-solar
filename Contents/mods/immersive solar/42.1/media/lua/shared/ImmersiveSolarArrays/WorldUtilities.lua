@@ -145,6 +145,19 @@ function WorldUtil.replaceIsoObjectWithGenerator(isoObject)
         return isoObject
     end
 
+    local special = square:getSpecialObjects()
+    for i = 0, special:size() - 1 do
+        local obj = special:get(i)
+        if instanceof(obj, "IsoGenerator") and (WorldUtil.getType(obj) == "PowerBank" or obj:getTextureName() == "solarmod_tileset_01_0") then
+            if isoObject ~= obj and isoObject:getSquare() == square then
+                square:transmitRemoveItemFromSquare(isoObject)
+                isoObject:removeFromWorld()
+                isoObject:removeFromSquare()
+            end
+            return obj
+        end
+    end
+
     local item = instanceItem("ISA.PowerBank_test")
     if not item then
         print("[ISA] Failed to instance ISA.PowerBank_test, trying Base.Generator")
@@ -164,10 +177,11 @@ function WorldUtil.replaceIsoObjectWithGenerator(isoObject)
     -- Identify as PowerBank
     gen:getModData().generatorFullType = "ISA.PowerBank_test"
 
-    -- DO NOT add to square
-    -- DO NOT remove isoObject
-    -- DO NOT transmit
-    -- DO NOT fire OnObjectAdded
+    if isoObject:getSquare() == square then
+        square:transmitRemoveItemFromSquare(isoObject)
+        isoObject:removeFromWorld()
+        isoObject:removeFromSquare()
+    end
 
     return gen
 end

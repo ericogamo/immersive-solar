@@ -319,23 +319,62 @@ function PowerBank:updateGenerator(dCharge)
         end
     end
     local activate = self.on and self.charge + dCharge > 0
-    local square = self:getSquare()
-    local gen = square:getGenerator()
+    local gen = self:getIsoObject()
+    if not gen then
+        local square = self:getSquare()
+        if square then
+            gen = square:getGenerator()
+        end
+    end
     if gen then
+        if not gen:isConnected() then
+            gen:setConnected(true)
+        end
         gen:setActivated(activate)
         gen:setFuel(100)
         gen:setCondition(100)
+        gen:setSurroundingElectricity()
+        if gen.updateSurroundingNow then
+            gen:updateSurroundingNow()
+        end
+        if gen.sync then
+            gen:sync()
+        end
+        gen:getCell():addToProcessIsoObjectRemove(gen)
     end
-    if square:getBuilding() ~= nil then square:getBuilding():setToxic(false) end
+    local sq = self:getSquare()
+    if sq and sq:getBuilding() ~= nil then sq:getBuilding():setToxic(false) end
 end
 
 --if freezer timers, Powerbank generator condition / fuel are wrong check here
 function PowerBank:loadGenerator()
     ---new load
     local generator = self:getIsoObject()
-    generator:setSurroundingElectricity()
+    if not generator then
+        local sq = self:getSquare()
+        if sq then
+            generator = sq:getGenerator()
+        end
+    end
+    if generator then
+        if not generator:isConnected() then
+            generator:setConnected(true)
+        end
+        generator:setSurroundingElectricity()
+        if generator.updateSurroundingNow then
+            generator:updateSurroundingNow()
+        end
+        if generator.sync then
+            generator:sync()
+        end
+        generator:getCell():addToProcessIsoObjectRemove(generator)
+    end
     self:updateGenerator()
     self:updateConGenerator()
+    local square = self:getSquare()
+    if square and square:getBuilding() ~= nil then
+        square:getBuilding():setToxic(false)
+    end
 end
 
 ---FIXME update

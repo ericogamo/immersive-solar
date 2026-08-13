@@ -9,7 +9,7 @@
     "ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false": "太阳能电池板未连接到该电池组",
     "ContextMenu_ISA_Connect_Panel_toolTip_isOutside": "太阳能电池板需要放在室外",
     "ContextMenu_ISA_Connect_Panel_NoPowerbank": "附近没有该太阳能电池板的电池组。",
-    "ContextMenu_ISA_Backup_Generator": "Backup Generator",
-    "ContextMenu_ISA_Connect_Backup": "Connect to Battery Bank",
-    "ContextMenu_ISA_Disconnect_Backup": "Disconnect from Battery Bank"
+    "ContextMenu_ISA_Backup_Generator": "备用发电机",
+    "ContextMenu_ISA_Connect_Backup": "连接至电池组",
+    "ContextMenu_ISA_Disconnect_Backup": "从电池组断开"
 }
