@@ -1,8 +1,5 @@
 id=ISA_Uninstall
-modversion=1.0.0
-name=Immersive Solar Arrays - Safe Uninstaller
-description=Removes ALL ISA objects, items, and data from your save. Enable WITH ISA, load save, wait for cleanup message, save, then disable BOTH mods.
+name=ISA Safe Uninstaller
+description=Removes all ISA objects from your save.
 versionMin=42.13
-authors=ericogamo
 require=ISA_42
-icon=media/textures/Item_SolarPanel.png
