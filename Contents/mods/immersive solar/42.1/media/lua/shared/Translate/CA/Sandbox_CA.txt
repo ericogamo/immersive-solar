@@ -1,7 +1,7 @@
 Sandbox_CA = {
     Sandbox_ISA = "Arrays solars immersius",
     Sandbox_ISA_solarPanelEfficiency = "Eficincia del panell solar",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "L'eficincia energtica dels panells solars<br>12% s realista per al 1993<br>25% s solar moderna<br>El valor predeterminat no s realista",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "L'eficincia energtica dels panells solars<br>12%% s realista per al 1993<br>25%% s solar moderna<br>El valor predeterminat no s realista",
     Sandbox_ISA_batteryDegradeChance = "Gravitat de degradaci de la bateria",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Multiplicador de la degradaci mitjana de les bateries.\nDisminuir-ho augmentar drsticament la durada de la bateria.",
     Sandbox_ISA_solarPanelWorldSpawns = "Panell solar / Crate World Spawns",

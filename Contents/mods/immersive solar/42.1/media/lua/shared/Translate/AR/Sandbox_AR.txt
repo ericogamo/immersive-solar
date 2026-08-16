@@ -1,7 +1,7 @@
 Sandbox_AR = {
     Sandbox_ISA = "Paneles solares inmersivos",
     Sandbox_ISA_solarPanelEfficiency = "Eficiencia del panel solar",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiencia energtica de los paneles solares<br>12% es realista para 1993<br>25% es energa solar moderna<br>el valor predeterminado no es realista",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiencia energtica de los paneles solares<br>12%% es realista para 1993<br>25%% es energa solar moderna<br>el valor predeterminado no es realista",
     Sandbox_ISA_batteryDegradeChance = "Gravedad de la degradacin de la batera",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Multiplicador para la degradacin promedio de las bateras.\nReducir esto aumentar drsticamente la duracin de la batera.",
     Sandbox_ISA_solarPanelWorldSpawns = "Panel solar/engendros del mundo de cajas",

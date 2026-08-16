@@ -1,7 +1,7 @@
 Sandbox_EN = {
     Sandbox_ISA = "Immersive Solar Arrays",
     Sandbox_ISA_solarPanelEfficiency = "Solar Panel Efficiency",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Solar panel power efficiency<br>12% is realistic for 1993<br>25% is modern solar<br>default is unrealistic",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Solar panel power efficiency<br>12%% is realistic for 1993<br>25%% is modern solar<br>default is unrealistic",
     Sandbox_ISA_batteryDegradeChance = "Battery Degrade Severity",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Multiplier for the average degrade of batteries.\nDecreasing this will dramatically increase battery life.",
     Sandbox_ISA_solarPanelWorldSpawns = "Solar Panel / Crate World Spawns",

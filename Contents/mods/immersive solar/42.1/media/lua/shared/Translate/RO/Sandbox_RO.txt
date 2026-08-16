@@ -1,7 +1,7 @@
 Sandbox_RO = {
     Sandbox_ISA = "Rețele solare imersive",
     Sandbox_ISA_solarPanelEfficiency = "Eficiența panoului solar",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiența energiei panoului solar<br>12% este realist pentru 1993<br>25% este solar modern<br>implicit este nerealist",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiența energiei panoului solar<br>12%% este realist pentru 1993<br>25%% este solar modern<br>implicit este nerealist",
     Sandbox_ISA_batteryDegradeChance = "Severitatea degradarii bateriei",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Multiplicator pentru degradarea medie a bateriilor.\nScăderea acestuia va crește dramatic durata de viață a bateriei.",
     Sandbox_ISA_solarPanelWorldSpawns = "Panoul solar / Crate World Spawns",

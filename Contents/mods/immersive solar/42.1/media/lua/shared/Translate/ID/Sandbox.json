@@ -1,7 +1,7 @@
 {
     "Sandbox_ISA": "Susunan Surya yang Imersif",
     "Sandbox_ISA_solarPanelEfficiency": "Efisiensi Panel Surya",
-    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Efisiensi daya panel surya<br>12% realistis untuk tahun 1993<br>25% adalah tenaga surya modern<br>standarnya tidak realistis",
+    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Efisiensi daya panel surya<br>12%% realistis untuk tahun 1993<br>25%% adalah tenaga surya modern<br>standarnya tidak realistis",
     "Sandbox_ISA_batteryDegradeChance": "Tingkat Keparahan Penurunan Baterai",
     "Sandbox_ISA_batteryDegradeChance_tooltip": "Pengganda untuk penurunan rata-rata baterai.\\nMenurunkannya akan meningkatkan masa pakai baterai secara drastis.",
     "Sandbox_ISA_solarPanelWorldSpawns": "Panel Surya / Dunia Peti Muncul",

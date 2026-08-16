@@ -1,7 +1,7 @@
 {
     "Sandbox_ISA": "Иммерсивные солнечные батареи",
     "Sandbox_ISA_solarPanelEfficiency": "Эффективность солнечной панели (0-100)",
-    "Sandbox_ISA_solarPanelEfficiency_tooltip": "12% реалистично для 1993 года \\n25% современная эффективность \\n90% нереалистично",
+    "Sandbox_ISA_solarPanelEfficiency_tooltip": "12%% реалистично для 1993 года \\n25%% современная эффективность \\n90%% нереалистично",
     "Sandbox_ISA_batteryDegradeChance": "Вероятность износа батарей (0-100)",
     "Sandbox_ISA_batteryDegradeChance_tooltip": "Вероятность износа батарей каждый день.\\nУменьшение этого значения значительно увеличит срок службы батареи",
     "Sandbox_ISA_solarPanelWorldSpawns": "Вероятность появления объектов в мире(0-100)",

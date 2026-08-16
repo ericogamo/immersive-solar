@@ -4,9 +4,18 @@
 
 ## 1. Steam Workshop Change Notes (BBCode - for Steam Workshop Changelog Tab)
 
-[h1]📢 Update: Fixed Indoor Generator Toxic Gas, Infinite Error Spam & B42 Multiplayer Compatibility[/h1]
+[h1]🔧 Hotfix: Fixed Mod Not Loading in B42.20.2 (Items Missing / Sandbox Error)[/h1]
 
-[b]Fixes & Improvements in this update:[/b]
+[b]Fix:[/b]
+[list]
+[*] [b]FIX - Mod Fails to Load in B42.20.2:[/b] Resolved an issue where the mod would not load correctly in Build 42.20.2, causing items to not appear in Debug mode or Admin Items mode. The game's updated Translator now processes Sandbox tooltip strings through Java's [code]String.format()[/code], which interprets literal [code]%[/code] characters (e.g. "12% is realistic") as format specifiers — causing [code]java.util.UnknownFormatConversionException: Conversion = 'i'[/code]. Fixed by escaping all [code]%[/code] as [code]%%[/code] in the Solar Panel Efficiency tooltip across all 27 languages.
+[/list]
+
+---
+
+[h1]📢 Previous Update: Fixed Indoor Generator Toxic Gas, Infinite Error Spam & B42 Multiplayer Compatibility[/h1]
+
+[b]Fixes & Improvements:[/b]
 [list]
 [*] [b]CRITICAL FIX - Indoor Generator Toxic Gas ("Lethal Vapors") Fixed:[/b] Resolved an urgent issue where placing a Battery Bank / PowerBank indoors caused players to suffer from lethal toxic generator fumes ([i]"tötliche Dämpfe"[/i]). In Build 42, any activated [code]IsoGenerator[/code] tile inside a building automatically causes vanilla Project Zomboid to set [code]building.setToxic(true)[/code] whenever chunks load or update. Previously, the mod only reset this flag once every 10 in-game minutes. Added real-time tick-based toxicity protection ([code]PBSystem.preventToxicBuildings[/code]) on both server and client, guaranteeing that indoor Battery Banks never poison players!
 [*] [b]CRITICAL FIX - Server Electricity & Automatic Grid Connection Fixed:[/b] Fixed an issue where Battery Banks on multiplayer servers stopped providing electricity to buildings or appliances (like TV/Radio) after chunk reloads, placement, or toggling ON. Previously, changing [code]setConnected(true)[/code] or [code]setActivated(true)[/code] on the server modified Java memory but never transmitted a synchronization packet to multiplayer clients. Added mandatory [code]gen:sync()[/code] and [code]gen:updateSurroundingNow()[/code] calls on the server whenever a Battery Bank updates, ensuring the electrical grid is immediately synchronized across the server and all player clients!
@@ -23,6 +32,15 @@
 ---
 
 ## 2. Git Release Notes & Technical Changelog (Markdown - for Git / GitHub / Release Tag)
+
+### v42.1.3 - Hotfix: B42.20.2 Sandbox Translation Format Crash
+
+#### 🐛 Bug Fixes
+- **Sandbox Tooltip Format Exception (`Translate/*/Sandbox_*.txt`, `Translate/*/Sandbox.json`)**:
+  - **Issue**: In PZ Build 42.20.2, TIS added `Translator.reportMissingArgumentsFromPastAbuse` which passes all translation strings through Java's `String.format()` for format specifier validation. The `Sandbox_ISA_solarPanelEfficiency_tooltip` string contained unescaped literal `%` characters (e.g. `12% is realistic`, `25% is modern solar`). Java's `Formatter` interprets `% i` as an invalid format conversion `%i`, throwing `java.util.UnknownFormatConversionException: Conversion = 'i'` at startup. This exception prevented the mod's sandbox options from loading, which cascaded into items not appearing in Debug/Admin Items mode.
+  - **Fix**: Escaped all literal `%` as `%%` (Java's format-safe percent literal) in the `solarPanelEfficiency_tooltip` string across all 27 language directories (54 files: `.txt` + `.json` per language). Covers all regional `%` placement variants: `12%%`, `%% 12` (Turkish), `12 %%` (Czech, German, Finnish, Norwegian).
+
+---
 
 ### v42.1.2 - Indoor Generator Toxicity Protection, Container Error Spam Fix & B42 Localization
 

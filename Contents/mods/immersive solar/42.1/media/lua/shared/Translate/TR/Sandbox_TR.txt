@@ -1,7 +1,7 @@
 Sandbox_TR = {
     Sandbox_ISA = "Sürükleyici Güneş Dizileri",
     Sandbox_ISA_solarPanelEfficiency = "Güneş Paneli Verimliliği",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Güneş paneli güç verimliliği<br>%12, 1993 yılı için gerçekçidir<br>%25, modern güneş enerjisidir<br>varsayılanı gerçekçi değildir",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Güneş paneli güç verimliliği<br>%%12, 1993 yılı için gerçekçidir<br>%%25, modern güneş enerjisidir<br>varsayılanı gerçekçi değildir",
     Sandbox_ISA_batteryDegradeChance = "Pilin Bozulma Şiddeti",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Pillerin ortalama bozulma çarpanı.\nBunun azaltılması pil ömrünü önemli ölçüde artıracaktır.",
     Sandbox_ISA_solarPanelWorldSpawns = "Güneş Paneli / Sandık Dünyası Yeniden Doğuyor",

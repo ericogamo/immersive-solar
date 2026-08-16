@@ -1,7 +1,7 @@
 Sandbox_NO = {
     Sandbox_ISA = "Oppslukende solarrays",
     Sandbox_ISA_solarPanelEfficiency = "Effektivitet av solcellepaneler",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Energieffektivitet for solpanel<br>12 % er realistisk for 1993<br>25 % er moderne solenergi<br>standard er urealistisk",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Energieffektivitet for solpanel<br>12 %% er realistisk for 1993<br>25 %% er moderne solenergi<br>standard er urealistisk",
     Sandbox_ISA_batteryDegradeChance = "Batteriforringelsesgrad",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Multiplikator for gjennomsnittlig nedbrytning av batterier.\nReduksjon av dette vil øke batterilevetiden dramatisk.",
     Sandbox_ISA_solarPanelWorldSpawns = "Solcellepanel / Crate World Spawns",

@@ -1,7 +1,7 @@
 {
     "Sandbox_ISA": "Immersive Solaranlagen",
     "Sandbox_ISA_solarPanelEfficiency": "Effizienz von Solarmodulen",
-    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Wirkungsgrad von Solarmodulen<br>12 % sind für 1993 realistisch<br>25 % sind moderne Solaranlagen<br>Standard ist unrealistisch",
+    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Wirkungsgrad von Solarmodulen<br>12 %% sind für 1993 realistisch<br>25 %% sind moderne Solaranlagen<br>Standard ist unrealistisch",
     "Sandbox_ISA_batteryDegradeChance": "Schweregrad der Batterieverschlechterung",
     "Sandbox_ISA_batteryDegradeChance_tooltip": "Multiplikator für die durchschnittliche Verschlechterung der Batterie.\\nWenn Sie diesen Wert verringern, erhöht sich die Lebensdauer der Batterie erheblich.",
     "Sandbox_ISA_solarPanelWorldSpawns": "Solarpanel / Kistenwelt spawnt",

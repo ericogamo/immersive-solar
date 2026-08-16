@@ -1,7 +1,7 @@
 Sandbox_NL = {
     Sandbox_ISA = "Meeslepende zonnepanelen",
     Sandbox_ISA_solarPanelEfficiency = "Efficiëntie van zonnepanelen",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Energie-efficiëntie van zonnepanelen<br>12% is realistisch voor 1993<br>25% is moderne zonne-energie<br>standaard is onrealistisch",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Energie-efficiëntie van zonnepanelen<br>12%% is realistisch voor 1993<br>25%% is moderne zonne-energie<br>standaard is onrealistisch",
     Sandbox_ISA_batteryDegradeChance = "Ernst van batterijdegradatie",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Vermenigvuldiger voor de gemiddelde degradatie van batterijen.\nAls u dit verlaagt, wordt de levensduur van de batterij dramatisch verlengd.",
     Sandbox_ISA_solarPanelWorldSpawns = "Zonnepaneel / kratwereldspawns",

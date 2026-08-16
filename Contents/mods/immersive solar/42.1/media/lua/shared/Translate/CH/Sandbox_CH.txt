@@ -1,7 +1,7 @@
 Sandbox_CH = {
     Sandbox_ISA = "沉浸式太陽能陣列",
     Sandbox_ISA_solarPanelEfficiency = "太陽能板效率",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "太陽能板效率. 在1993年效率 12%, 在現代效率 25%, 預設則非現實標準",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "太陽能板效率. 在1993年效率 12%%, 在現代效率 25%%, 預設則非現實標準",
     Sandbox_ISA_batteryDegradeChance = "電池退化嚴重度",
     Sandbox_ISA_batteryDegradeChance_tooltip = "電池平均退化乘數.\n減少則將大大增加電池壽命.",
     Sandbox_ISA_solarPanelWorldSpawns = "太陽能板/箱 世界生成",

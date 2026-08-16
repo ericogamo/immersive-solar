@@ -1,7 +1,7 @@
 {
     "Sandbox_ISA": "Matrizes solares imersivas",
     "Sandbox_ISA_solarPanelEfficiency": "Eficiência do painel solar",
-    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Eficiência energética do painel solar<br>12% é realista para 1993<br>25% é energia solar moderna<br>o padrão não é realista",
+    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Eficiência energética do painel solar<br>12%% é realista para 1993<br>25%% é energia solar moderna<br>o padrão não é realista",
     "Sandbox_ISA_batteryDegradeChance": "Gravidade da degradação da bateria",
     "Sandbox_ISA_batteryDegradeChance_tooltip": "Multiplicador para a degradação média das baterias.\\nDiminuir isso aumentará drasticamente a vida útil da bateria.",
     "Sandbox_ISA_solarPanelWorldSpawns": "Painel Solar / Crate World Spawns",

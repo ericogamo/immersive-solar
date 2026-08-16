@@ -1,7 +1,7 @@
 {
     "Sandbox_ISA": "Array Solar Imersivo (ISA)",
     "Sandbox_ISA_solarPanelEfficiency": "Eficiência do Painel Solar (0-100)",
-    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Eficiência do Painel Solar. 12% é realista para 1993, 25% para a energia solar atual, o Default é não realista",
+    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Eficiência do Painel Solar. 12%% é realista para 1993, 25%% para a energia solar atual, o Default é não realista",
     "Sandbox_ISA_batteryDegradeChance": "Probabilidade de Deterioração da Bateria (0-100)",
     "Sandbox_ISA_batteryDegradeChance_tooltip": "Probabilidade das baterias se deteriorarem a cada dia. Diminuir isto aumentará drasticamente a vida útil da bateria",
     "Sandbox_ISA_solarPanelWorldSpawns": "Aparecimento de Painel Solar / Caixa no mundo (0-100)",

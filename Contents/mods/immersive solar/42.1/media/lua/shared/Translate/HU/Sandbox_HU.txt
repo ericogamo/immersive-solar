@@ -1,7 +1,7 @@
 Sandbox_HU = {
     Sandbox_ISA = "Magával ragadó napelem-tömbök",
     Sandbox_ISA_solarPanelEfficiency = "Napelem Hatékonyság",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "A napelemek energiahatékonysága<br>12% reális 1993-ban<br>25% a modern napelem <br>az alapértelmezett érték irreális",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "A napelemek energiahatékonysága<br>12%% reális 1993-ban<br>25%% a modern napelem <br>az alapértelmezett érték irreális",
     Sandbox_ISA_batteryDegradeChance = "Az akkumulátor leromlásának súlyossága",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Az akkumulátorok átlagos leromlásának szorzója.\nEnnek csökkentése drámaian megnöveli az akkumulátor élettartamát.",
     Sandbox_ISA_solarPanelWorldSpawns = "Napelem / Crate World Spawns",

@@ -1,7 +1,7 @@
 {
     "Sandbox_ISA": "Pochłaniające panele słoneczne",
     "Sandbox_ISA_solarPanelEfficiency": "Wydajność panelu słonecznego",
-    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Efektywność energetyczna paneli słonecznych<br>12% jest realistyczna na rok 1993<br>25% to nowoczesna energia słoneczna<br>wartość domyślna jest nierealistyczna",
+    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Efektywność energetyczna paneli słonecznych<br>12%% jest realistyczna na rok 1993<br>25%% to nowoczesna energia słoneczna<br>wartość domyślna jest nierealistyczna",
     "Sandbox_ISA_batteryDegradeChance": "Stopień pogorszenia stanu akumulatorów",
     "Sandbox_ISA_batteryDegradeChance_tooltip": "Mnożnik średniego zużycia akumulatorów.\\nZmniejszenie go radykalnie wydłuży żywotność akumulatorów.",
     "Sandbox_ISA_solarPanelWorldSpawns": "Pojawia się świat paneli słonecznych/skrzynek",

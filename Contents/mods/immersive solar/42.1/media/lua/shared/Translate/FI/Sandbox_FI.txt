@@ -1,7 +1,7 @@
 Sandbox_FI = {
     Sandbox_ISA = "Mukaansatempaavat aurinkopaneelit",
     Sandbox_ISA_solarPanelEfficiency = "Aurinkopaneelien tehokkuus",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Aurinkopaneelien tehokkuus<br>12 % on realistista vuodelle 1993<br>25 % on modernia aurinkoenergiaa<br>oletusarvo on epärealistinen",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Aurinkopaneelien tehokkuus<br>12 %% on realistista vuodelle 1993<br>25 %% on modernia aurinkoenergiaa<br>oletusarvo on epärealistinen",
     Sandbox_ISA_batteryDegradeChance = "Akun heikkenemisen vakavuus",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Kertoimen akkujen keskimääräiseen kulumiseen.\nTämän vähentäminen pidentää akun käyttöikää huomattavasti.",
     Sandbox_ISA_solarPanelWorldSpawns = "Aurinkopaneeli / Crate World Spawns",

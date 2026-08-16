@@ -1,7 +1,7 @@
 {
     "Sandbox_ISA": "Immersive solarrays",
     "Sandbox_ISA_solarPanelEfficiency": "Solpaneleffektivitet",
-    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Solpanel Power Efficiency <br> 12% er realistisk for 1993 <br> 25% er moderne solen",
+    "Sandbox_ISA_solarPanelEfficiency_tooltip": "Solpanel Power Efficiency <br> 12%% er realistisk for 1993 <br> 25%% er moderne solen",
     "Sandbox_ISA_batteryDegradeChance": "Batteri forringer sværhedsgraden",
     "Sandbox_ISA_batteryDegradeChance_tooltip": "Multiplikator for den gennemsnitlige nedbrydning af batterier.\\nHvis du reducerer dette, øges batteriets levetid dramatisk.",
     "Sandbox_ISA_solarPanelWorldSpawns": "Solpanel / kasseverden spawns",

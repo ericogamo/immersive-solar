@@ -1,7 +1,7 @@
 Sandbox_CN = {
     Sandbox_ISA = "沉浸式太阳能电池阵",
     Sandbox_ISA_solarPanelEfficiency = "太阳能电池板效率",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "太阳能电池板功率<br>12%对于1993年来说是现实的<br>25%是现代太阳能<br>默认值是不现实的",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "太阳能电池板功率<br>12%%对于1993年来说是现实的<br>25%%是现代太阳能<br>默认值是不现实的",
     Sandbox_ISA_batteryDegradeChance = "电池退化严重程度",
     Sandbox_ISA_batteryDegradeChance_tooltip = "电池平均退化的乘数。\n减少此值将显着延长电池寿命。",
     Sandbox_ISA_solarPanelWorldSpawns = "太阳能电池板/板条箱世界生成",

@@ -1,7 +1,7 @@
 Sandbox_ES = {
     Sandbox_ISA = "Immersive Solar Arrays",
     Sandbox_ISA_solarPanelEfficiency = "Eficiencia del panel solar (0-100)",
-    Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiencia de potencia del panel solar. 12% es realista para 1993, 25% es para paneles modernos, el por defecto es poco realista",
+    Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiencia de potencia del panel solar. 12%% es realista para 1993, 25%% es para paneles modernos, el por defecto es poco realista",
     Sandbox_ISA_batteryDegradeChance = "Posibilidad de degradado de la batería (0-100)",
     Sandbox_ISA_batteryDegradeChance_tooltip = "Posibilidad de que las baterías se degraden cada día. Reducir esto aumentará dramáticamente la vida útil de las baterías",
     Sandbox_ISA_solarPanelWorldSpawns = "Panel solar / Aparición de cajas en el mundo (0-100)",
