@@ -4,6 +4,29 @@
 
 ## 1. Steam Workshop Change Notes (BBCode - for Steam Workshop Changelog Tab)
 
+[h1]🔧 Update v42.1.4: Backup Generator Fix, Sound Fix, i18n & Safe Uninstaller[/h1]
+
+[b]Bug Fixes:[/b]
+[list]
+[*] [b]FIX - Backup Generator Connection Broken:[/b] Fixed a critical bug where connecting a Backup Generator to a Battery Bank would play the animation but never actually connect. In B42, [code]perform()[/code] must call [code]complete()[/code] explicitly — the connection logic was never executed. Solar Panel connections had the same issue.
+[*] [b]FIX - Generator Sound Persisting on Battery Bank:[/b] Fixed the generator engine loop sound still playing on indoor Battery Banks. The previous server-side fix only removed the generator from the server processing list. Now also removes it on the [b]client side[/b] every tick, preventing the engine from re-triggering generator sounds after sync.
+[/list]
+
+[b]Localization:[/b]
+[list]
+[*] [b]Battery Bank Summary Tab i18n:[/b] The Summary status panel was previously hardcoded in German. Refactored ~40 strings to use the translation system. Now fully translatable with [b]English[/b], [b]German[/b], and [b]Chinese[/b] included (42 new translation keys).
+[*] [b]Chinese (CN) Translation Update:[/b] Added Chinese translations for ContextMenu, IG_UI, ItemName, and Sandbox options.
+[/list]
+
+[b]New: ISA Safe Uninstaller[/b]
+[list]
+[*] [b]Separate mod included in this Workshop item[/b] ([code]ISA_Uninstall[/code]) for safely removing all ISA objects from your save.
+[*] Removes Battery Banks, Solar Panels, Failsafes, SolarBoxes, overlay sprites, items from inventories, and GlobalObject data.
+[*] [b]Usage:[/b] Enable BOTH [code]ISA_42[/code] and [code]ISA Safe Uninstaller[/code], load your save, walk around to load chunks, check console for "DONE!", save, then disable BOTH mods.
+[/list]
+
+---
+
 [h1]🔧 Hotfix: Fixed Mod Not Loading in B42.20.2 (Items Missing / Sandbox Error)[/h1]
 
 [b]Fix:[/b]
@@ -32,6 +55,41 @@
 ---
 
 ## 2. Git Release Notes & Technical Changelog (Markdown - for Git / GitHub / Release Tag)
+
+### v42.1.4 - Backup Generator Fix, Sound Fix, i18n & Safe Uninstaller
+
+#### 🐛 Bug Fixes
+- **Backup Generator & Solar Panel Connection Broken (`ConnectBackup.lua`, `ConnectPanel.lua`)**:
+  - **Issue**: Connecting a Backup Generator (or Solar Panel) to a Battery Bank played the animation and sound but never actually established the connection. The dashboard always showed "No generator connected".
+  - **Root Cause**: In B42, `perform()` must explicitly call `self:complete()`. Both TimedActions overrode `perform()` without calling `complete()`, so the entire connection logic (`sendClientCommand` / `connectBackupGenerator` / `connectPanel`) was never executed.
+  - **Fix**: Added `self:complete()` call in `perform()` before `ISBaseTimedAction.perform(self)` in both files.
+
+- **Generator Sound Persisting on Battery Bank (`PowerBankSystem_Client.lua`)**:
+  - **Issue**: Indoor Battery Banks still played the generator engine loop sound despite the server-side `addToProcessIsoObjectRemove` fix.
+  - **Root Cause**: `addToProcessIsoObjectRemove()` only removed the generator from the **server** processing list. After `sync()`, the client engine saw an activated generator and started the sound. The `mutePowerbanks()` function was throttled to every 10 ticks, creating a start-stop-start cycle.
+  - **Fix**: 
+    - Removed `MUTE_THROTTLE` — `mutePowerbanks()` now runs **every tick**
+    - Added `gen:getCell():addToProcessIsoObjectRemove(gen)` on the **client side** to prevent the client engine from re-processing the generator
+
+#### 🌍 Localization
+- **Battery Bank Summary Tab i18n (`ISAStatusWindowsSummaryView.lua`)**:
+  - Replaced ~40 hardcoded German strings with `getText()` translation key lookups
+  - Dynamic values use `string.format(getText("key"), value)` pattern
+  - Added 42 new `IGUI_ISASummary_*` translation keys to EN, DE, CN (`IG_UI.json` + `.txt`)
+
+- **Chinese (CN) Translation Update** (`42.1/Translate/CN/`):
+  - Added translations across ContextMenu, IG_UI, ItemName, and Sandbox files
+
+#### 🆕 New: ISA Safe Uninstaller (`ISA_Uninstall`)
+- Separate mod included in workshop item for safely removing all ISA objects from saves
+- **3-phase cleanup**:
+  1. `OnGameStart`: Removes all tracked `isa_powerbank` GlobalObjects and their linked panel squares
+  2. `LoadGridsquare`: Ongoing chunk scanner catches ISA sprites in newly loaded chunks
+  3. Player inventory scan removes all `ISA.*` items
+- Removes: Battery Banks, Solar Panels (5 variants), Failsafes, SolarBoxes (3 variants), 20 charge overlay sprites, all ISA items, GlobalObject system data
+- All operations wrapped in `pcall` for crash safety
+
+---
 
 ### v42.1.3 - Hotfix: B42.20.2 Sandbox Translation Format Crash
 
