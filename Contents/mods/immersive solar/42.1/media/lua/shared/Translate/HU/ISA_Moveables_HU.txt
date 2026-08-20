@@ -1,4 +1,4 @@
-Moveables_HU = {
+ISA_Moveables_HU = {
     Battery_Bank = "Akkumulátorbank",
     Solar_Roof_Tile = "Lapos napelem",
     Wall_Mounted_Solar_Panel = "Falra szerelhető napelem",

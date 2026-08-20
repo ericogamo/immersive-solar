@@ -1,4 +1,4 @@
-Sandbox_UA = {
+ISA_Sandbox_UA = {
     Sandbox_ISA = "Імерсивні сонячні батареї",
     Sandbox_ISA_solarPanelEfficiency = "Ефективність сонячної панелі",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Енергоефективність сонячних панелей<br>12%% реалістично для 1993 року<br>25%% це сучасна сонячна батарея<br>за замовчуванням нереально",

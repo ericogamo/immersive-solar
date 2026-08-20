@@ -1,4 +1,4 @@
-ContextMenu_TR = {
+ISA_ContextMenu_TR = {
     ContextMenu_ISA_BatteryBank = "Şarj Bankası",
     ContextMenu_ISA_BatteryBankStatus = "Durum Penceresini Aç",
     ContextMenu_ISA_ConnectPanels = "Panelleri Bağlayın",

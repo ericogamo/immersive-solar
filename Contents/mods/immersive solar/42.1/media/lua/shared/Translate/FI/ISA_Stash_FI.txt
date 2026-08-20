@@ -1,4 +1,4 @@
-Stash_FI = {
+ISA_Stash_FI = {
     Stash_ISA_Stash_RiversideW1_t1 = "näki kuorma-auton lähtevän",
     Stash_ISA_Stash_RiversideW1_t2 = "heidän täytyy oleskella läheisellä maatilalla",
     Stash_ISA_Stash_RosewoodE1_t1 = "Vaara: Selviytyneet saattavat paeta vankeja",

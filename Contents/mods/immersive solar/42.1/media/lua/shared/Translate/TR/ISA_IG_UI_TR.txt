@@ -1,4 +1,4 @@
-IG_UI_TR = {
+ISA_IG_UI_TR = {
     IGUI_ContainerTitle_BatteryBank = "Şarj Bankası",
     IGUI_ContainerTitle_SolarBox = "Güneş Kutusu",
     IGUI_ISAWindowsStatus_Title = "Pil Bankası Durumu",

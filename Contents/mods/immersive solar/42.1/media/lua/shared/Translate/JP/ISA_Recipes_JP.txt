@@ -1,4 +1,4 @@
-Recipes_JP = {
+ISA_Recipes_JP = {
     Recipe_Make_DIY_Battery = "DIYバッテリーを作る",
     Recipe_WireCarBattery = "ワイヤーカーバッテリー",
     Recipe_UnwireCarBattery = "車のバッテリーの配線を外す",

@@ -1,4 +1,4 @@
-Recipes_NO = {
+ISA_Recipes_NO = {
     Recipe_Make_DIY_Battery = "Lag DIY-batteri",
     Recipe_WireCarBattery = "Wire bilbatteri",
     Recipe_UnwireCarBattery = "Unwire bilbatteri",

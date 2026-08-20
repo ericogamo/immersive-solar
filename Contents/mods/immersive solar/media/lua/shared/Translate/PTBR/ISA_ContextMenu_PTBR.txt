@@ -1,4 +1,4 @@
-ContextMenu_PTBR = {
+ISA_ContextMenu_PTBR = {
     ContextMenu_ISA_BatteryBank = "Banco de Baterias",
     ContextMenu_ISA_BatteryBankStatus = "Verificar o status",
     ContextMenu_ISA_ConnectPanels = "Conectado Painel Solar",

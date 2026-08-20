@@ -1,4 +1,4 @@
-Recipes_DA = {
+ISA_Recipes_DA = {
     Recipe_Make_DIY_Battery = "Lav DIY-batteri",
     Recipe_WireCarBattery = "Tråd bilbatteri",
     Recipe_UnwireCarBattery = "Ubehandler bilbatteri",

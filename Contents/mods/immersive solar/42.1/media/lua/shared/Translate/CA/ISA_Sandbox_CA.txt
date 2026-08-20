@@ -1,4 +1,4 @@
-Sandbox_CA = {
+ISA_Sandbox_CA = {
     Sandbox_ISA = "Arrays solars immersius",
     Sandbox_ISA_solarPanelEfficiency = "Eficincia del panell solar",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "L'eficincia energtica dels panells solars<br>12%% s realista per al 1993<br>25%% s solar moderna<br>El valor predeterminat no s realista",

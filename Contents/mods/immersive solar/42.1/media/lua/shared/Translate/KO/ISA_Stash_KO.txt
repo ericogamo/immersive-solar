@@ -1,4 +1,4 @@
-Stash_KO = {
+ISA_Stash_KO = {
     Stash_ISA_Stash_RiversideW1_t1 = "saw truck leaving",
     Stash_ISA_Stash_RiversideW1_t2 = "they must be staying in a farm nearby",
     Stash_ISA_Stash_RosewoodE1_t1 = "Danger: Survivors may be escaping inmates",

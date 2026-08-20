@@ -1,4 +1,4 @@
-Stash_PTBR = {
+ISA_Stash_PTBR = {
     Stash_ISA_Stash_RiversideW1_t1 = "viu caminhão saindo",
     Stash_ISA_Stash_RiversideW1_t2 = "Eles devem ficar em uma fazenda nas proximidades",
     Stash_ISA_Stash_RosewoodE1_t1 = "Perigo: os sobreviventes podem estar escapando de presos",

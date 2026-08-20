@@ -1,4 +1,4 @@
-Moveables_UA = {
+ISA_Moveables_UA = {
     Battery_Bank = "Банк батареї",
     Solar_Roof_Tile = "Плоска сонячна панель",
     Wall_Mounted_Solar_Panel = "Настінна сонячна панель",

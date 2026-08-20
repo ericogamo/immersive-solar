@@ -1,4 +1,4 @@
-ContextMenu_CN = {
+ISA_ContextMenu_CN = {
     ContextMenu_ISA_BatteryBank = "电池组",
     ContextMenu_ISA_BatteryBankStatus = "打开状态窗口",
     ContextMenu_ISA_ConnectPanels = "连接面板",

@@ -1,4 +1,4 @@
-Recipes_TR = {
+ISA_Recipes_TR = {
     Recipe_Make_DIY_Battery = "DIY Pil Yap",
     Recipe_WireCarBattery = "Tel Araba Aküsü",
     Recipe_UnwireCarBattery = "Araç Aküsünün Kablolarını Çözün",

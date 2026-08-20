@@ -1,4 +1,4 @@
-Recipes_NL = {
+ISA_Recipes_NL = {
     Recipe_Make_DIY_Battery = "Maak een doe-het-zelf-batterij",
     Recipe_WireCarBattery = "Draad auto-accu",
     Recipe_UnwireCarBattery = "Ontkoppel de autoaccu",

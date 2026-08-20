@@ -1,4 +1,4 @@
-Moveables_DA = {
+ISA_Moveables_DA = {
     Battery_Bank = "Batteribank",
     Solar_Roof_Tile = "Fladt solpanel",
     Wall_Mounted_Solar_Panel = "Vægmonteret solpanel",

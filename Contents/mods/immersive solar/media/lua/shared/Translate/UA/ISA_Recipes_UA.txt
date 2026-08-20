@@ -1,4 +1,4 @@
-Recipes_UA = {
+ISA_Recipes_UA = {
     Recipe_Make_DIY_Battery = "Зробіть акумулятор своїми руками",
     Recipe_WireCarBattery = "Провідний автомобільний акумулятор",
     Recipe_UnwireCarBattery = "Від'єднайте автомобільний акумулятор",

@@ -1,4 +1,4 @@
-Moveables_PH = {
+ISA_Moveables_PH = {
     Battery_Bank = "Bangko ng Baterya",
     Solar_Roof_Tile = "Flat Solar Panel",
     Wall_Mounted_Solar_Panel = "Wall-Mounted Solar Panel",

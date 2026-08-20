@@ -1,4 +1,4 @@
-IG_UI_JP = {
+ISA_IG_UI_JP = {
     IGUI_ContainerTitle_BatteryBank = "バッテリーバンク",
     IGUI_ContainerTitle_SolarBox = "ソーラーボックス",
     IGUI_ISAWindowsStatus_Title = "バッテリーバンクのステータス",

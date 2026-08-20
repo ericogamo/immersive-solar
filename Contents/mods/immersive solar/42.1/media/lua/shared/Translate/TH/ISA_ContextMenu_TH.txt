@@ -1,4 +1,4 @@
-ContextMenu_TH = {
+ISA_ContextMenu_TH = {
     ContextMenu_ISA_BatteryBank = "ฐานเก็บประจุไฟ",
     ContextMenu_ISA_BatteryBankStatus = "เปิดหน้าต่างสถานะ",
     ContextMenu_ISA_ConnectPanels = "เชื่อมต่อแผงโซลาร์เซลล์",

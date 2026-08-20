@@ -1,4 +1,4 @@
-IG_UI_ID = {
+ISA_IG_UI_ID = {
     IGUI_ContainerTitle_BatteryBank = "Bank Baterai",
     IGUI_ContainerTitle_SolarBox = "Kotak Surya",
     IGUI_ISAWindowsStatus_Title = "Status Bank Baterai",

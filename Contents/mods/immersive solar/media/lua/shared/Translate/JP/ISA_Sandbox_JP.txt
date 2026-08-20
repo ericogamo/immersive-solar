@@ -1,4 +1,4 @@
-Sandbox_JP = {
+ISA_Sandbox_JP = {
     Sandbox_ISA = "没入型太陽電池アレイ",
     Sandbox_ISA_solarPanelEfficiency = "ソーラーパネルの効率",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "ソーラーパネルの電力効率<br>1993年では12%%が現実的<br>現代の太陽光発電では25%%<br>デフォルトは非現実的",

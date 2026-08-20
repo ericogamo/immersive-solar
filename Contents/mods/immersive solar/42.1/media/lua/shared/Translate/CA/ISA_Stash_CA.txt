@@ -1,4 +1,4 @@
-Stash_CA = {
+ISA_Stash_CA = {
     Stash_ISA_Stash_RiversideW1_t1 = "va veure marxar un cami",
     Stash_ISA_Stash_RiversideW1_t2 = "s'han d'allotjar en una granja propera",
     Stash_ISA_Stash_RosewoodE1_t1 = "Perill: els supervivents poden escapar dels presos",

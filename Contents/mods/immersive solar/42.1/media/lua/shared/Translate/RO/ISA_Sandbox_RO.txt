@@ -1,4 +1,4 @@
-Sandbox_RO = {
+ISA_Sandbox_RO = {
     Sandbox_ISA = "Rețele solare imersive",
     Sandbox_ISA_solarPanelEfficiency = "Eficiența panoului solar",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiența energiei panoului solar<br>12%% este realist pentru 1993<br>25%% este solar modern<br>implicit este nerealist",

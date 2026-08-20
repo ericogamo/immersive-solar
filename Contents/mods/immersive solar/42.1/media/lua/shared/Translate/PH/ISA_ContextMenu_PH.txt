@@ -1,4 +1,4 @@
-ContextMenu_PH = {
+ISA_ContextMenu_PH = {
     ContextMenu_ISA_BatteryBank = "Bangko ng Baterya",
     ContextMenu_ISA_BatteryBankStatus = "Buksan ang Status Window",
     ContextMenu_ISA_ConnectPanels = "Ikonekta ang mga Panel",

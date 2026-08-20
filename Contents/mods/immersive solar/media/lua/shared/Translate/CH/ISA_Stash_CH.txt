@@ -1,4 +1,4 @@
-Stash_CH = {
+ISA_Stash_CH = {
     Stash_ISA_Stash_RiversideW1_t1 = "鋸木車離開",
     Stash_ISA_Stash_RiversideW1_t2 = "他們應該停留農場附近",
     Stash_ISA_Stash_RosewoodE1_t1 = "危險: 倖存者可能正在逃離",

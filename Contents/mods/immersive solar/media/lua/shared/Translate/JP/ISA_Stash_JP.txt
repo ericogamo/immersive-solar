@@ -1,4 +1,4 @@
-Stash_JP = {
+ISA_Stash_JP = {
     Stash_ISA_Stash_RiversideW1_t1 = "トラックが出発するのを見た",
     Stash_ISA_Stash_RiversideW1_t2 = "彼らは近くの農場に滞在しているに違いありません",
     Stash_ISA_Stash_RosewoodE1_t1 = "危険: 生存者が囚人から逃げ出す可能性がある",

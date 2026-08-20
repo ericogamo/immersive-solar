@@ -1,4 +1,4 @@
-Moveables_FI = {
+ISA_Moveables_FI = {
     Battery_Bank = "Akkupankki",
     Solar_Roof_Tile = "Litteä aurinkopaneeli",
     Wall_Mounted_Solar_Panel = "Seinään kiinnitettävä aurinkopaneeli",

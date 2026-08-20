@@ -1,4 +1,4 @@
-ContextMenu_RO = {
+ISA_ContextMenu_RO = {
     ContextMenu_ISA_BatteryBank = "Banca de baterii",
     ContextMenu_ISA_BatteryBankStatus = "Deschideți fereastra de stare",
     ContextMenu_ISA_ConnectPanels = "Conectați panourile",

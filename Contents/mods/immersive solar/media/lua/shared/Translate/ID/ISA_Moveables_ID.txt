@@ -1,4 +1,4 @@
-Moveables_ID = {
+ISA_Moveables_ID = {
     Battery_Bank = "Bank Baterai",
     Solar_Roof_Tile = "Panel Surya Datar",
     Wall_Mounted_Solar_Panel = "Panel Surya yang Dipasang di Dinding",

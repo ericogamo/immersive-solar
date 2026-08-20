@@ -1,4 +1,4 @@
-IG_UI_TH = {
+ISA_IG_UI_TH = {
     IGUI_ContainerTitle_BatteryBank = "ฐานเก็บประจุไฟ",
     IGUI_ContainerTitle_SolarBox = "กล่องบรรจุอุปกรณ์โซลาร์เซลล์",
     IGUI_ISAWindowsStatus_Title = "ข้อมูลของฐานเก็บประจุไฟ",

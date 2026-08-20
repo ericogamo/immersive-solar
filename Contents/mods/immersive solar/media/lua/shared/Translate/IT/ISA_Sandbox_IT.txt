@@ -1,4 +1,4 @@
-Sandbox_IT = {
+ISA_Sandbox_IT = {
     Sandbox_ISA = "Sistema solare immersivo (ISA)",
     Sandbox_ISA_solarPanelEfficiency = "Efficenza del pannello solare (0-100)",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Efficenza del pannello solare. Il 12%% Ã¨ realistico per il 1993, 25%% ai giorni nostri, l'impostazione predefinita non Ã¨ realistica",

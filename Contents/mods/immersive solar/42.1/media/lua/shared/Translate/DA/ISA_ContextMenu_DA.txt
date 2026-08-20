@@ -1,4 +1,4 @@
-ContextMenu_DA = {
+ISA_ContextMenu_DA = {
     ContextMenu_ISA_BatteryBank = "Batteribank",
     ContextMenu_ISA_BatteryBankStatus = "Åbn statusvinduet",
     ContextMenu_ISA_ConnectPanels = "Tilslut paneler",

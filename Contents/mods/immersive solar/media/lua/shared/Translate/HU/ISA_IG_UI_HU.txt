@@ -1,4 +1,4 @@
-IG_UI_HU = {
+ISA_IG_UI_HU = {
     IGUI_ContainerTitle_BatteryBank = "Akkumulátorbank",
     IGUI_ContainerTitle_SolarBox = "Solar Box",
     IGUI_ISAWindowsStatus_Title = "Akkumulátorbank állapota",

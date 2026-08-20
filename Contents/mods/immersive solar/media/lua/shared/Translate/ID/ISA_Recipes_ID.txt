@@ -1,4 +1,4 @@
-Recipes_ID = {
+ISA_Recipes_ID = {
     Recipe_Make_DIY_Battery = "Buat Baterai DIY",
     Recipe_WireCarBattery = "Kawat Aki Mobil",
     Recipe_UnwireCarBattery = "Lepas Kabel Aki Mobil",

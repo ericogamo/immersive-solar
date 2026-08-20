@@ -1,4 +1,4 @@
-Moveables_EN = {
+ISA_Moveables_EN = {
     Battery_Bank = "Battery Bank",
     Solar_Roof_Tile = "Flat Solar Panel",
     Wall_Mounted_Solar_Panel = "Wall-Mounted Solar Panel",

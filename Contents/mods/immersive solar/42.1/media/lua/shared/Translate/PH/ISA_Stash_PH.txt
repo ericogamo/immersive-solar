@@ -1,4 +1,4 @@
-Stash_PH = {
+ISA_Stash_PH = {
     Stash_ISA_Stash_RiversideW1_t1 = "nakitang paalis ang trak",
     Stash_ISA_Stash_RiversideW1_t2 = "sila ay dapat na naninirahan sa isang malapit na bukid",
     Stash_ISA_Stash_RosewoodE1_t1 = "Panganib: Ang mga nakaligtas ay maaaring tumakas sa mga bilanggo",

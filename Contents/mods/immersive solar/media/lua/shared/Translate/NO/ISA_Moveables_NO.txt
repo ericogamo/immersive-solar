@@ -1,4 +1,4 @@
-Moveables_NO = {
+ISA_Moveables_NO = {
     Battery_Bank = "Batteribank",
     Solar_Roof_Tile = "Flatt solcellepanel",
     Wall_Mounted_Solar_Panel = "Veggmontert solcellepanel",

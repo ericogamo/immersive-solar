@@ -1,4 +1,4 @@
-Sandbox_PTBR = {
+ISA_Sandbox_PTBR = {
     Sandbox_ISA = "Array Solar Imersivo (ISA)",
     Sandbox_ISA_solarPanelEfficiency = "Eficiência do Painel Solar (0-100)",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiência do Painel Solar. 12%% é realista para 1993, 25%% para a energia solar atual, o Default é não realista",

@@ -1,4 +1,4 @@
-Sandbox_PH = {
+ISA_Sandbox_PH = {
     Sandbox_ISA = "Nakaka-engganyong Solar Array",
     Sandbox_ISA_solarPanelEfficiency = "Kahusayan ng Solar Panel",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Solar panel power efficiency<br>12%% ay makatotohanan para sa 1993<br>25%% ay modernong solar<br>default ay hindi makatotohanan",

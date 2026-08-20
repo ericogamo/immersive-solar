@@ -1,4 +1,4 @@
-Recipes_PH = {
+ISA_Recipes_PH = {
     Recipe_Make_DIY_Battery = "Gumawa ng DIY Battery",
     Recipe_WireCarBattery = "Baterya ng Wire Car",
     Recipe_UnwireCarBattery = "Tanggalin ang Kawad na Baterya ng Sasakyan",

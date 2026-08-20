@@ -1,4 +1,4 @@
-Recipes_PTBR = {
+ISA_Recipes_PTBR = {
     Recipe_Make_DIY_Battery = "Faça bateria DIY",
     Recipe_WireCarBattery = "Bateria do carro de arame",
     Recipe_UnwireCarBattery = "Bateria inútil",

@@ -1,4 +1,4 @@
-IG_UI_RU = {
+ISA_IG_UI_RU = {
     IGUI_ContainerTitle_BatteryBank = "Аккумуляторная Батарея",
     IGUI_ContainerTitle_SolarBox = "Solar Box",
     IGUI_ISAWindowsStatus_Title = "Статус Аккумуляторной Батареи",

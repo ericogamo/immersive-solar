@@ -1,4 +1,4 @@
-Recipes_CS = {
+ISA_Recipes_CS = {
     Recipe_Make_DIY_Battery = "Vyrobte si vlastn baterii",
     Recipe_WireCarBattery = "Drtov autobaterie",
     Recipe_UnwireCarBattery = "Odpojte autobaterii",

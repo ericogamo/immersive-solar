@@ -1,4 +1,4 @@
-Stash_UA = {
+ISA_Stash_UA = {
     Stash_ISA_Stash_RiversideW1_t1 = "побачив, що вантажівка від'їжджає",
     Stash_ISA_Stash_RiversideW1_t2 = "вони, мабуть, живуть на фермі поблизу",
     Stash_ISA_Stash_RosewoodE1_t1 = "Небезпека: ті, хто вижив, можуть тікати від в'язнів",

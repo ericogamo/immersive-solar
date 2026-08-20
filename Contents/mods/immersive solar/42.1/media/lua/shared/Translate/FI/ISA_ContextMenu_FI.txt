@@ -1,4 +1,4 @@
-ContextMenu_FI = {
+ISA_ContextMenu_FI = {
     ContextMenu_ISA_BatteryBank = "Akkupankki",
     ContextMenu_ISA_BatteryBankStatus = "Avaa tilaikkuna",
     ContextMenu_ISA_ConnectPanels = "Liitä paneelit",

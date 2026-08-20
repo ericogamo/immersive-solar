@@ -1,4 +1,4 @@
-Tooltip_CA = {
+ISA_Tooltip_CA = {
     Tooltip_ISA_NoPanels = "Sense panell",
     Tooltip_ISA_PanelFar = "Aquest panell est massa lluny",
 }

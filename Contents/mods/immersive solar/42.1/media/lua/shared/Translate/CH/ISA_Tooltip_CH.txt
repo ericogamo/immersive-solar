@@ -1,4 +1,4 @@
-Tooltip_CH = {
+ISA_Tooltip_CH = {
     Tooltip_ISA_NoPanels = "無太陽能板",
     Tooltip_ISA_PanelFar = "這個面板太遠了",
 }

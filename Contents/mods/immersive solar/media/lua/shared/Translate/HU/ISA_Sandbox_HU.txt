@@ -1,4 +1,4 @@
-Sandbox_HU = {
+ISA_Sandbox_HU = {
     Sandbox_ISA = "Magával ragadó napelem-tömbök",
     Sandbox_ISA_solarPanelEfficiency = "Napelem Hatékonyság",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "A napelemek energiahatékonysága<br>12%% reális 1993-ban<br>25%% a modern napelem <br>az alapértelmezett érték irreális",

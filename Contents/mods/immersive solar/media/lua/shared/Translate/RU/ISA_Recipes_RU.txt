@@ -1,4 +1,4 @@
-Recipes_RU = {
+ISA_Recipes_RU = {
     Recipe_Make_DIY_Battery = "Сделайте DIY батарею",
     Recipe_WireCarBattery = "Проводная автомобильная батарея",
     Recipe_UnwireCarBattery = "Неужелющий автомобильный аккумулятор",

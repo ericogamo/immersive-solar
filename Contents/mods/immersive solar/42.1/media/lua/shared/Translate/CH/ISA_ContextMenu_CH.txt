@@ -1,4 +1,4 @@
-ContextMenu_CH = {
+ISA_ContextMenu_CH = {
     ContextMenu_ISA_BatteryBank = "蓄電池庫",
     ContextMenu_ISA_BatteryBankStatus = "開啟狀態選單",
     ContextMenu_ISA_ConnectPanels = "連接太陽能板",

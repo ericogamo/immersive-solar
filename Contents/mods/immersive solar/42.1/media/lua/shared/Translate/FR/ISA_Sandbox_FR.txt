@@ -1,4 +1,4 @@
-Sandbox_FR = {
+ISA_Sandbox_FR = {
     Sandbox_ISA = "Panneaux photovoltaïques immersifs",
     Sandbox_ISA_solarPanelEfficiency = "Efficacité du panneau solaire (0-100)",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Efficacité de la puissance du panneau solaire. En 1993, 12%% de puissance est réaliste, les panneaux photovoltaïques modernes sont à 25%%, le paramètre par défaut est irréaliste",

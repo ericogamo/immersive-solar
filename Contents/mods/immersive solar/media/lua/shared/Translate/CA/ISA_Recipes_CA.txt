@@ -1,4 +1,4 @@
-Recipes_CA = {
+ISA_Recipes_CA = {
     Recipe_Make_DIY_Battery = "Feu una bateria de bricolatge",
     Recipe_WireCarBattery = "Bateria de cotxe de filferro",
     Recipe_UnwireCarBattery = "Desconnecteu la bateria del cotxe",

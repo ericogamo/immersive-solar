@@ -1,4 +1,4 @@
-Recipes_PL = {
+ISA_Recipes_PL = {
     Recipe_Make_DIY_Battery = "Zrób baterię DIY",
     Recipe_WireCarBattery = "Okablowany akumulator samochodowy",
     Recipe_UnwireCarBattery = "Odłącz akumulator samochodowy",

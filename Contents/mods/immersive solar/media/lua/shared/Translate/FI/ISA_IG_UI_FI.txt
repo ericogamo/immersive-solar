@@ -1,4 +1,4 @@
-IG_UI_FI = {
+ISA_IG_UI_FI = {
     IGUI_ContainerTitle_BatteryBank = "Akkupankki",
     IGUI_ContainerTitle_SolarBox = "Solar Box",
     IGUI_ISAWindowsStatus_Title = "Akkupankin tila",

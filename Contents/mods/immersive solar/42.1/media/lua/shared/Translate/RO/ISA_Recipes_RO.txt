@@ -1,4 +1,4 @@
-Recipes_RO = {
+ISA_Recipes_RO = {
     Recipe_Make_DIY_Battery = "Faceți baterie DIY",
     Recipe_WireCarBattery = "Baterie de mașină cu sârmă",
     Recipe_UnwireCarBattery = "Deconectați bateria mașinii",

@@ -1,4 +1,4 @@
-ContextMenu_HU = {
+ISA_ContextMenu_HU = {
     ContextMenu_ISA_BatteryBank = "Akkumulátorbank",
     ContextMenu_ISA_BatteryBankStatus = "Nyissa meg az Állapot ablakot",
     ContextMenu_ISA_ConnectPanels = "Panelek csatlakoztatása",

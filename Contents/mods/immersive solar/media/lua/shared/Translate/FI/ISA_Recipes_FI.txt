@@ -1,4 +1,4 @@
-Recipes_FI = {
+ISA_Recipes_FI = {
     Recipe_Make_DIY_Battery = "Tee DIY-akku",
     Recipe_WireCarBattery = "Langallinen auton akku",
     Recipe_UnwireCarBattery = "Irrotettava auton akku",

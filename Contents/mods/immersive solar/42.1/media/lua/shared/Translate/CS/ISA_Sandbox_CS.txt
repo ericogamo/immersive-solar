@@ -1,4 +1,4 @@
-Sandbox_CS = {
+ISA_Sandbox_CS = {
     Sandbox_ISA = "Imerzn solrn pole",
     Sandbox_ISA_solarPanelEfficiency = "innost solrnch panel",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Energetick innost solrnch panel<br>12 %% je reln pro rok 1993<br>25 %% je modern solrn energie<br>vchoz hodnota je nerealistick",

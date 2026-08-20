@@ -1,4 +1,4 @@
-Moveables_PTBR = {
+ISA_Moveables_PTBR = {
     Battery_Bank = "Banco de Baterias",
     Solar_Roof_Tile = "Painel Solar de Teto",
     Wall_Mounted_Solar_Panel = "Painel Solar de Parede",

@@ -1,4 +1,4 @@
-ContextMenu_KO = {
+ISA_ContextMenu_KO = {
     ContextMenu_ISA_BatteryBank = "Battery Bank",
     ContextMenu_ISA_BatteryBankStatus = "Open Status Window",
     ContextMenu_ISA_ConnectPanels = "Connect Panels",

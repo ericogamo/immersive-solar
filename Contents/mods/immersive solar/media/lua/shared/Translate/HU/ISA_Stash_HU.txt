@@ -1,4 +1,4 @@
-Stash_HU = {
+ISA_Stash_HU = {
     Stash_ISA_Stash_RiversideW1_t1 = "látta elmenni a teherautót",
     Stash_ISA_Stash_RiversideW1_t2 = "biztos egy közeli farmon szállnak meg",
     Stash_ISA_Stash_RosewoodE1_t1 = "Veszély: A túlélők megszökhetnek a fogvatartottaktól",

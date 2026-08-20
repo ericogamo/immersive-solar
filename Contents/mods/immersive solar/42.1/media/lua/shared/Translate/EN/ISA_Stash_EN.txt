@@ -1,3 +1,4 @@
+ISA_Stash_EN = {
 --
 Stash_ISA_Stash_RiversideW1_t1 = "saw truck leaving"
 Stash_ISA_Stash_RiversideW1_t2 = "they must be staying in a farm nearby"

@@ -1,4 +1,4 @@
-IG_UI_PH = {
+ISA_IG_UI_PH = {
     IGUI_ContainerTitle_BatteryBank = "Bangko ng Baterya",
     IGUI_ContainerTitle_SolarBox = "Solar Box",
     IGUI_ISAWindowsStatus_Title = "Katayuan ng Bangko ng Baterya",

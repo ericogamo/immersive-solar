@@ -1,4 +1,4 @@
-ContextMenu_UA = {
+ISA_ContextMenu_UA = {
     ContextMenu_ISA_BatteryBank = "Банк батареї",
     ContextMenu_ISA_BatteryBankStatus = "Відкрити вікно стану",
     ContextMenu_ISA_ConnectPanels = "Підключити панелі",

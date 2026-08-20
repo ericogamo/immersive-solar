@@ -1,4 +1,4 @@
-Sandbox_AR = {
+ISA_Sandbox_AR = {
     Sandbox_ISA = "Paneles solares inmersivos",
     Sandbox_ISA_solarPanelEfficiency = "Eficiencia del panel solar",
     Sandbox_ISA_solarPanelEfficiency_tooltip = "Eficiencia energtica de los paneles solares<br>12%% es realista para 1993<br>25%% es energa solar moderna<br>el valor predeterminado no es realista",

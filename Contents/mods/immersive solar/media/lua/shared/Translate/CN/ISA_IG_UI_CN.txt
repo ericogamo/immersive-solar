@@ -1,4 +1,4 @@
-IG_UI_CN = {
+ISA_IG_UI_CN = {
     IGUI_ContainerTitle_BatteryBank = "电池组",
     IGUI_ContainerTitle_SolarBox = "太阳能箱",
     IGUI_ISAWindowsStatus_Title = "电池组状态",

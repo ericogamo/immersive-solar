@@ -1,4 +1,4 @@
-Tooltip_CS = {
+ISA_Tooltip_CS = {
     Tooltip_ISA_NoPanels = "dn panel",
     Tooltip_ISA_PanelFar = "Tento panel je pli daleko",
 }

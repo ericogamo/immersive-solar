@@ -1,4 +1,4 @@
-Recipes_CN = {
+ISA_Recipes_CN = {
     Recipe_Make_DIY_Battery = "DIY电池",
     Recipe_WireCarBattery = "线控车电池",
     Recipe_UnwireCarBattery = "无线汽车电池",

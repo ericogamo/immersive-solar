@@ -1,4 +1,4 @@
-Stash_CS = {
+ISA_Stash_CS = {
     Stash_ISA_Stash_RiversideW1_t1 = "vidl odjdjc kamion",
     Stash_ISA_Stash_RiversideW1_t2 = "mus bydlet na blzk farm",
     Stash_ISA_Stash_RosewoodE1_t1 = "Nebezpe: Peiv mohou unikat vzm",

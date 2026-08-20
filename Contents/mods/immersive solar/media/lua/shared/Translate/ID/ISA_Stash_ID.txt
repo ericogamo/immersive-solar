@@ -1,4 +1,4 @@
-Stash_ID = {
+ISA_Stash_ID = {
     Stash_ISA_Stash_RiversideW1_t1 = "melihat truk berangkat",
     Stash_ISA_Stash_RiversideW1_t2 = "mereka pasti tinggal di peternakan terdekat",
     Stash_ISA_Stash_RosewoodE1_t1 = "Bahaya: Korban yang selamat mungkin melarikan diri dari narapidana",

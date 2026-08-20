@@ -1,4 +1,4 @@
-Moveables_JP = {
+ISA_Moveables_JP = {
     Battery_Bank = "バッテリーバンク",
     Solar_Roof_Tile = "フラットソーラーパネル",
     Wall_Mounted_Solar_Panel = "壁掛けソーラーパネル",

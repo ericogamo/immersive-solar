@@ -1,4 +1,4 @@
-Stash_DA = {
+ISA_Stash_DA = {
     Stash_ISA_Stash_RiversideW1_t1 = "så lastbilen køre",
     Stash_ISA_Stash_RiversideW1_t2 = "de skal bo på en gård i nærheden",
     Stash_ISA_Stash_RosewoodE1_t1 = "Fare: Overlevende kan være på flugt fra indsatte",

@@ -1,4 +1,4 @@
-Recipes_HU = {
+ISA_Recipes_HU = {
     Recipe_Make_DIY_Battery = "Készítsen DIY akkumulátort",
     Recipe_WireCarBattery = "Vezetékes autó akkumulátor",
     Recipe_UnwireCarBattery = "Vezeték nélküli autó akkumulátor",

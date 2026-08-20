@@ -1,4 +1,4 @@
-Stash_ES = {
+ISA_Stash_ES = {
     Stash_ISA_Stash_RiversideW1_t1 = "vio camión saliendo",
     Stash_ISA_Stash_RiversideW1_t2 = "deben estar en una granja cercana",
     Stash_ISA_Stash_RosewoodE1_t1 = "Peligro: los sobrevivientes pueden estar escapando a los reclusos",

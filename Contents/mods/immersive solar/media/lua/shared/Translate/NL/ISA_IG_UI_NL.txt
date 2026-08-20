@@ -1,4 +1,4 @@
-IG_UI_NL = {
+ISA_IG_UI_NL = {
     IGUI_ContainerTitle_BatteryBank = "Batterijbank",
     IGUI_ContainerTitle_SolarBox = "Zonne-box",
     IGUI_ISAWindowsStatus_Title = "Status batterijbank",

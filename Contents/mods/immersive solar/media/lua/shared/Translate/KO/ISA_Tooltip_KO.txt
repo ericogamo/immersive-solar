@@ -1,4 +1,4 @@
-Tooltip_KO = {
+ISA_Tooltip_KO = {
     Tooltip_ISA_NoPanels = "No Panel",
     Tooltip_ISA_PanelFar = "This panel is too far",
 }

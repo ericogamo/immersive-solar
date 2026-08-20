@@ -1,4 +1,4 @@
-ContextMenu_ID = {
+ISA_ContextMenu_ID = {
     ContextMenu_ISA_BatteryBank = "Bank Baterai",
     ContextMenu_ISA_BatteryBankStatus = "Buka Jendela Status",
     ContextMenu_ISA_ConnectPanels = "Hubungkan Panel",

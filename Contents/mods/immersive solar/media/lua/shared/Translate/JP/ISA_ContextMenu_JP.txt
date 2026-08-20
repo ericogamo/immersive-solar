@@ -1,4 +1,4 @@
-ContextMenu_JP = {
+ISA_ContextMenu_JP = {
     ContextMenu_ISA_BatteryBank = "バッテリーバンク",
     ContextMenu_ISA_BatteryBankStatus = "ステータスウィンドウを開く",
     ContextMenu_ISA_ConnectPanels = "パネルを接続する",

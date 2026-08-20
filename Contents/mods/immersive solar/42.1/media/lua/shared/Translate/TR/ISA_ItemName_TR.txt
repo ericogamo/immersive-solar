@@ -1,4 +1,4 @@
-ItemName_TR = {
+ISA_ItemName_TR = {
     ItemName_ISA.ISAMag1 = "New Advancements: Energy From The Sun",
     ItemName_ISA.SolarPanel = "Solar Panel (part)",
     ItemName_ISA.ISAInverter = "Inverter",

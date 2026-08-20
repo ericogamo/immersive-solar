@@ -1,4 +1,4 @@
-Moveables_RU = {
+ISA_Moveables_RU = {
     Battery_Bank = "Аккумуляторный стеллаж",
     Solar_Roof_Tile = "Солнечная батарея (крыша)",
     Wall_Mounted_Solar_Panel = "Солнечная батарея (стена)",
