@@ -1,4 +1,0 @@
-ISA_Tooltip_AR = {
-    Tooltip_ISA_NoPanels = "Sin paneles",
-    Tooltip_ISA_PanelFar = "Este panel est demasiado lejos.",
-}

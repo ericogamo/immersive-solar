@@ -1,4 +1,0 @@
-ISA_Tooltip_TR = {
-    Tooltip_ISA_NoPanels = "Panel Yok",
-    Tooltip_ISA_PanelFar = "Bu panel çok uzak",
-}

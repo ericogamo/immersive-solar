@@ -1,9 +1,0 @@
-ISA_ItemName_CN = {
-    ItemName_ISA.ISAMag1 = "新科技：来自太阳的能源",
-    ItemName_ISA.SolarPanel = "太阳能电池板（部件）",
-    ItemName_ISA.ISAInverter = "逆变器",
-    ItemName_ISA.DeepCycleBattery = "200Ah 深循环电池",
-    ItemName_ISA.SuperBattery = "400Ah 深循环电池",
-    ItemName_ISA.WiredCarBattery = "接线汽车电池",
-    ItemName_ISA.DIYBattery = "自制深循环电池",
-}
