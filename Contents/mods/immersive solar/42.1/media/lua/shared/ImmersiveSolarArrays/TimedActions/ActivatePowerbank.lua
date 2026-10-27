@@ -5,11 +5,9 @@ local ISA = require "ImmersiveSolarArrays/Utilities"
 ISA_ActivatePowerBank = ISBaseTimedAction:derive("ISA_ActivatePowerBank")
 
 function ISA_ActivatePowerBank:new(character, powerbank, activate, x, y, z)
-    local o = {}
-    setmetatable(o, self)
-    self.__index = self
-    o.character = character
+    local o = ISBaseTimedAction.new(self, character)
     o.activate = activate
+    o.powerbank = powerbank
     o.isoPb = powerbank
     o.stopOnWalk = true
     o.stopOnRun = true

@@ -383,23 +383,32 @@ function PowerBank:fixIndex()
     self.fixIndex_done = true
 
     local square = self:getSquare()
-    local special = square:getSpecialObjects()
     local bank,hasGen
-    local i = 0
-    while i < special:size() do
-        local obj = special:get(i)
-        if not bank and obj:getTextureName() == "solarmod_tileset_01_0" then
-            bank = true
-        elseif instanceof(obj,"IsoGenerator") then
-            if bank and not hasGen then
-                hasGen = true
-            else
-                obj:remove()
-                i=i-1
+
+    -- Check both special objects and regular objects for B42 compatibility
+    local function checkObjects(objects)
+        local i = 0
+        while i < objects:size() do
+            local obj = objects:get(i)
+            if not bank and (ISA.WorldUtil.getSpriteName(obj) == "solarmod_tileset_01_0" or ISA.WorldUtil.getType(obj) == "PowerBank") then
+                bank = true
+            elseif instanceof(obj,"IsoGenerator") then
+                if bank and not hasGen then
+                    hasGen = true
+                else
+                    obj:remove()
+                    i=i-1
+                end
             end
+            i = i +1
         end
-        i = i +1
     end
+
+    checkObjects(square:getSpecialObjects())
+    if not bank then
+        checkObjects(square:getObjects())
+    end
+
     if self.conGenerator then
         local conGenerator,conSquare = self:getConGenerator()
         if conSquare and not self.luaSystem:getValidBackupOnSquare(conSquare) then

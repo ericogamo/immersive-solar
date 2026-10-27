@@ -42,7 +42,7 @@ else
 
         if isaType == "PowerBank" then
             local index = isoObject:getObjectIndex()
-            local spriteName = isoObject:getTextureName()
+            local spriteName = ISA.WorldUtil.getSpriteName(isoObject) or "solarmod_tileset_01_0"
             square:transmitRemoveItemFromSquare(isoObject)
             RandomWorldSpawns.addToWorld(square, spriteName, index)
         else

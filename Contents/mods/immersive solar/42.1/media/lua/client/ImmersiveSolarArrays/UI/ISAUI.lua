@@ -28,16 +28,7 @@ function UI.onConnectPanel(player,panel,luaPb)
     if luautils.walkAdj(character, panel:getSquare(), true) then
         local panelX, panelY, panelZ = panel:getX(), panel:getY(), panel:getZ()
         local pbX, pbY, pbZ = luaPb.x, luaPb.y, luaPb.z
-        local action = ISA_ConnectPanel:new(character, panel, luaPb, panelX, panelY, panelZ, pbX, pbY, pbZ)
-        action.character = character
-        action.panel = panel
-        action.luaPb = luaPb
-        action.x = panelX
-        action.y = panelY
-        action.z = panelZ
-        action.pbX = pbX
-        action.pbY = pbY
-        action.pbZ = pbZ
+        local action = ISA_ConnectPanel:new(character, panel, panelX, panelY, panelZ, pbX, pbY, pbZ)
         ISTimedActionQueue.add(action)
     end
 end
@@ -45,10 +36,7 @@ end
 function UI.onConnectBackup(player, generator, luaPb)
     local character = getSpecificPlayer(player)
     if luautils.walkAdj(character, generator:getSquare(), true) then
-        local action = ISA_ConnectBackup:new(character, generator, luaPb)
-        action.character = character
-        action.generator = generator
-        action.powerbank = luaPb
+        local action = ISA_ConnectBackup:new(character, generator, luaPb.x, luaPb.y, luaPb.z)
         ISTimedActionQueue.add(action)
     end
 end
@@ -113,8 +101,7 @@ function UI.OnFillWorldObjectContextMenu(player, context, worldobjects, test)
     --local panels = {}
 
     for _, obj in ipairs(worldobjects) do
-        local sprite = obj:getTextureName()
-        local type = ISA.WorldUtil.ISATypes[sprite]
+        local type = ISA.WorldUtil.getType(obj)
         if type == "PowerBank" then
             powerbank = obj
         elseif type == "Panel" then

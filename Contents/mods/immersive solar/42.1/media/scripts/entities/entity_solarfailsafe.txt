@@ -16,7 +16,7 @@ module Base
         {
             xuiSkin     = default,
             entityStyle = ES_SolarFailsafe,
-            uiEnabled   = true,
+            uiEnabled   = false,
         }
 
         component SpriteConfig

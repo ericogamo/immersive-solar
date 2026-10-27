@@ -1,5 +1,7 @@
 module ISA
 {
+    imports { Base }
+
     item SolarPanel {
         Weight	=	5,
         ItemType	=	base:normal,

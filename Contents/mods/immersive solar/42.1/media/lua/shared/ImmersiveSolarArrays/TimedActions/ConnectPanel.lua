@@ -4,14 +4,9 @@ local ISA = require "ImmersiveSolarArrays/Utilities"
 
 ISA_ConnectPanel = ISBaseTimedAction:derive("ISA_ConnectPanel")
 
-function ISA_ConnectPanel:new(character, panel, luaPb, x, y, z, pbX, pbY, pbZ)
-    local o = {}
-    setmetatable(o, self)
-    self.__index = self
-    o.character = character
+function ISA_ConnectPanel:new(character, panel, x, y, z, pbX, pbY, pbZ)
+    local o = ISBaseTimedAction.new(self, character)
     o.panel = panel
-    ---FIXME client powerbank
-    o.powerbank = luaPb
     o.stopOnWalk = true
     o.stopOnRun = true
     o.stopOnAim = false
@@ -26,7 +21,7 @@ function ISA_ConnectPanel:new(character, panel, luaPb, x, y, z, pbX, pbY, pbZ)
 end
 
 function ISA_ConnectPanel:isValid()
-    return self.panel and self.panel:getObjectIndex() ~= -1 or false
+    return self.panel ~= nil and self.panel:getObjectIndex() ~= -1
 end
 
 function ISA_ConnectPanel:getDuration()
@@ -35,6 +30,16 @@ function ISA_ConnectPanel:getDuration()
     end
     --base time in minutes at level 3, ~1/3 at level 10
     return SandboxVars.ISA.ConnectPanelMin * (1 - 0.095 * (self.character:getPerkLevel(Perks.Electricity) - 3)) * 0.5 * getGameTime():getMinutesPerDay()
+end
+
+function ISA_ConnectPanel:serverStart()
+    if not self.panel then return end
+    local data = self.panel:getModData()
+    local prevDelta = data["connectDelta"]
+    if not prevDelta then prevDelta = 0 elseif prevDelta > 90 then prevDelta = 90 end
+    data["connectDelta"] = prevDelta
+    ISA.PBSystem_Server:removePanel(self.panel)
+    self.panel:transmitModData()
 end
 
 function ISA_ConnectPanel:start()
@@ -47,10 +52,8 @@ function ISA_ConnectPanel:start()
     local prevDelta = data["connectDelta"]
     if not prevDelta then prevDelta = 0 elseif prevDelta > 90 then prevDelta = 90 end
     self:setCurrentTime(self.maxTime * prevDelta / 100)
-    if not isClient() then
-        data["connectDelta"] = prevDelta
-        ISA.PBSystem_Server:removePanel(self.panel)
-        self.panel:transmitModData()
+    if not isClient() and not isServer() then
+        self:serverStart()
     end
 end
 
@@ -64,15 +67,23 @@ function ISA_ConnectPanel:update()
     self.character:faceThisObject(self.panel)
 end
 
-function ISA_ConnectPanel:stop()
-    self.character:stopOrTriggerSound(self.sound)
-    local delta = math.floor(self:getJobDelta()*100)
+function ISA_ConnectPanel:serverStop()
+    if not self.panel or self.panel:getObjectIndex() == -1 then return end
+    local progress = self.netAction and self.netAction:getProgress() or self:getJobDelta()
+    local delta = math.floor(progress * 100)
     local data = self.panel:getModData()
-    if delta > (data.connectDelta or 0) and self.panel:getObjectIndex() ~= -1 then
+    if delta > (data.connectDelta or 0) then
         data.connectDelta = delta
         if isServer() then
             self.panel:transmitModData()
         end
+    end
+end
+
+function ISA_ConnectPanel:stop()
+    self.character:stopOrTriggerSound(self.sound)
+    if not isClient() and not isServer() then
+        self:serverStop()
     end
 
     ISBaseTimedAction.stop(self)
@@ -80,11 +91,14 @@ end
 
 function ISA_ConnectPanel:perform()
     self.character:stopOrTriggerSound(self.sound)
-    self:complete()
     ISBaseTimedAction.perform(self)
 end
 
 function ISA_ConnectPanel:complete()
+    if not self.panel or self.pbX == nil or self.pbY == nil or self.pbZ == nil then
+        return false
+    end
+
     local data = self.panel:getModData()
     data.connectDelta = 100
 
@@ -93,7 +107,6 @@ function ISA_ConnectPanel:complete()
             pb = { x = self.pbX, y = self.pbY, z = self.pbZ },
             panel = { x = self.x, y = self.y, z = self.z }
         })
-        self.panel:transmitModData()
         return true
     end
 

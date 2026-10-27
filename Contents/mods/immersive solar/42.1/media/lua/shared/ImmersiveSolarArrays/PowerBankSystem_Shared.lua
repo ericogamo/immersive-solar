@@ -33,6 +33,15 @@ function PbSystem:getIsoObjectOnSquare(square)
             return isoObject
         end
     end
+    -- B42 fallback: also check getObjects() since entities placed via the
+    -- B42 crafting system may not appear in getSpecialObjects()
+    objects = square:getObjects()
+    for i=0,objects:size()-1 do
+        local isoObject = objects:get(i)
+        if self:isValidIsoObject(isoObject) then
+            return isoObject
+        end
+    end
 end
 
 function PbSystem:getMaxSolarOutput(SolarInput)

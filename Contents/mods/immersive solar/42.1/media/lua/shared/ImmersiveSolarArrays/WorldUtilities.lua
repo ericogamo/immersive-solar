@@ -18,6 +18,17 @@ WorldUtil.ISATypes = {
     solarmod_tileset_01_15 = "Failsafe",
 }
 
+---Get the sprite name reliably for both B41 and B42 objects
+---@param isoObject IsoObject
+---@return string?
+function WorldUtil.getSpriteName(isoObject)
+    local name = isoObject:getTextureName()
+    if not name and isoObject:getSprite() then
+        name = isoObject:getSprite():getName()
+    end
+    return name
+end
+
 ---return type of solar object
 ---@param isoObject IsoObject
 ---@return ISAType
@@ -26,7 +37,7 @@ function WorldUtil.getType(isoObject)
     if instanceof(isoObject, "IsoGenerator") and isoObject:getModData().generatorFullType == "ISA.PowerBank_test" then
         return "PowerBank"
     end
-    return WorldUtil.ISATypes[isoObject:getTextureName()]
+    return WorldUtil.ISATypes[WorldUtil.getSpriteName(isoObject)]
 end
 
 ---@param isoObject IsoObject
@@ -37,7 +48,7 @@ function WorldUtil.objectIsType(isoObject, modType)
     if instanceof(isoObject, "IsoGenerator") and isoObject:getModData().generatorFullType == "ISA.PowerBank_test" then
         return modType == "PowerBank"
     end
-    return WorldUtil.ISATypes[isoObject:getTextureName()] == modType
+    return WorldUtil.ISATypes[WorldUtil.getSpriteName(isoObject)] == modType
 end
 
 ---@param level number Electical skill level
@@ -81,7 +92,14 @@ function WorldUtil.findOnSquare(square,sprite)
     local special = square:getSpecialObjects()
     for i = 0, special:size()-1 do
         local obj = special:get(i)
-        if obj:getTextureName() == sprite then
+        if obj:getTextureName() == sprite or (obj:getSprite() and obj:getSprite():getName() == sprite) then
+            return obj
+        end
+    end
+    local objects = square:getObjects()
+    for i = 0, objects:size()-1 do
+        local obj = objects:get(i)
+        if obj:getTextureName() == sprite or (obj:getSprite() and obj:getSprite():getName() == sprite) then
             return obj
         end
     end
@@ -94,7 +112,14 @@ function WorldUtil.findTypeOnSquare(square, type)
     local special = square:getSpecialObjects()
     for i = 0, special:size() - 1 do
         local obj = special:get(i)
-        if WorldUtil.ISATypes[obj:getTextureName()] == type then
+        if WorldUtil.ISATypes[obj:getTextureName()] == type or (obj:getSprite() and WorldUtil.ISATypes[obj:getSprite():getName()] == type) then
+            return obj
+        end
+    end
+    local objects = square:getObjects()
+    for i = 0, objects:size()-1 do
+        local obj = objects:get(i)
+        if WorldUtil.ISATypes[obj:getTextureName()] == type or (obj:getSprite() and WorldUtil.ISATypes[obj:getSprite():getName()] == type) then
             return obj
         end
     end
@@ -145,18 +170,22 @@ function WorldUtil.replaceIsoObjectWithGenerator(isoObject)
         return isoObject
     end
 
-    local special = square:getSpecialObjects()
-    for i = 0, special:size() - 1 do
-        local obj = special:get(i)
-        if instanceof(obj, "IsoGenerator") and (WorldUtil.getType(obj) == "PowerBank" or obj:getTextureName() == "solarmod_tileset_01_0") then
-            if isoObject ~= obj and isoObject:getSquare() == square then
-                square:transmitRemoveItemFromSquare(isoObject)
-                isoObject:removeFromWorld()
-                isoObject:removeFromSquare()
+    local function findExistingGenerator(objects)
+        for i = 0, objects:size() - 1 do
+            local obj = objects:get(i)
+            if instanceof(obj, "IsoGenerator") and (WorldUtil.getType(obj) == "PowerBank" or WorldUtil.getSpriteName(obj) == "solarmod_tileset_01_0") then
+                if isoObject ~= obj and isoObject:getSquare() == square then
+                    square:transmitRemoveItemFromSquare(isoObject)
+                    isoObject:removeFromWorld()
+                    isoObject:removeFromSquare()
+                end
+                return obj
             end
-            return obj
         end
     end
+
+    local existing = findExistingGenerator(square:getSpecialObjects()) or findExistingGenerator(square:getObjects())
+    if existing then return existing end
 
     local item = instanceItem("ISA.PowerBank_test")
     if not item then
@@ -206,7 +235,7 @@ function WorldUtil.getGeneratorsInArea(square, radius, zLevels, distance)
                         local isquare = getSquare(ix, iy, iz)
                         if isquare then
                             local generator = isquare:getGenerator()
-                            if generator and generator:isConnected() and WorldUtil.ISATypes[generator:getTextureName()] ~= "PowerBank" then
+                            if generator and generator:isConnected() and WorldUtil.ISATypes[WorldUtil.getSpriteName(generator)] ~= "PowerBank" then
                                 table.insert(all, generator)
                             end
                         end

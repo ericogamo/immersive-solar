@@ -1,5 +1,5 @@
 id=ISA_Uninstall
 name=ISA Safe Uninstaller
-description=Removes all ISA objects from your save. Enable WITH ISA, load, wait, save, disable both.
+description=Removes all ISA objects from your save. Enable WITH ISA, load, WALK TO ALL ISA LOCATIONS, wait for ALL CLEAR, save, disable both.
 versionMin=42.13
 require=ISA_42
