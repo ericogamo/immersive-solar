@@ -47,6 +47,14 @@ end
 
 function ISAWindowsSumaryTab:render()
 	local pb = self.parent.parent.luaPB
+	if pb and pb._isFallback and isa.PBSystem_Client and self.parent.parent.square then
+		local realPb = isa.PBSystem_Client:getLuaObjectOnSquare(self.parent.parent.square)
+		if realPb then
+			pb = realPb
+			self.parent.parent.luaPB = realPb
+			self.currentFrame = 0
+		end
+	end
 	if not (pb and pb:getIsoObject()) then return self.parent.parent:close() end
 
 	-- Update cached values every ~1 sec

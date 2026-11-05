@@ -34,6 +34,79 @@ function PBSystem:newLuaObjectAt(x, y, z)
     return self:newLuaObject(globalObject)
 end
 
+local _syncRequests = {}
+
+---Returns the CGlobalObject PowerBank on square, or a safe client fallback backed by
+---IsoObject ModData while requesting server registration/sync if missing in MP.
+function PBSystem:getValidLuaObjectOnSquare(square, playerObj)
+    if not square then return nil end
+
+    local luaPb = self:getLuaObjectOnSquare(square)
+    if luaPb then return luaPb end
+
+    local isoObj = self:getIsoObjectOnSquare(square) or ISA.WorldUtil.findTypeOnSquare(square, "PowerBank")
+    if not isoObj then return nil end
+
+    local x, y, z = square:getX(), square:getY(), square:getZ()
+
+    if isClient() then
+        local key = x .. "," .. y .. "," .. z
+        local now = getTimestampMs and getTimestampMs() or 0
+        if not _syncRequests[key] or (now - _syncRequests[key]) > 5000 then
+            _syncRequests[key] = now
+            local chr = playerObj or getSpecificPlayer(0)
+            if chr then
+                sendClientCommand(chr, "ISA", "SyncPowerBank", { x = x, y = y, z = z })
+            end
+        end
+    elseif ISA.PBSystem_Server then
+        if not instanceof(isoObj, "IsoGenerator") then
+            isoObj = ISA.WorldUtil.replaceIsoObjectWithGenerator(isoObj)
+        end
+        if isoObj and ISA.PBSystem_Server:isValidIsoObject(isoObj) then
+            ISA.PBSystem_Server:loadIsoObject(isoObj)
+        end
+        luaPb = self:getLuaObjectOnSquare(square)
+        if luaPb then return luaPb end
+    end
+
+    local fallback = setmetatable({
+        luaSystem = self,
+        x = x,
+        y = y,
+        z = z,
+        on = false,
+        batteries = 0,
+        charge = 0,
+        maxcapacity = 0,
+        drain = 0,
+        npanels = 0,
+        panels = {},
+        lastHour = 0,
+        _isFallback = true,
+    }, { __index = PowerBank })
+
+    function fallback:getSquare()
+        return getSquare(self.x, self.y, self.z)
+    end
+
+    function fallback:getIsoObject()
+        local sq = self:getSquare()
+        if not sq then return nil end
+        return self.luaSystem:getIsoObjectOnSquare(sq) or ISA.WorldUtil.findTypeOnSquare(sq, "PowerBank")
+    end
+
+    function fallback:updateFromIsoObject()
+        local obj = self:getIsoObject()
+        if obj then
+            self:fromModData(obj:getModData())
+        end
+    end
+
+    fallback:updateFromIsoObject()
+    return fallback
+end
+
 do
     local o = ISA.delayedProcess:new{maxTimes=999}
 
@@ -151,6 +224,7 @@ end
 
 function PBSystem.canConnectPanelTo(panel)
     local options = {}
+    if not panel or not panel:getSquare() then return options end
 
     if not panel:getSquare():isOutside() then
         options.inside = true
@@ -169,7 +243,7 @@ function PBSystem.canConnectPanelTo(panel)
         if DistanceToSquared(x, y, pb.x, pb.y) <= 400.0 and abs(z - pb.z) <= 3 then
             pb:updateFromIsoObject()
             local isConnected
-            for _, ipanel in ipairs(pb.panels) do
+            for _, ipanel in ipairs(pb.panels or {}) do
                 if x == ipanel.x and y == ipanel.y and z == ipanel.z then
                     isConnected = true
                     break

@@ -29,6 +29,13 @@ end
 
 function ISAWindowDetails:render()
     local pb = self.parent.parent.luaPB
+    if pb and pb._isFallback and isa.PBSystem_Client and self.parent.parent.square then
+        local realPb = isa.PBSystem_Client:getLuaObjectOnSquare(self.parent.parent.square)
+        if realPb then
+            pb = realPb
+            self.parent.parent.luaPB = realPb
+        end
+    end
     if not (pb and pb:getIsoObject()) then print("ISA no Lua Obj"); return self.parent.parent:close() end
 
     local textX = 10
@@ -44,7 +51,9 @@ function ISAWindowDetails:render()
     local area = isa.WorldUtil.getValidBackupArea(player:getPerkLevel(Perks.Electricity))
     local validArea = IsoUtils.DistanceToSquared(player:getX(),player:getY(),player:getZ(),pb.x+0.5,pb.y+0.5,pb.z) <= area.distance and math.abs(player:getZ()-pb.z) <= area.levels
     if canSee and validArea or self.showDetails then
-        local devices = pb:getIsoObject():getItemsPowered()
+        local isoObj = pb:getIsoObject()
+        local devices = isoObj and isoObj.getItemsPowered and isoObj:getItemsPowered()
+        local deviceCount = devices and devices:size() or 0
 
         self:drawText(getText("ContextMenu_ISA_BatteryBank"), textX, textY, 1, 1, 1, 1, UIFont.Medium)
         textY = textY + fontHeightMed + 5
@@ -65,13 +74,13 @@ function ISAWindowDetails:render()
         self:drawText(getText("IGUI_ISAWindow_Details_ElectricalDevices"), textX, textY, 1, 1, 1, 1, UIFont.Medium)
         self.devButton:setVisible(true)
         textY = textY + fontHeightMed + 5
-        borderY, borderH = textY-3, fontHeightSm * (devices:size() + 1) + 6
+        borderY, borderH = textY-3, fontHeightSm * (deviceCount + 1) + 6
         self:drawRect(borderX, borderY, borderW, borderH, 0.7, 0.2, 0.2, 0.2)
         self:drawRectBorder(borderX, borderY, borderW, borderH, 1, 0.3, 0.3, 0.3)
         self:drawText(getText("IGUI_Total") .. " " .. getText("IGUI_PowerConsumption") .. ": ", textX, textY, 1, 1, 1, 1, UIFont.Small)
         self:drawTextRight(string.format("%.1f",pb.drain) .. " Ah", textXr, textY, 1, 1, 1, 1, UIFont.Small)
         textY = textY + fontHeightSm
-        for i=0, devices:size() -1 do
+        for i=0, deviceCount - 1 do
             local itext = devices:get(i):split("\\(")[1]
             self:drawText(itext, textX, textY, 1, 1, 1, 1, UIFont.Small)
             textY = textY + fontHeightSm

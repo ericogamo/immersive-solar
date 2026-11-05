@@ -89,6 +89,7 @@ function WorldUtil.getPowerBanksInArea(square, radius, zLevels, distance)
 end
 
 function WorldUtil.findOnSquare(square,sprite)
+    if not square then return nil end
     local special = square:getSpecialObjects()
     for i = 0, special:size()-1 do
         local obj = special:get(i)
@@ -109,6 +110,7 @@ end
 ---@param type string
 ---@return IsoObject?
 function WorldUtil.findTypeOnSquare(square, type)
+    if not square then return nil end
     local special = square:getSpecialObjects()
     for i = 0, special:size() - 1 do
         local obj = special:get(i)
@@ -133,7 +135,8 @@ end
 ---@return IsoGenerator
 function WorldUtil.placePowerBank(square, spriteName, index, fullSpawn)
     local sprite = getSprite(spriteName)
-    local fullType = sprite:getProperties():Is("CustomItem") and sprite:getProperties():Val("CustomItem")
+    local props = sprite and sprite:getProperties()
+    local fullType = (props and props:has("CustomItem") and props:get("CustomItem"))
                      or ("Moveables." .. spriteName)
 
     local generator = IsoGenerator.new(square:getCell())
@@ -146,7 +149,13 @@ function WorldUtil.placePowerBank(square, spriteName, index, fullSpawn)
     if fullSpawn then
         square:AddSpecialObject(generator, index)
         generator:createContainersFromSpriteProperties()
-        generator:getContainer():setExplored(true)
+        local container = generator:getContainer()
+        if container then
+            container:setExplored(true)
+            if container.setAcceptItemFunction then
+                container:setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+            end
+        end
         generator:transmitCompleteItemToClients()
         ---these auto transmit, do after sending object
         generator:setCondition(100)
@@ -199,7 +208,7 @@ function WorldUtil.replaceIsoObjectWithGenerator(isoObject)
     if isoObject:getSprite() then
         gen:setSprite(isoObject:getSprite())
     else
-        gen:setSpriteByName("solarmod_tileset_01_0")
+        gen:setSprite("solarmod_tileset_01_0")
     end
     gen:setSquare(square)
 

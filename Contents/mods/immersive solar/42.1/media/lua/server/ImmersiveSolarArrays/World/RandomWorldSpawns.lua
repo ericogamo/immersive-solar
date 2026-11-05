@@ -43,7 +43,8 @@ end
 ---@return IsoObject
 function RandomWorldSpawns.placePowerBank(square, spriteName, index)
     local sprite = getSprite(spriteName)
-    local fullType = sprite:getProperties():Is("CustomItem") and sprite:getProperties():Val("CustomItem")
+    local props = sprite and sprite:getProperties()
+    local fullType = (props and props:has("CustomItem") and props:get("CustomItem"))
                      or ("Moveables." .. spriteName)
 
     local object = IsoGenerator.new(square:getCell())
@@ -51,8 +52,14 @@ function RandomWorldSpawns.placePowerBank(square, spriteName, index)
     object:setSquare(square)
     object:getModData().generatorFullType = fullType
     object:createContainersFromSpriteProperties()
-    ItemPickerJava.fillContainer(object:getContainer(), getPlayer())
-    object:getContainer():setExplored(true)
+    local container = object:getContainer()
+    if container then
+        ItemPickerJava.fillContainer(container, getPlayer())
+        container:setExplored(true)
+        if container.setAcceptItemFunction then
+            container:setAcceptItemFunction("AcceptItemFunction.ISA_Batteries")
+        end
+    end
     square:AddSpecialObject(object, index)
     object:transmitCompleteItemToClients()
     object:setCondition(100)

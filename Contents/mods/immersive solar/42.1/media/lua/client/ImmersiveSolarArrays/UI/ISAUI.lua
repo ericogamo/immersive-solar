@@ -127,7 +127,7 @@ function UI.OnFillWorldObjectContextMenu(player, context, worldobjects, test)
         ISASubMenu:addOption(getText("ContextMenu_ISA_ConnectPanels"), player, onConnectPanelCursor, square, powerbank)
 
         -- Backup Generator context menu
-        local luaPb = ISA.PBSystem_Client and ISA.PBSystem_Client:getLuaObjectOnSquare(square)
+        local luaPb = ISA.PBSystem_Client and ISA.PBSystem_Client:getValidLuaObjectOnSquare(square, getSpecificPlayer(player))
         if luaPb then
             luaPb:updateFromIsoObject()
             local area = ISA.WorldUtil.getValidBackupArea(SandboxVars.ISA.BackupGeneratorRange)

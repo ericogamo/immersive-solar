@@ -22,6 +22,10 @@ else
     ---update isoObjects when chunk loads
     local function LoadPowerbank(isoObject)
         if not isoObject then return end
+        if not instanceof(isoObject, "IsoGenerator") then
+            isoObject = ISA.WorldUtil.replaceIsoObjectWithGenerator(isoObject)
+            if not isoObject then return end
+        end
         ISA.PBSystem_Server:loadIsoObject(isoObject)
         local container = isoObject:getContainer()
         if not container and isoObject.createContainersFromSpriteProperties then

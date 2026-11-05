@@ -33,6 +33,21 @@ Events.OnClientCommand.Add(function(module, command, player, args)
         print("[ISA Server] .. " .. text)
     end
 
+    if command == "SyncPowerBank" then
+        if not args or not args.x or not args.y or not args.z then return end
+        local square = getSquare(args.x, args.y, args.z)
+        if not square or not ISA.PBSystem_Server then return end
+        local isoObject = ISA.PBSystem_Server:getIsoObjectOnSquare(square) or ISA.WorldUtil.findTypeOnSquare(square, "PowerBank")
+        if isoObject then
+            if not instanceof(isoObject, "IsoGenerator") then
+                isoObject = ISA.WorldUtil.replaceIsoObjectWithGenerator(isoObject)
+            end
+            if isoObject and ISA.PBSystem_Server:isValidIsoObject(isoObject) then
+                ISA.PBSystem_Server:loadIsoObject(isoObject)
+            end
+        end
+    end
+
     if command == "TransferAction" then
         local item = args.transferItem
         local srcParent = getPowerBankParentAt(args.srcX, args.srcY, args.srcZ)

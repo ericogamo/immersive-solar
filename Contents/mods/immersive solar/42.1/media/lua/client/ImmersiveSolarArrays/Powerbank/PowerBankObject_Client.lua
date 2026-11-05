@@ -6,18 +6,28 @@ require "Map/CGlobalObject"
 local PowerBank = CGlobalObject:derive("ISA_PowerBank_Client")
 
 function PowerBank:new(luaSystem, globalObject)
-    return CGlobalObject.new(self, luaSystem, globalObject)
+    local o = CGlobalObject.new(self, luaSystem, globalObject)
+    o.on = o.on or false
+    o.batteries = o.batteries or 0
+    o.charge = o.charge or 0
+    o.maxcapacity = o.maxcapacity or 0
+    o.drain = o.drain or 0
+    o.npanels = o.npanels or 0
+    o.panels = o.panels or {}
+    o.lastHour = o.lastHour or 0
+    return o
 end
 
 function PowerBank:fromModData(modData)
-    self.on = modData["on"]
-    self.batteries = modData["batteries"]
-    self.charge = modData["charge"]
-    self.maxcapacity = modData["maxcapacity"]
-    self.drain = modData["drain"]
-    self.npanels = modData["npanels"]
+    if not modData then return end
+    self.on = modData["on"] or false
+    self.batteries = modData["batteries"] or 0
+    self.charge = modData["charge"] or 0
+    self.maxcapacity = modData["maxcapacity"] or 0
+    self.drain = modData["drain"] or 0
+    self.npanels = modData["npanels"] or 0
     self.panels = modData["panels"] or {}
-    self.lastHour = modData["lastHour"]
+    self.lastHour = modData["lastHour"] or 0
     self.conGenerator = modData["conGenerator"]
 end
 

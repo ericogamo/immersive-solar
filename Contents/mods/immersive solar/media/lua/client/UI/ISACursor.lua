@@ -84,8 +84,14 @@ end
 local ISAConnectPanelCursor = ISACursor:derive("ISAConnectPanelCursor")
 
 function ISAConnectPanelCursor:new(player,square, powerbank)
-    local o = ISACursor.new(self,player, square)
-    o.luaPb = isa.PbSystem_client:getLuaObjectOnSquare(powerbank:getSquare())
+    local pbSquare = (powerbank and powerbank:getSquare()) or square
+    if not pbSquare then return nil end
+
+    local luaPb = isa.PbSystem_client and isa.PbSystem_client:getLuaObjectOnSquare(pbSquare)
+    if not luaPb then return nil end
+
+    local o = ISACursor.new(self,player, pbSquare)
+    o.luaPb = luaPb
 
     o.tooltip = ISWorldObjectContextMenu.addToolTip()
     o.tooltip:setVisible(true)
@@ -97,26 +103,43 @@ function ISAConnectPanelCursor:new(player,square, powerbank)
 end
 
 function ISAConnectPanelCursor:isValid(square,north)
+    if not (self.luaPb and self.luaPb:getIsoObject()) then
+        self:close()
+        self.valid = false
+        return false
+    end
+
     square = self.joyfocus and getSquare(self.xJoy,self.yJoy,self.zJoypad) or square
+    if not square then
+        self.sq = nil
+        self.valid = false
+        if self.tooltip then
+            self.tooltip.description = ""
+        end
+        return false
+    end
+
     if self.sq ~= square then
         self.sq = square
         self.luaPb:updateFromIsoObject()
         self.panel, self.status = self.luaPb:isValidPanelOnSquare(square)
         self.valid = self.status == "not connected"
 
-        if self.valid then
-            self.tooltip.description = rgbDefault.rich .. getText("ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false")
-        elseif self.status == "valid" then
-            self.tooltip.description = rgbGood.rich .. getText("ContextMenu_ISA_Connect_Panel_toolTip_isConnected")
-        elseif not self.panel then
-            self.tooltip.description = rgbBad.rich .. getText("Tooltip_ISA_NoPanels")
-        elseif self.status == "far" then
-            self.tooltip.description = rgbBad.rich .. getText("Tooltip_ISA_PanelFar")
-        elseif self.status == "inside" then
-            self.tooltip.description = rgbBad.rich .. getText("ContextMenu_ISA_Connect_Panel_toolTip_isOutside")
+        if self.tooltip then
+            if self.valid then
+                self.tooltip.description = rgbDefault.rich .. getText("ContextMenu_ISA_Connect_Panel_toolTip_isConnected_false")
+            elseif self.status == "valid" then
+                self.tooltip.description = rgbGood.rich .. getText("ContextMenu_ISA_Connect_Panel_toolTip_isConnected")
+            elseif not self.panel then
+                self.tooltip.description = rgbBad.rich .. getText("Tooltip_ISA_NoPanels")
+            elseif self.status == "far" then
+                self.tooltip.description = rgbBad.rich .. getText("Tooltip_ISA_PanelFar")
+            elseif self.status == "inside" then
+                self.tooltip.description = rgbBad.rich .. getText("ContextMenu_ISA_Connect_Panel_toolTip_isOutside")
+            end
         end
     end
-    return self.valid
+    return self.valid == true
 end
 
 function ISAConnectPanelCursor:render(x,y,z,...)
